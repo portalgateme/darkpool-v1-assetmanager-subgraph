@@ -1,0 +1,8 @@
+{
+  "sepolia": {
+    "DarkPoolAssetManager": {
+      "address": "0x8b2Ab8775a43D3958bF30A203f6C73e020BCE877",
+      "startBlock": 5387197
+    }
+  }
+}
