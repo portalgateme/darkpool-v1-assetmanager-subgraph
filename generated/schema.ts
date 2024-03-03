@@ -2531,17 +2531,28 @@ export class CurveRemoveLiquidity extends Entity {
     this.set("id", Value.fromBytes(value));
   }
 
-  get outPut(): Array<Bytes> {
+  get outPut(): Array<CurveRemoveLiquidityOutPutStruct> {
     let value = this.get("outPut");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
-      return value.toBytesArray();
+      let valueArray = value.toBytesArray();
+      let result = new Array<CurveRemoveLiquidityOutPutStruct>();
+      for (let i = 0; i < valueArray.length; i++) {
+        result.push(
+          deserializeCurveRemoveLiquidityOutPutStruct(valueArray[i]),
+        );
+      }
+      return result;
     }
   }
 
-  set outPut(value: Array<Bytes>) {
-    this.set("outPut", Value.fromBytesArray(value));
+  set outPut(value: Array<CurveRemoveLiquidityOutPutStruct>) {
+    let result = new Array<Bytes>();
+    for (let i = 0; i < value.length; i++) {
+      result.push(serializeCurveRemoveLiquidityOutPutStruct(value[i]));
+    }
+    this.set("outPut", Value.fromBytesArray(result));
   }
 
   get blockNumber(): BigInt {
@@ -3057,8 +3068,12 @@ export class CurveFSNRemoveLiquidityAssetManagerCurveRemoveLiquidity extends Ent
     }
   }
 
-  set outPut(value: Array<Bytes>) {
-    this.set("outPut", Value.fromBytesArray(value));
+  set outPut(value: Array<CurveRemoveLiquidityOutPutStruct>) {
+    let result = new Array<Bytes>();
+    for (let i = 0; i < value.length; i++) {
+      result.push(serializeCurveRemoveLiquidityOutPutStruct(value[i]));
+    }
+    this.set("outPut", Value.fromBytesArray(result));
   }
 
   get blockNumber(): BigInt {
@@ -3574,8 +3589,12 @@ export class CurveMPRemoveLiquidityAssetManagerCurveRemoveLiquidity extends Enti
     }
   }
 
-  set outPut(value: Array<Bytes>) {
-    this.set("outPut", Value.fromBytesArray(value));
+  set outPut(value: Array<CurveRemoveLiquidityOutPutStruct>) {
+    let result = new Array<Bytes>();
+    for (let i = 0; i < value.length; i++) {
+      result.push(serializeCurveRemoveLiquidityOutPutStruct(value[i]));
+    }
+    this.set("outPut", Value.fromBytesArray(result));
   }
 
   get blockNumber(): BigInt {
@@ -3742,4 +3761,61 @@ export class CurveMPRemoveLiquidityAssetManagerOwnershipTransferred extends Enti
   set transactionHash(value: Bytes) {
     this.set("transactionHash", Value.fromBytes(value));
   }
+}
+
+export class CurveRemoveLiquidityOutPutStruct{
+  private _nullifiers: Bytes;
+  private _noteOut: Bytes;
+  private _amountOut: BigInt;
+  private _noteFooter: Bytes;
+
+  constructor(nullifiers: Bytes, noteOut: Bytes, amountOut: BigInt, noteFooter: Bytes) {
+    this._nullifiers = nullifiers;
+    this._noteOut = noteOut;
+    this._amountOut = amountOut;
+    this._noteFooter = noteFooter;
+  }
+
+  get nullifiers(): Bytes {
+    return this._nullifiers;
+  }
+
+  get noteOut(): Bytes {
+    return this._noteOut;
+  }
+
+  get amountOut(): BigInt {
+    return this._amountOut;
+  }
+
+  get noteFooter(): Bytes {
+    return this._noteFooter;
+  }
+}
+
+function serializeCurveRemoveLiquidityOutPutStruct
+    (value: CurveRemoveLiquidityOutPutStruct): Bytes {
+  let concatenatedBytes = Bytes.empty()
+    .concat(value.nullifiers)
+    .concat(value.noteOut)
+    .concat(Bytes.fromBigInt(value.amountOut))
+    .concat(value.noteFooter);
+
+  return concatenatedBytes;
+}
+
+function deserializeCurveRemoveLiquidityOutPutStruct
+    (bytes: Bytes): CurveRemoveLiquidityOutPutStruct {
+  const ELEMENT_SIZE = 32;
+  if (bytes.length < 4 * ELEMENT_SIZE) {
+    throw new Error("Bytes object too short to be a valid CurveRemoveLiquidityOutPutStruct serialization");
+  }
+
+  let nullifiers = Bytes.fromUint8Array(bytes.slice(0, ELEMENT_SIZE));
+  let noteOut = Bytes.fromUint8Array(bytes.slice(ELEMENT_SIZE, 2 * ELEMENT_SIZE));
+  let amountOut = Bytes.fromUint8Array(bytes.slice(2 * ELEMENT_SIZE, 3 * ELEMENT_SIZE));
+  let noteFooter = Bytes.fromUint8Array(bytes.slice(3 * ELEMENT_SIZE, 4 * ELEMENT_SIZE));
+
+  return new CurveRemoveLiquidityOutPutStruct(nullifiers, noteOut, BigInt.fromUnsignedBytes(amountOut), noteFooter);
+  
 }
