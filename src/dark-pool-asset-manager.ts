@@ -6,7 +6,7 @@ import {
   Split as SplitEvent,
   Transfer as TransferEvent,
   Withdraw as WithdrawEvent
-} from "../generated/DarkPoolAssetManager/DarkPoolAssetManager"
+} from "../generated/DarkpoolAssetManager/DarkpoolAssetManager"
 import {
   Deposit,
   Join,

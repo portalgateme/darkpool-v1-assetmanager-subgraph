@@ -8,7 +8,7 @@ import {
   Split,
   Transfer,
   Withdraw
-} from "../generated/DarkPoolAssetManager/DarkPoolAssetManager"
+} from "../generated/DarkpoolAssetManager/DarkpoolAssetManager"
 
 export function createDepositEvent(
   noteOut: Bytes,

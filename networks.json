@@ -1,0 +1,38 @@
+{
+  "sepolia": {
+    "DarkpoolAssetManager": {
+      "address": "0x8b2Ab8775a43D3958bF30A203f6C73e020BCE877",
+      "startBlock": 5387197
+    },
+    "UniswapSwapAssetManager": {
+      "address": "0xbfD27E56d164D6AC08812cC93a6E679718FF7483"
+    },
+    "UniswapLiquidityAssetManager": {
+      "address": "0xB77bec6b1DCb52Df40e5301422466B0ddFb115Be"
+    },
+    "CurveSingleExchangeAssetManager": {
+      "address": "0xb08F8db7fEd8bA55b552Eef1162D113B0e7D17FD"
+    },
+    "CurveMultiExchangeAssetManager": {
+      "address": "0x216d757Cf1033aAA49be2C689ca5c99fb010d13d"
+    },
+    "CurveAddLiquidityAssetManager": {
+      "address": "0x20D72e57b5d6b20f24E4Cd3681E227f360D0a8Ed"
+    },
+    "CurveRemoveLiquidityAssetManager": {
+      "address": "0x4c2A8c94Fa4F03C5AE2130C74bF5f92CfA86fB59"
+    },
+    "CurveFSNAddLiquidityAssetManager": {
+      "address": "0x9a7134047e3CceAa1A7c3fF68D2fFa8dF002c330"
+    },
+    "CurveFSNRemoveLiquidityAssetManager": {
+      "address": "0x8685a4c866529B89894d13F5eAA3E3163e1A9735"
+    },
+    "CurveMPAddLiquidityAssetManager": {
+      "address": "0x0eFCbAB3236Ef0e081F4bBB9A48062476AfAC309"
+    },
+    "CurveMPRemoveLiquidityAssetManager": {
+      "address": "0x3136Ab3125b03AA0D9433B166A7aEf1136965AEa"
+    }
+  }
+}

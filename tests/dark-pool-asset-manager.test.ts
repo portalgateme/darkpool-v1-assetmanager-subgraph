@@ -8,7 +8,7 @@ import {
 } from "matchstick-as/assembly/index"
 import { Bytes, BigInt, Address } from "@graphprotocol/graph-ts"
 import { Deposit } from "../generated/schema"
-import { Deposit as DepositEvent } from "../generated/DarkPoolAssetManager/DarkPoolAssetManager"
+import { Deposit as DepositEvent } from "../generated/DarkpoolAssetManager/DarkpoolAssetManager"
 import { handleDeposit } from "../src/dark-pool-asset-manager"
 import { createDepositEvent } from "./dark-pool-asset-manager-utils"
 

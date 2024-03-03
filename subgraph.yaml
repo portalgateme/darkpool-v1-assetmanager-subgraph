@@ -1,0 +1,278 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: DarkpoolAssetManager
+    network: sepolia
+    source:
+      address: "0x8b2Ab8775a43D3958bF30A203f6C73e020BCE877"
+      abi: DarkpoolAssetManager
+      startBlock: 5387197
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Deposit
+        - Join
+        - JoinSplit
+        - OwnershipTransferred
+        - Split
+        - Transfer
+        - Withdraw
+      abis:
+        - name: DarkpoolAssetManager
+          file: ./abis/DarkpoolAssetManager.json
+      eventHandlers:
+        - event: Deposit(indexed bytes32,uint256,address)
+          handler: handleDeposit
+        - event: Join(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleJoin
+        - event: JoinSplit(indexed bytes32,indexed bytes32,bytes32,bytes32)
+          handler: handleJoinSplit
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Split(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleSplit
+        - event: Transfer(indexed bytes32,indexed bytes32)
+          handler: handleTransfer
+        - event: Withdraw(indexed bytes32,uint256,address,address)
+          handler: handleWithdraw
+      file: ./src/dark-pool-asset-manager.ts
+  - kind: ethereum
+    name: UniswapSwapAssetManager
+    network: sepolia
+    source:
+      address: "0xbfD27E56d164D6AC08812cC93a6E679718FF7483"
+      abi: UniswapSwapAssetManager
+      startBlock: 5387207
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - UniswapSwapAssetManagerOwnershipTransferred
+        - UniswapSwap
+      abis:
+        - name: UniswapSwapAssetManager
+          file: ./abis/UniswapSwapAssetManager.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: UniswapSwap(address,address,uint256,uint256,bytes32,uint256)
+          handler: handleUniswapSwap
+      file: ./src/uniswap-swap-asset-manager.ts
+  - kind: ethereum
+    name: UniswapLiquidityAssetManager
+    network: sepolia
+    source:
+      address: "0xB77bec6b1DCb52Df40e5301422466B0ddFb115Be"
+      abi: UniswapLiquidityAssetManager
+      startBlock: 5387202
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - UniswapLiquidityAssetManagerOwnershipTransferred
+        - UniswapCollectFees
+        - UniswapLiquidityProvision
+        - UniswapRemoveLiquidity
+      abis:
+        - name: UniswapLiquidityAssetManager
+          file: ./abis/UniswapLiquidityAssetManager.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: UniswapCollectFees(uint256,uint256[2],uint256[2])
+          handler: handleUniswapCollectFees
+        - event: UniswapLiquidityProvision(uint256,uint256,bytes32[2],uint256[2],uint256[2],bytes32[2])
+          handler: handleUniswapLiquidityProvision
+        - event: UniswapRemoveLiquidity(uint256,bytes32,uint256[2],uint256[2])
+          handler: handleUniswapRemoveLiquidity
+      file: ./src/uniswap-liquidity-asset-manager.ts
+  - kind: ethereum
+    name: CurveSingleExchangeAssetManager
+    network: sepolia
+    source:
+      address: "0xb08F8db7fEd8bA55b552Eef1162D113B0e7D17FD"
+      abi: CurveSingleExchangeAssetManager
+      startBlock: 5387192
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - CurveExchange
+        - CurveSingleExchangeAssetManagerOwnershipTransferred
+      abis:
+        - name: CurveSingleExchangeAssetManager
+          file: ./abis/CurveSingleExchangeAssetManager.json
+      eventHandlers:
+        - event: CurveExchange(bytes32,bytes32,uint256,bytes32)
+          handler: handleCurveExchange
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: ./src/curve-single-exchange-asset-manager.ts
+  - kind: ethereum
+    name: CurveMultiExchangeAssetManager
+    network: sepolia
+    source:
+      address: "0x216d757Cf1033aAA49be2C689ca5c99fb010d13d"
+      abi: CurveMultiExchangeAssetManager
+      startBlock: 5387179
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - CurveMultiExchangeAssetManagerCurveExchange
+        - CurveMultiExchangeAssetManagerOwnershipTransferred
+      abis:
+        - name: CurveMultiExchangeAssetManager
+          file: ./abis/CurveMultiExchangeAssetManager.json
+      eventHandlers:
+        - event: CurveExchange(bytes32,bytes32,uint256,bytes32)
+          handler: handleCurveExchange
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: ./src/curve-multi-exchange-asset-manager.ts
+  - kind: ethereum
+    name: CurveAddLiquidityAssetManager
+    network: sepolia
+    source:
+      address: "0x20D72e57b5d6b20f24E4Cd3681E227f360D0a8Ed"
+      abi: CurveAddLiquidityAssetManager
+      startBlock: 5387150
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - CurveAddLiquidity
+        - CurveAddLiquidityAssetManagerOwnershipTransferred
+      abis:
+        - name: CurveAddLiquidityAssetManager
+          file: ./abis/CurveAddLiquidityAssetManager.json
+      eventHandlers:
+        - event: CurveAddLiquidity(bytes32[4],bytes32,uint256,bytes32)
+          handler: handleCurveAddLiquidity
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: ./src/curve-add-liquidity-asset-manager.ts
+  - kind: ethereum
+    name: CurveRemoveLiquidityAssetManager
+    network: sepolia
+    source:
+      address: "0x4c2A8c94Fa4F03C5AE2130C74bF5f92CfA86fB59"
+      abi: CurveRemoveLiquidityAssetManager
+      startBlock: 5387184
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - CurveRemoveLiquidity
+        - CurveRemoveLiquidityAssetManagerOwnershipTransferred
+      abis:
+        - name: CurveRemoveLiquidityAssetManager
+          file: ./abis/CurveRemoveLiquidityAssetManager.json
+      eventHandlers:
+        - event: CurveRemoveLiquidity((bytes32,bytes32,uint256,bytes32)[5])
+          handler: handleCurveRemoveLiquidity
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: ./src/curve-remove-liquidity-asset-manager.ts
+  - kind: ethereum
+    name: CurveFSNAddLiquidityAssetManager
+    network: sepolia
+    source:
+      address: "0x9a7134047e3CceAa1A7c3fF68D2fFa8dF002c330"
+      abi: CurveFSNAddLiquidityAssetManager
+      startBlock: 5387156
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - CurveFSNAddLiquidityAssetManagerCurveAddLiquidity
+        - CurveFSNAddLiquidityAssetManagerOwnershipTransferred
+      abis:
+        - name: CurveFSNAddLiquidityAssetManager
+          file: ./abis/CurveFSNAddLiquidityAssetManager.json
+      eventHandlers:
+        - event: CurveAddLiquidity(bytes32[4],bytes32,uint256,bytes32)
+          handler: handleCurveAddLiquidity
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: ./src/curve-fsn-add-liquidity-asset-manager.ts
+  - kind: ethereum
+    name: CurveFSNRemoveLiquidityAssetManager
+    network: sepolia
+    source:
+      address: "0x8685a4c866529B89894d13F5eAA3E3163e1A9735"
+      abi: CurveFSNRemoveLiquidityAssetManager
+      startBlock: 5387161
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - CurveFSNRemoveLiquidityAssetManagerCurveRemoveLiquidity
+        - CurveFSNRemoveLiquidityAssetManagerOwnershipTransferred
+      abis:
+        - name: CurveFSNRemoveLiquidityAssetManager
+          file: ./abis/CurveFSNRemoveLiquidityAssetManager.json
+      eventHandlers:
+        - event: CurveRemoveLiquidity((bytes32,bytes32,uint256,bytes32)[5])
+          handler: handleCurveRemoveLiquidity
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: ./src/curve-fsn-remove-liquidity-asset-manager.ts
+  - kind: ethereum
+    name: CurveMPAddLiquidityAssetManager
+    network: sepolia
+    source:
+      address: "0x0eFCbAB3236Ef0e081F4bBB9A48062476AfAC309"
+      abi: CurveMPAddLiquidityAssetManager
+      startBlock: 5387166
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - CurveMPAddLiquidityAssetManagerCurveAddLiquidity
+        - CurveMPAddLiquidityAssetManagerOwnershipTransferred
+      abis:
+        - name: CurveMPAddLiquidityAssetManager
+          file: ./abis/CurveMPAddLiquidityAssetManager.json
+      eventHandlers:
+        - event: CurveAddLiquidity(bytes32[4],bytes32,uint256,bytes32)
+          handler: handleCurveAddLiquidity
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: ./src/curve-mp-add-liquidity-asset-manager.ts
+  - kind: ethereum
+    name: CurveMPRemoveLiquidityAssetManager
+    network: sepolia
+    source:
+      address: "0x3136Ab3125b03AA0D9433B166A7aEf1136965AEa"
+      abi: CurveMPRemoveLiquidityAssetManager
+      startBlock: 5387173
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - CurveMPRemoveLiquidityAssetManagerCurveRemoveLiquidity
+        - CurveMPRemoveLiquidityAssetManagerOwnershipTransferred
+      abis:
+        - name: CurveMPRemoveLiquidityAssetManager
+          file: ./abis/CurveMPRemoveLiquidityAssetManager.json
+      eventHandlers:
+        - event: CurveRemoveLiquidity((bytes32,bytes32,uint256,bytes32)[5])
+          handler: handleCurveRemoveLiquidity
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: ./src/curve-mp-remove-liquidity-asset-manager.ts
