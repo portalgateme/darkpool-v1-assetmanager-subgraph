@@ -3784,8 +3784,8 @@ export class CurveRemoveLiquidityOutPutStruct{
     return this._noteOut;
   }
 
-  get amountOut(): BigInt {
-    return this._amountOut;
+  get amountOut(): Bytes {
+    return changetype<Bytes>(Bytes.fromBigInt(this._amountOut));
   }
 
   get noteFooter(): Bytes {
@@ -3798,7 +3798,7 @@ function serializeCurveRemoveLiquidityOutPutStruct
   let concatenatedBytes = Bytes.empty()
     .concat(value.nullifiers)
     .concat(value.noteOut)
-    .concat(Bytes.fromBigInt(value.amountOut))
+    .concat(value.amountOut)
     .concat(value.noteFooter);
 
   return concatenatedBytes;
