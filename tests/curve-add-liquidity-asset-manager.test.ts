@@ -6,7 +6,7 @@ import {
   beforeAll,
   afterAll
 } from "matchstick-as/assembly/index"
-import { Bytes, BigInt, Address } from "@graphprotocol/graph-ts"
+import { Bytes, Address, BigInt } from "@graphprotocol/graph-ts"
 import { CurveAddLiquidity } from "../generated/schema"
 import { CurveAddLiquidity as CurveAddLiquidityEvent } from "../generated/CurveAddLiquidityAssetManager/CurveAddLiquidityAssetManager"
 import { handleCurveAddLiquidity } from "../src/curve-add-liquidity-asset-manager"
@@ -18,13 +18,15 @@ import { createCurveAddLiquidityEvent } from "./curve-add-liquidity-asset-manage
 describe("Describe entity assertions", () => {
   beforeAll(() => {
     let nullifiers = [Bytes.fromI32(1234567890)]
-    let noteOut = Bytes.fromI32(1234567890)
+    let asset = Address.fromString("0x0000000000000000000000000000000000000001")
     let amountOut = BigInt.fromI32(234)
+    let noteOut = Bytes.fromI32(1234567890)
     let noteFooter = Bytes.fromI32(1234567890)
     let newCurveAddLiquidityEvent = createCurveAddLiquidityEvent(
       nullifiers,
-      noteOut,
+      asset,
       amountOut,
+      noteOut,
       noteFooter
     )
     handleCurveAddLiquidity(newCurveAddLiquidityEvent)
@@ -50,14 +52,20 @@ describe("Describe entity assertions", () => {
     assert.fieldEquals(
       "CurveAddLiquidity",
       "0xa16081f360e3847006db660bae1c6d1b2e17ec2a-1",
-      "noteOut",
-      "1234567890"
+      "asset",
+      "0x0000000000000000000000000000000000000001"
     )
     assert.fieldEquals(
       "CurveAddLiquidity",
       "0xa16081f360e3847006db660bae1c6d1b2e17ec2a-1",
       "amountOut",
       "234"
+    )
+    assert.fieldEquals(
+      "CurveAddLiquidity",
+      "0xa16081f360e3847006db660bae1c6d1b2e17ec2a-1",
+      "noteOut",
+      "1234567890"
     )
     assert.fieldEquals(
       "CurveAddLiquidity",

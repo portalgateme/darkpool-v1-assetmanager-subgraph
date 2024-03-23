@@ -23,16 +23,20 @@ export class Deposit__Params {
     this._event = event;
   }
 
+  get depositor(): Address {
+    return this._event.parameters[0].value.toAddress();
+  }
+
   get noteOut(): Bytes {
-    return this._event.parameters[0].value.toBytes();
+    return this._event.parameters[1].value.toBytes();
   }
 
   get amount(): BigInt {
-    return this._event.parameters[1].value.toBigInt();
+    return this._event.parameters[2].value.toBigInt();
   }
 
   get asset(): Address {
-    return this._event.parameters[2].value.toAddress();
+    return this._event.parameters[3].value.toAddress();
   }
 }
 
@@ -157,8 +161,20 @@ export class Transfer__Params {
     return this._event.parameters[0].value.toBytes();
   }
 
+  get amount(): BigInt {
+    return this._event.parameters[1].value.toBigInt();
+  }
+
+  get asset(): Address {
+    return this._event.parameters[2].value.toAddress();
+  }
+
   get noteOut(): Bytes {
-    return this._event.parameters[1].value.toBytes();
+    return this._event.parameters[3].value.toBytes();
+  }
+
+  get noteFooter(): Bytes {
+    return this._event.parameters[4].value.toBytes();
   }
 }
 
@@ -650,7 +666,7 @@ export class JoinCall__Inputs {
     return this._call.inputValues[2].value.toBytes();
   }
 
-  get _noteOut1(): Bytes {
+  get _noteOut(): Bytes {
     return this._call.inputValues[3].value.toBytes();
   }
 
@@ -1108,12 +1124,24 @@ export class TransferCall__Inputs {
     return this._call.inputValues[1].value.toBytes();
   }
 
+  get _asset(): Address {
+    return this._call.inputValues[2].value.toAddress();
+  }
+
+  get _amount(): BigInt {
+    return this._call.inputValues[3].value.toBigInt();
+  }
+
   get _noteOut(): Bytes {
-    return this._call.inputValues[2].value.toBytes();
+    return this._call.inputValues[4].value.toBytes();
+  }
+
+  get _noteFooter(): Bytes {
+    return this._call.inputValues[5].value.toBytes();
   }
 
   get _proof(): Bytes {
-    return this._call.inputValues[3].value.toBytes();
+    return this._call.inputValues[6].value.toBytes();
   }
 }
 

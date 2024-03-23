@@ -1,5 +1,5 @@
 import { newMockEvent } from "matchstick-as"
-import { ethereum, Bytes, BigInt, Address } from "@graphprotocol/graph-ts"
+import { ethereum, Bytes, Address, BigInt } from "@graphprotocol/graph-ts"
 import {
   CurveExchange,
   OwnershipTransferred
@@ -7,8 +7,9 @@ import {
 
 export function createCurveExchangeEvent(
   nullifiers: Bytes,
-  noteOut: Bytes,
+  assetOut: Address,
   amountOut: BigInt,
+  noteOut: Bytes,
   noteFooter: Bytes
 ): CurveExchange {
   let curveExchangeEvent = changetype<CurveExchange>(newMockEvent())
@@ -22,13 +23,16 @@ export function createCurveExchangeEvent(
     )
   )
   curveExchangeEvent.parameters.push(
-    new ethereum.EventParam("noteOut", ethereum.Value.fromFixedBytes(noteOut))
+    new ethereum.EventParam("assetOut", ethereum.Value.fromAddress(assetOut))
   )
   curveExchangeEvent.parameters.push(
     new ethereum.EventParam(
       "amountOut",
       ethereum.Value.fromUnsignedBigInt(amountOut)
     )
+  )
+  curveExchangeEvent.parameters.push(
+    new ethereum.EventParam("noteOut", ethereum.Value.fromFixedBytes(noteOut))
   )
   curveExchangeEvent.parameters.push(
     new ethereum.EventParam(

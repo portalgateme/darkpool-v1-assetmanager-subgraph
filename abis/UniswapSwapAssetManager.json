@@ -102,20 +102,8 @@
       {
         "indexed": false,
         "internalType": "address",
-        "name": "assetIn",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
         "name": "assetOut",
         "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amountIn",
-        "type": "uint256"
       },
       {
         "indexed": false,
@@ -131,9 +119,15 @@
       },
       {
         "indexed": false,
-        "internalType": "uint256",
+        "internalType": "bytes32",
+        "name": "noteFooter",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
         "name": "noteCommitmentOut",
-        "type": "uint256"
+        "type": "bytes32"
       }
     ],
     "name": "UniswapSwap",

@@ -1,8 +1,31 @@
+import { Bytes } from "@graphprotocol/graph-ts"
 import {
+  CurveAddLiquidity as CurveAddLiquidityEvent,
   CurveRemoveLiquidity as CurveRemoveLiquidityEvent,
   OwnershipTransferred as OwnershipTransferredEvent,
 } from "../generated/CurveMPRemoveLiquidityAssetManager/CurveMPRemoveLiquidityAssetManager"
-import { CurveRemoveLiquidity, OwnershipTransferred, CurveRemoveLiquidityOutPutStruct } from "../generated/schema"
+import {
+  CurveAddLiquidity,
+  CurveRemoveLiquidity,
+  OwnershipTransferred,
+} from "../generated/schema"
+
+export function handleCurveAddLiquidity(event: CurveAddLiquidityEvent): void {
+  let entity = new CurveAddLiquidity(
+    event.transaction.hash.concatI32(event.logIndex.toI32()),
+  )
+  entity.nullifiers = event.params.nullifiers
+  entity.asset = event.params.asset
+  entity.amountOut = event.params.amountOut
+  entity.noteOut = event.params.noteOut
+  entity.noteFooter = event.params.noteFooter
+
+  entity.blockNumber = event.block.number
+  entity.blockTimestamp = event.block.timestamp
+  entity.transactionHash = event.transaction.hash
+
+  entity.save()
+}
 
 export function handleCurveRemoveLiquidity(
   event: CurveRemoveLiquidityEvent,
@@ -10,18 +33,11 @@ export function handleCurveRemoveLiquidity(
   let entity = new CurveRemoveLiquidity(
     event.transaction.hash.concatI32(event.logIndex.toI32()),
   )
-  let outPutArray = new Array<CurveRemoveLiquidityOutPutStruct>();
-  for (let i = 0; i < event.params.outPut.length; i++) {
-    let out = new CurveRemoveLiquidityOutPutStruct(
-      event.params.outPut[i].nullifiers,
-      event.params.outPut[i].noteOut,
-      event.params.outPut[i].amountOut,
-      event.params.outPut[i].noteFooter
-    )
-    outPutArray.push(out)
-  }
-
-  entity.outPut = outPutArray
+  entity.nullifier = event.params.nullifier
+  entity.assets = event.params.assets.map<Bytes>((value)=>value as Bytes)
+  entity.amountsOut = event.params.amountsOut
+  entity.notesOut = event.params.notesOut
+  entity.noteFooters = event.params.noteFooters
 
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp

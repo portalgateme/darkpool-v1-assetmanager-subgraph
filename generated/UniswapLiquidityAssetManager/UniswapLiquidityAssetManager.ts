@@ -49,12 +49,20 @@ export class UniswapCollectFees__Params {
     return this._event.parameters[0].value.toBigInt();
   }
 
-  get amounts(): Array<BigInt> {
-    return this._event.parameters[1].value.toBigIntArray();
+  get assets(): Array<Address> {
+    return this._event.parameters[1].value.toAddressArray();
   }
 
-  get feeNoteCommitments(): Array<BigInt> {
+  get amounts(): Array<BigInt> {
     return this._event.parameters[2].value.toBigIntArray();
+  }
+
+  get feeNoteCommitments(): Array<Bytes> {
+    return this._event.parameters[3].value.toBytesArray();
+  }
+
+  get feeNoteFooters(): Array<Bytes> {
+    return this._event.parameters[4].value.toBytesArray();
   }
 }
 
@@ -75,8 +83,8 @@ export class UniswapLiquidityProvision__Params {
     return this._event.parameters[0].value.toBigInt();
   }
 
-  get positionNote(): BigInt {
-    return this._event.parameters[1].value.toBigInt();
+  get positionNote(): Bytes {
+    return this._event.parameters[1].value.toBytes();
   }
 
   get nullifiers(): Array<Bytes> {
@@ -87,8 +95,8 @@ export class UniswapLiquidityProvision__Params {
     return this._event.parameters[3].value.toBigIntArray();
   }
 
-  get changeNoteCommitments(): Array<BigInt> {
-    return this._event.parameters[4].value.toBigIntArray();
+  get changeNoteCommitments(): Array<Bytes> {
+    return this._event.parameters[4].value.toBytesArray();
   }
 
   get changeNoteFooters(): Array<Bytes> {
@@ -121,8 +129,12 @@ export class UniswapRemoveLiquidity__Params {
     return this._event.parameters[2].value.toBigIntArray();
   }
 
-  get outNoteCommitments(): Array<BigInt> {
-    return this._event.parameters[3].value.toBigIntArray();
+  get outNoteCommitments(): Array<Bytes> {
+    return this._event.parameters[3].value.toBytesArray();
+  }
+
+  get outNoteFooters(): Array<Bytes> {
+    return this._event.parameters[4].value.toBytesArray();
   }
 }
 
@@ -135,8 +147,8 @@ export class UniswapLiquidityAssetManager__uniswapCollectFeesResultDataToken1Str
     return this[1].toAddress();
   }
 
-  get noteCommitment(): BigInt {
-    return this[2].toBigInt();
+  get noteCommitment(): Bytes {
+    return this[2].toBytes();
   }
 
   get feesDetails(): UniswapLiquidityAssetManager__uniswapCollectFeesResultDataToken1FeesDetailsStruct {
@@ -165,8 +177,8 @@ export class UniswapLiquidityAssetManager__uniswapCollectFeesResultDataToken2Str
     return this[1].toAddress();
   }
 
-  get noteCommitment(): BigInt {
-    return this[2].toBigInt();
+  get noteCommitment(): Bytes {
+    return this[2].toBytes();
   }
 
   get feesDetails(): UniswapLiquidityAssetManager__uniswapCollectFeesResultDataToken2FeesDetailsStruct {
@@ -354,8 +366,8 @@ export class UniswapLiquidityAssetManager__uniswapRemoveLiquidityResultDataToken
     return this[1].toAddress();
   }
 
-  get noteCommitment(): BigInt {
-    return this[2].toBigInt();
+  get noteCommitment(): Bytes {
+    return this[2].toBytes();
   }
 
   get feesDetails(): UniswapLiquidityAssetManager__uniswapRemoveLiquidityResultDataToken1FeesDetailsStruct {
@@ -384,8 +396,8 @@ export class UniswapLiquidityAssetManager__uniswapRemoveLiquidityResultDataToken
     return this[1].toAddress();
   }
 
-  get noteCommitment(): BigInt {
-    return this[2].toBigInt();
+  get noteCommitment(): Bytes {
+    return this[2].toBytes();
   }
 
   get feesDetails(): UniswapLiquidityAssetManager__uniswapRemoveLiquidityResultDataToken2FeesDetailsStruct {
@@ -772,41 +784,21 @@ export class UniswapLiquidityAssetManager extends ethereum.SmartContract {
     return ethereum.CallResult.fromValue(value[0].toAddress());
   }
 
-  onERC721Received(
-    operator: Address,
-    from: Address,
-    tokenId: BigInt,
-    data: Bytes,
-  ): Bytes {
+  onERC721Received(): Bytes {
     let result = super.call(
       "onERC721Received",
-      "onERC721Received(address,address,uint256,bytes):(bytes4)",
-      [
-        ethereum.Value.fromAddress(operator),
-        ethereum.Value.fromAddress(from),
-        ethereum.Value.fromUnsignedBigInt(tokenId),
-        ethereum.Value.fromBytes(data),
-      ],
+      "onERC721Received():(bytes4)",
+      [],
     );
 
     return result[0].toBytes();
   }
 
-  try_onERC721Received(
-    operator: Address,
-    from: Address,
-    tokenId: BigInt,
-    data: Bytes,
-  ): ethereum.CallResult<Bytes> {
+  try_onERC721Received(): ethereum.CallResult<Bytes> {
     let result = super.tryCall(
       "onERC721Received",
-      "onERC721Received(address,address,uint256,bytes):(bytes4)",
-      [
-        ethereum.Value.fromAddress(operator),
-        ethereum.Value.fromAddress(from),
-        ethereum.Value.fromUnsignedBigInt(tokenId),
-        ethereum.Value.fromBytes(data),
-      ],
+      "onERC721Received():(bytes4)",
+      [],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -836,7 +828,7 @@ export class UniswapLiquidityAssetManager extends ethereum.SmartContract {
   ): UniswapLiquidityAssetManager__uniswapCollectFeesResult {
     let result = super.call(
       "uniswapCollectFees",
-      "uniswapCollectFees((bytes32,uint256,bytes32[2],uint256[2],address),bytes):((uint256,address,uint256,(uint256,uint256)),(uint256,address,uint256,(uint256,uint256)))",
+      "uniswapCollectFees((bytes32,uint256,bytes32[2],uint256[2],address),bytes):((uint256,address,bytes32,(uint256,uint256)),(uint256,address,bytes32,(uint256,uint256)))",
       [ethereum.Value.fromTuple(args), ethereum.Value.fromBytes(proof)],
     );
 
@@ -858,7 +850,7 @@ export class UniswapLiquidityAssetManager extends ethereum.SmartContract {
   ): ethereum.CallResult<UniswapLiquidityAssetManager__uniswapCollectFeesResult> {
     let result = super.tryCall(
       "uniswapCollectFees",
-      "uniswapCollectFees((bytes32,uint256,bytes32[2],uint256[2],address),bytes):((uint256,address,uint256,(uint256,uint256)),(uint256,address,uint256,(uint256,uint256)))",
+      "uniswapCollectFees((bytes32,uint256,bytes32[2],uint256[2],address),bytes):((uint256,address,bytes32,(uint256,uint256)),(uint256,address,bytes32,(uint256,uint256)))",
       [ethereum.Value.fromTuple(args), ethereum.Value.fromBytes(proof)],
     );
     if (result.reverted) {
@@ -955,7 +947,7 @@ export class UniswapLiquidityAssetManager extends ethereum.SmartContract {
   ): UniswapLiquidityAssetManager__uniswapRemoveLiquidityResult {
     let result = super.call(
       "uniswapRemoveLiquidity",
-      "uniswapRemoveLiquidity((bytes32,(address,uint256,bytes32),bytes32[2],uint256[2],address),bytes):((uint256,address,uint256,(uint256,uint256)),(uint256,address,uint256,(uint256,uint256)))",
+      "uniswapRemoveLiquidity((bytes32,(address,uint256,bytes32),bytes32[2],uint256[2],address),bytes):((uint256,address,bytes32,(uint256,uint256)),(uint256,address,bytes32,(uint256,uint256)))",
       [ethereum.Value.fromTuple(args), ethereum.Value.fromBytes(proof)],
     );
 
@@ -977,7 +969,7 @@ export class UniswapLiquidityAssetManager extends ethereum.SmartContract {
   ): ethereum.CallResult<UniswapLiquidityAssetManager__uniswapRemoveLiquidityResult> {
     let result = super.tryCall(
       "uniswapRemoveLiquidity",
-      "uniswapRemoveLiquidity((bytes32,(address,uint256,bytes32),bytes32[2],uint256[2],address),bytes):((uint256,address,uint256,(uint256,uint256)),(uint256,address,uint256,(uint256,uint256)))",
+      "uniswapRemoveLiquidity((bytes32,(address,uint256,bytes32),bytes32[2],uint256[2],address),bytes):((uint256,address,bytes32,(uint256,uint256)),(uint256,address,bytes32,(uint256,uint256)))",
       [ethereum.Value.fromTuple(args), ethereum.Value.fromBytes(proof)],
     );
     if (result.reverted) {
@@ -1092,52 +1084,6 @@ export class DefaultCall__Outputs {
 
   constructor(call: DefaultCall) {
     this._call = call;
-  }
-}
-
-export class OnERC721ReceivedCall extends ethereum.Call {
-  get inputs(): OnERC721ReceivedCall__Inputs {
-    return new OnERC721ReceivedCall__Inputs(this);
-  }
-
-  get outputs(): OnERC721ReceivedCall__Outputs {
-    return new OnERC721ReceivedCall__Outputs(this);
-  }
-}
-
-export class OnERC721ReceivedCall__Inputs {
-  _call: OnERC721ReceivedCall;
-
-  constructor(call: OnERC721ReceivedCall) {
-    this._call = call;
-  }
-
-  get operator(): Address {
-    return this._call.inputValues[0].value.toAddress();
-  }
-
-  get from(): Address {
-    return this._call.inputValues[1].value.toAddress();
-  }
-
-  get tokenId(): BigInt {
-    return this._call.inputValues[2].value.toBigInt();
-  }
-
-  get data(): Bytes {
-    return this._call.inputValues[3].value.toBytes();
-  }
-}
-
-export class OnERC721ReceivedCall__Outputs {
-  _call: OnERC721ReceivedCall;
-
-  constructor(call: OnERC721ReceivedCall) {
-    this._call = call;
-  }
-
-  get value0(): Bytes {
-    return this._call.outputValues[0].value.toBytes();
   }
 }
 
@@ -1520,8 +1466,8 @@ export class UniswapCollectFeesCallDataToken1Struct extends ethereum.Tuple {
     return this[1].toAddress();
   }
 
-  get noteCommitment(): BigInt {
-    return this[2].toBigInt();
+  get noteCommitment(): Bytes {
+    return this[2].toBytes();
   }
 
   get feesDetails(): UniswapCollectFeesCallDataToken1FeesDetailsStruct {
@@ -1550,8 +1496,8 @@ export class UniswapCollectFeesCallDataToken2Struct extends ethereum.Tuple {
     return this[1].toAddress();
   }
 
-  get noteCommitment(): BigInt {
-    return this[2].toBigInt();
+  get noteCommitment(): Bytes {
+    return this[2].toBytes();
   }
 
   get feesDetails(): UniswapCollectFeesCallDataToken2FeesDetailsStruct {
@@ -1792,8 +1738,8 @@ export class UniswapRemoveLiquidityCallDataToken1Struct extends ethereum.Tuple {
     return this[1].toAddress();
   }
 
-  get noteCommitment(): BigInt {
-    return this[2].toBigInt();
+  get noteCommitment(): Bytes {
+    return this[2].toBytes();
   }
 
   get feesDetails(): UniswapRemoveLiquidityCallDataToken1FeesDetailsStruct {
@@ -1822,8 +1768,8 @@ export class UniswapRemoveLiquidityCallDataToken2Struct extends ethereum.Tuple {
     return this[1].toAddress();
   }
 
-  get noteCommitment(): BigInt {
-    return this[2].toBigInt();
+  get noteCommitment(): Bytes {
+    return this[2].toBytes();
   }
 
   get feesDetails(): UniswapRemoveLiquidityCallDataToken2FeesDetailsStruct {

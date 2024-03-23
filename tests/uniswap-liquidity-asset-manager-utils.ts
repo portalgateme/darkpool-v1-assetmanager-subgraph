@@ -32,8 +32,10 @@ export function createOwnershipTransferredEvent(
 
 export function createUniswapCollectFeesEvent(
   tokenId: BigInt,
+  assets: Array<Address>,
   amounts: Array<BigInt>,
-  feeNoteCommitments: Array<BigInt>
+  feeNoteCommitments: Array<Bytes>,
+  feeNoteFooters: Array<Bytes>
 ): UniswapCollectFees {
   let uniswapCollectFeesEvent = changetype<UniswapCollectFees>(newMockEvent())
 
@@ -46,6 +48,9 @@ export function createUniswapCollectFeesEvent(
     )
   )
   uniswapCollectFeesEvent.parameters.push(
+    new ethereum.EventParam("assets", ethereum.Value.fromAddressArray(assets))
+  )
+  uniswapCollectFeesEvent.parameters.push(
     new ethereum.EventParam(
       "amounts",
       ethereum.Value.fromUnsignedBigIntArray(amounts)
@@ -54,7 +59,13 @@ export function createUniswapCollectFeesEvent(
   uniswapCollectFeesEvent.parameters.push(
     new ethereum.EventParam(
       "feeNoteCommitments",
-      ethereum.Value.fromUnsignedBigIntArray(feeNoteCommitments)
+      ethereum.Value.fromFixedBytesArray(feeNoteCommitments)
+    )
+  )
+  uniswapCollectFeesEvent.parameters.push(
+    new ethereum.EventParam(
+      "feeNoteFooters",
+      ethereum.Value.fromFixedBytesArray(feeNoteFooters)
     )
   )
 
@@ -63,10 +74,10 @@ export function createUniswapCollectFeesEvent(
 
 export function createUniswapLiquidityProvisionEvent(
   tokenId: BigInt,
-  positionNote: BigInt,
+  positionNote: Bytes,
   nullifiers: Array<Bytes>,
   changeAmounts: Array<BigInt>,
-  changeNoteCommitments: Array<BigInt>,
+  changeNoteCommitments: Array<Bytes>,
   changeNoteFooters: Array<Bytes>
 ): UniswapLiquidityProvision {
   let uniswapLiquidityProvisionEvent = changetype<UniswapLiquidityProvision>(
@@ -84,7 +95,7 @@ export function createUniswapLiquidityProvisionEvent(
   uniswapLiquidityProvisionEvent.parameters.push(
     new ethereum.EventParam(
       "positionNote",
-      ethereum.Value.fromUnsignedBigInt(positionNote)
+      ethereum.Value.fromFixedBytes(positionNote)
     )
   )
   uniswapLiquidityProvisionEvent.parameters.push(
@@ -102,7 +113,7 @@ export function createUniswapLiquidityProvisionEvent(
   uniswapLiquidityProvisionEvent.parameters.push(
     new ethereum.EventParam(
       "changeNoteCommitments",
-      ethereum.Value.fromUnsignedBigIntArray(changeNoteCommitments)
+      ethereum.Value.fromFixedBytesArray(changeNoteCommitments)
     )
   )
   uniswapLiquidityProvisionEvent.parameters.push(
@@ -119,7 +130,8 @@ export function createUniswapRemoveLiquidityEvent(
   tokenId: BigInt,
   positionNullifier: Bytes,
   amounts: Array<BigInt>,
-  outNoteCommitments: Array<BigInt>
+  outNoteCommitments: Array<Bytes>,
+  outNoteFooters: Array<Bytes>
 ): UniswapRemoveLiquidity {
   let uniswapRemoveLiquidityEvent = changetype<UniswapRemoveLiquidity>(
     newMockEvent()
@@ -148,7 +160,13 @@ export function createUniswapRemoveLiquidityEvent(
   uniswapRemoveLiquidityEvent.parameters.push(
     new ethereum.EventParam(
       "outNoteCommitments",
-      ethereum.Value.fromUnsignedBigIntArray(outNoteCommitments)
+      ethereum.Value.fromFixedBytesArray(outNoteCommitments)
+    )
+  )
+  uniswapRemoveLiquidityEvent.parameters.push(
+    new ethereum.EventParam(
+      "outNoteFooters",
+      ethereum.Value.fromFixedBytesArray(outNoteFooters)
     )
   )
 

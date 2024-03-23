@@ -52,6 +52,19 @@ export class Deposit extends Entity {
     this.set("id", Value.fromBytes(value));
   }
 
+  get depositor(): Bytes {
+    let value = this.get("depositor");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set depositor(value: Bytes) {
+    this.set("depositor", Value.fromBytes(value));
+  }
+
   get noteOut(): Bytes {
     let value = this.get("noteOut");
     if (!value || value.kind == ValueKind.NULL) {
@@ -669,6 +682,32 @@ export class Transfer extends Entity {
     this.set("nullifierIn", Value.fromBytes(value));
   }
 
+  get amount(): BigInt {
+    let value = this.get("amount");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set amount(value: BigInt) {
+    this.set("amount", Value.fromBigInt(value));
+  }
+
+  get asset(): Bytes {
+    let value = this.get("asset");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set asset(value: Bytes) {
+    this.set("asset", Value.fromBytes(value));
+  }
+
   get noteOut(): Bytes {
     let value = this.get("noteOut");
     if (!value || value.kind == ValueKind.NULL) {
@@ -680,6 +719,19 @@ export class Transfer extends Entity {
 
   set noteOut(value: Bytes) {
     this.set("noteOut", Value.fromBytes(value));
+  }
+
+  get noteFooter(): Bytes {
+    let value = this.get("noteFooter");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set noteFooter(value: Bytes) {
+    this.set("noteFooter", Value.fromBytes(value));
   }
 
   get blockNumber(): BigInt {
@@ -1022,19 +1074,6 @@ export class UniswapSwap extends Entity {
     this.set("id", Value.fromBytes(value));
   }
 
-  get assetIn(): Bytes {
-    let value = this.get("assetIn");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set assetIn(value: Bytes) {
-    this.set("assetIn", Value.fromBytes(value));
-  }
-
   get assetOut(): Bytes {
     let value = this.get("assetOut");
     if (!value || value.kind == ValueKind.NULL) {
@@ -1046,19 +1085,6 @@ export class UniswapSwap extends Entity {
 
   set assetOut(value: Bytes) {
     this.set("assetOut", Value.fromBytes(value));
-  }
-
-  get amountIn(): BigInt {
-    let value = this.get("amountIn");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set amountIn(value: BigInt) {
-    this.set("amountIn", Value.fromBigInt(value));
   }
 
   get amountOut(): BigInt {
@@ -1087,17 +1113,30 @@ export class UniswapSwap extends Entity {
     this.set("noteNullifierIn", Value.fromBytes(value));
   }
 
-  get noteCommitmentOut(): BigInt {
+  get noteFooter(): Bytes {
+    let value = this.get("noteFooter");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set noteFooter(value: Bytes) {
+    this.set("noteFooter", Value.fromBytes(value));
+  }
+
+  get noteCommitmentOut(): Bytes {
     let value = this.get("noteCommitmentOut");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
-      return value.toBigInt();
+      return value.toBytes();
     }
   }
 
-  set noteCommitmentOut(value: BigInt) {
-    this.set("noteCommitmentOut", Value.fromBigInt(value));
+  set noteCommitmentOut(value: Bytes) {
+    this.set("noteCommitmentOut", Value.fromBytes(value));
   }
 
   get blockNumber(): BigInt {
@@ -1322,6 +1361,19 @@ export class UniswapCollectFees extends Entity {
     this.set("tokenId", Value.fromBigInt(value));
   }
 
+  get assets(): Array<Bytes> {
+    let value = this.get("assets");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytesArray();
+    }
+  }
+
+  set assets(value: Array<Bytes>) {
+    this.set("assets", Value.fromBytesArray(value));
+  }
+
   get amounts(): Array<BigInt> {
     let value = this.get("amounts");
     if (!value || value.kind == ValueKind.NULL) {
@@ -1335,17 +1387,30 @@ export class UniswapCollectFees extends Entity {
     this.set("amounts", Value.fromBigIntArray(value));
   }
 
-  get feeNoteCommitments(): Array<BigInt> {
+  get feeNoteCommitments(): Array<Bytes> {
     let value = this.get("feeNoteCommitments");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
-      return value.toBigIntArray();
+      return value.toBytesArray();
     }
   }
 
-  set feeNoteCommitments(value: Array<BigInt>) {
-    this.set("feeNoteCommitments", Value.fromBigIntArray(value));
+  set feeNoteCommitments(value: Array<Bytes>) {
+    this.set("feeNoteCommitments", Value.fromBytesArray(value));
+  }
+
+  get feeNoteFooters(): Array<Bytes> {
+    let value = this.get("feeNoteFooters");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytesArray();
+    }
+  }
+
+  set feeNoteFooters(value: Array<Bytes>) {
+    this.set("feeNoteFooters", Value.fromBytesArray(value));
   }
 
   get blockNumber(): BigInt {
@@ -1447,17 +1512,17 @@ export class UniswapLiquidityProvision extends Entity {
     this.set("tokenId", Value.fromBigInt(value));
   }
 
-  get positionNote(): BigInt {
+  get positionNote(): Bytes {
     let value = this.get("positionNote");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
-      return value.toBigInt();
+      return value.toBytes();
     }
   }
 
-  set positionNote(value: BigInt) {
-    this.set("positionNote", Value.fromBigInt(value));
+  set positionNote(value: Bytes) {
+    this.set("positionNote", Value.fromBytes(value));
   }
 
   get nullifiers(): Array<Bytes> {
@@ -1486,17 +1551,17 @@ export class UniswapLiquidityProvision extends Entity {
     this.set("changeAmounts", Value.fromBigIntArray(value));
   }
 
-  get changeNoteCommitments(): Array<BigInt> {
+  get changeNoteCommitments(): Array<Bytes> {
     let value = this.get("changeNoteCommitments");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
-      return value.toBigIntArray();
+      return value.toBytesArray();
     }
   }
 
-  set changeNoteCommitments(value: Array<BigInt>) {
-    this.set("changeNoteCommitments", Value.fromBigIntArray(value));
+  set changeNoteCommitments(value: Array<Bytes>) {
+    this.set("changeNoteCommitments", Value.fromBytesArray(value));
   }
 
   get changeNoteFooters(): Array<Bytes> {
@@ -1637,17 +1702,30 @@ export class UniswapRemoveLiquidity extends Entity {
     this.set("amounts", Value.fromBigIntArray(value));
   }
 
-  get outNoteCommitments(): Array<BigInt> {
+  get outNoteCommitments(): Array<Bytes> {
     let value = this.get("outNoteCommitments");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
-      return value.toBigIntArray();
+      return value.toBytesArray();
     }
   }
 
-  set outNoteCommitments(value: Array<BigInt>) {
-    this.set("outNoteCommitments", Value.fromBigIntArray(value));
+  set outNoteCommitments(value: Array<Bytes>) {
+    this.set("outNoteCommitments", Value.fromBytesArray(value));
+  }
+
+  get outNoteFooters(): Array<Bytes> {
+    let value = this.get("outNoteFooters");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytesArray();
+    }
+  }
+
+  set outNoteFooters(value: Array<Bytes>) {
+    this.set("outNoteFooters", Value.fromBytesArray(value));
   }
 
   get blockNumber(): BigInt {
@@ -1746,8 +1824,8 @@ export class CurveExchange extends Entity {
     this.set("nullifiers", Value.fromBytes(value));
   }
 
-  get noteOut(): Bytes {
-    let value = this.get("noteOut");
+  get assetOut(): Bytes {
+    let value = this.get("assetOut");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
@@ -1755,8 +1833,8 @@ export class CurveExchange extends Entity {
     }
   }
 
-  set noteOut(value: Bytes) {
-    this.set("noteOut", Value.fromBytes(value));
+  set assetOut(value: Bytes) {
+    this.set("assetOut", Value.fromBytes(value));
   }
 
   get amountOut(): BigInt {
@@ -1770,6 +1848,19 @@ export class CurveExchange extends Entity {
 
   set amountOut(value: BigInt) {
     this.set("amountOut", Value.fromBigInt(value));
+  }
+
+  get noteOut(): Bytes {
+    let value = this.get("noteOut");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set noteOut(value: Bytes) {
+    this.set("noteOut", Value.fromBytes(value));
   }
 
   get noteFooter(): Bytes {
@@ -2022,8 +2113,8 @@ export class CurveMultiExchangeAssetManagerCurveExchange extends Entity {
     this.set("nullifiers", Value.fromBytes(value));
   }
 
-  get noteOut(): Bytes {
-    let value = this.get("noteOut");
+  get assetOut(): Bytes {
+    let value = this.get("assetOut");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
@@ -2031,8 +2122,8 @@ export class CurveMultiExchangeAssetManagerCurveExchange extends Entity {
     }
   }
 
-  set noteOut(value: Bytes) {
-    this.set("noteOut", Value.fromBytes(value));
+  set assetOut(value: Bytes) {
+    this.set("assetOut", Value.fromBytes(value));
   }
 
   get amountOut(): BigInt {
@@ -2046,6 +2137,19 @@ export class CurveMultiExchangeAssetManagerCurveExchange extends Entity {
 
   set amountOut(value: BigInt) {
     this.set("amountOut", Value.fromBigInt(value));
+  }
+
+  get noteOut(): Bytes {
+    let value = this.get("noteOut");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set noteOut(value: Bytes) {
+    this.set("noteOut", Value.fromBytes(value));
   }
 
   get noteFooter(): Bytes {
@@ -2283,8 +2387,8 @@ export class CurveAddLiquidity extends Entity {
     this.set("nullifiers", Value.fromBytesArray(value));
   }
 
-  get noteOut(): Bytes {
-    let value = this.get("noteOut");
+  get asset(): Bytes {
+    let value = this.get("asset");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
@@ -2292,8 +2396,8 @@ export class CurveAddLiquidity extends Entity {
     }
   }
 
-  set noteOut(value: Bytes) {
-    this.set("noteOut", Value.fromBytes(value));
+  set asset(value: Bytes) {
+    this.set("asset", Value.fromBytes(value));
   }
 
   get amountOut(): BigInt {
@@ -2309,6 +2413,19 @@ export class CurveAddLiquidity extends Entity {
     this.set("amountOut", Value.fromBigInt(value));
   }
 
+  get noteOut(): Bytes {
+    let value = this.get("noteOut");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set noteOut(value: Bytes) {
+    this.set("noteOut", Value.fromBytes(value));
+  }
+
   get noteFooter(): Bytes {
     let value = this.get("noteFooter");
     if (!value || value.kind == ValueKind.NULL) {
@@ -2320,6 +2437,154 @@ export class CurveAddLiquidity extends Entity {
 
   set noteFooter(value: Bytes) {
     this.set("noteFooter", Value.fromBytes(value));
+  }
+
+  get blockNumber(): BigInt {
+    let value = this.get("blockNumber");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set blockNumber(value: BigInt) {
+    this.set("blockNumber", Value.fromBigInt(value));
+  }
+
+  get blockTimestamp(): BigInt {
+    let value = this.get("blockTimestamp");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set blockTimestamp(value: BigInt) {
+    this.set("blockTimestamp", Value.fromBigInt(value));
+  }
+
+  get transactionHash(): Bytes {
+    let value = this.get("transactionHash");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set transactionHash(value: Bytes) {
+    this.set("transactionHash", Value.fromBytes(value));
+  }
+}
+
+export class CurveRemoveLiquidity extends Entity {
+  constructor(id: Bytes) {
+    super();
+    this.set("id", Value.fromBytes(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id != null, "Cannot save CurveRemoveLiquidity entity without an ID");
+    if (id) {
+      assert(
+        id.kind == ValueKind.BYTES,
+        `Entities of type CurveRemoveLiquidity must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+      );
+      store.set("CurveRemoveLiquidity", id.toBytes().toHexString(), this);
+    }
+  }
+
+  static loadInBlock(id: Bytes): CurveRemoveLiquidity | null {
+    return changetype<CurveRemoveLiquidity | null>(
+      store.get_in_block("CurveRemoveLiquidity", id.toHexString()),
+    );
+  }
+
+  static load(id: Bytes): CurveRemoveLiquidity | null {
+    return changetype<CurveRemoveLiquidity | null>(
+      store.get("CurveRemoveLiquidity", id.toHexString()),
+    );
+  }
+
+  get id(): Bytes {
+    let value = this.get("id");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set id(value: Bytes) {
+    this.set("id", Value.fromBytes(value));
+  }
+
+  get nullifier(): Bytes {
+    let value = this.get("nullifier");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set nullifier(value: Bytes) {
+    this.set("nullifier", Value.fromBytes(value));
+  }
+
+  get assets(): Array<Bytes> {
+    let value = this.get("assets");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytesArray();
+    }
+  }
+
+  set assets(value: Array<Bytes>) {
+    this.set("assets", Value.fromBytesArray(value));
+  }
+
+  get amountsOut(): Array<BigInt> {
+    let value = this.get("amountsOut");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigIntArray();
+    }
+  }
+
+  set amountsOut(value: Array<BigInt>) {
+    this.set("amountsOut", Value.fromBigIntArray(value));
+  }
+
+  get notesOut(): Array<Bytes> {
+    let value = this.get("notesOut");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytesArray();
+    }
+  }
+
+  set notesOut(value: Array<Bytes>) {
+    this.set("notesOut", Value.fromBytesArray(value));
+  }
+
+  get noteFooters(): Array<Bytes> {
+    let value = this.get("noteFooters");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytesArray();
+    }
+  }
+
+  set noteFooters(value: Array<Bytes>) {
+    this.set("noteFooters", Value.fromBytesArray(value));
   }
 
   get blockNumber(): BigInt {
@@ -2488,239 +2753,6 @@ export class CurveAddLiquidityAssetManagerOwnershipTransferred extends Entity {
   }
 }
 
-export class CurveRemoveLiquidity extends Entity {
-  constructor(id: Bytes) {
-    super();
-    this.set("id", Value.fromBytes(id));
-  }
-
-  save(): void {
-    let id = this.get("id");
-    assert(id != null, "Cannot save CurveRemoveLiquidity entity without an ID");
-    if (id) {
-      assert(
-        id.kind == ValueKind.BYTES,
-        `Entities of type CurveRemoveLiquidity must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
-      );
-      store.set("CurveRemoveLiquidity", id.toBytes().toHexString(), this);
-    }
-  }
-
-  static loadInBlock(id: Bytes): CurveRemoveLiquidity | null {
-    return changetype<CurveRemoveLiquidity | null>(
-      store.get_in_block("CurveRemoveLiquidity", id.toHexString()),
-    );
-  }
-
-  static load(id: Bytes): CurveRemoveLiquidity | null {
-    return changetype<CurveRemoveLiquidity | null>(
-      store.get("CurveRemoveLiquidity", id.toHexString()),
-    );
-  }
-
-  get id(): Bytes {
-    let value = this.get("id");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set id(value: Bytes) {
-    this.set("id", Value.fromBytes(value));
-  }
-
-  get outPut(): Array<CurveRemoveLiquidityOutPutStruct> {
-    let value = this.get("outPut");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      let valueArray = value.toBytesArray();
-      let result = new Array<CurveRemoveLiquidityOutPutStruct>();
-      for (let i = 0; i < valueArray.length; i++) {
-        result.push(
-          deserializeCurveRemoveLiquidityOutPutStruct(valueArray[i]),
-        );
-      }
-      return result;
-    }
-  }
-
-  set outPut(value: Array<CurveRemoveLiquidityOutPutStruct>) {
-    let result = new Array<Bytes>();
-    for (let i = 0; i < value.length; i++) {
-      result.push(serializeCurveRemoveLiquidityOutPutStruct(value[i]));
-    }
-    this.set("outPut", Value.fromBytesArray(result));
-  }
-
-  get blockNumber(): BigInt {
-    let value = this.get("blockNumber");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set blockNumber(value: BigInt) {
-    this.set("blockNumber", Value.fromBigInt(value));
-  }
-
-  get blockTimestamp(): BigInt {
-    let value = this.get("blockTimestamp");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set blockTimestamp(value: BigInt) {
-    this.set("blockTimestamp", Value.fromBigInt(value));
-  }
-
-  get transactionHash(): Bytes {
-    let value = this.get("transactionHash");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set transactionHash(value: Bytes) {
-    this.set("transactionHash", Value.fromBytes(value));
-  }
-}
-
-export class CurveRemoveLiquidityAssetManagerOwnershipTransferred extends Entity {
-  constructor(id: Bytes) {
-    super();
-    this.set("id", Value.fromBytes(id));
-  }
-
-  save(): void {
-    let id = this.get("id");
-    assert(
-      id != null,
-      "Cannot save CurveRemoveLiquidityAssetManagerOwnershipTransferred entity without an ID",
-    );
-    if (id) {
-      assert(
-        id.kind == ValueKind.BYTES,
-        `Entities of type CurveRemoveLiquidityAssetManagerOwnershipTransferred must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
-      );
-      store.set(
-        "CurveRemoveLiquidityAssetManagerOwnershipTransferred",
-        id.toBytes().toHexString(),
-        this,
-      );
-    }
-  }
-
-  static loadInBlock(
-    id: Bytes,
-  ): CurveRemoveLiquidityAssetManagerOwnershipTransferred | null {
-    return changetype<CurveRemoveLiquidityAssetManagerOwnershipTransferred | null>(
-      store.get_in_block(
-        "CurveRemoveLiquidityAssetManagerOwnershipTransferred",
-        id.toHexString(),
-      ),
-    );
-  }
-
-  static load(
-    id: Bytes,
-  ): CurveRemoveLiquidityAssetManagerOwnershipTransferred | null {
-    return changetype<CurveRemoveLiquidityAssetManagerOwnershipTransferred | null>(
-      store.get(
-        "CurveRemoveLiquidityAssetManagerOwnershipTransferred",
-        id.toHexString(),
-      ),
-    );
-  }
-
-  get id(): Bytes {
-    let value = this.get("id");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set id(value: Bytes) {
-    this.set("id", Value.fromBytes(value));
-  }
-
-  get previousOwner(): Bytes {
-    let value = this.get("previousOwner");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set previousOwner(value: Bytes) {
-    this.set("previousOwner", Value.fromBytes(value));
-  }
-
-  get newOwner(): Bytes {
-    let value = this.get("newOwner");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set newOwner(value: Bytes) {
-    this.set("newOwner", Value.fromBytes(value));
-  }
-
-  get blockNumber(): BigInt {
-    let value = this.get("blockNumber");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set blockNumber(value: BigInt) {
-    this.set("blockNumber", Value.fromBigInt(value));
-  }
-
-  get blockTimestamp(): BigInt {
-    let value = this.get("blockTimestamp");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toBigInt();
-    }
-  }
-
-  set blockTimestamp(value: BigInt) {
-    this.set("blockTimestamp", Value.fromBigInt(value));
-  }
-
-  get transactionHash(): Bytes {
-    let value = this.get("transactionHash");
-    if (!value || value.kind == ValueKind.NULL) {
-      throw new Error("Cannot return null for a required field.");
-    } else {
-      return value.toBytes();
-    }
-  }
-
-  set transactionHash(value: Bytes) {
-    this.set("transactionHash", Value.fromBytes(value));
-  }
-}
-
 export class CurveFSNAddLiquidityAssetManagerCurveAddLiquidity extends Entity {
   constructor(id: Bytes) {
     super();
@@ -2794,8 +2826,8 @@ export class CurveFSNAddLiquidityAssetManagerCurveAddLiquidity extends Entity {
     this.set("nullifiers", Value.fromBytesArray(value));
   }
 
-  get noteOut(): Bytes {
-    let value = this.get("noteOut");
+  get asset(): Bytes {
+    let value = this.get("asset");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
@@ -2803,8 +2835,8 @@ export class CurveFSNAddLiquidityAssetManagerCurveAddLiquidity extends Entity {
     }
   }
 
-  set noteOut(value: Bytes) {
-    this.set("noteOut", Value.fromBytes(value));
+  set asset(value: Bytes) {
+    this.set("asset", Value.fromBytes(value));
   }
 
   get amountOut(): BigInt {
@@ -2820,6 +2852,19 @@ export class CurveFSNAddLiquidityAssetManagerCurveAddLiquidity extends Entity {
     this.set("amountOut", Value.fromBigInt(value));
   }
 
+  get noteOut(): Bytes {
+    let value = this.get("noteOut");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set noteOut(value: Bytes) {
+    this.set("noteOut", Value.fromBytes(value));
+  }
+
   get noteFooter(): Bytes {
     let value = this.get("noteFooter");
     if (!value || value.kind == ValueKind.NULL) {
@@ -2831,6 +2876,171 @@ export class CurveFSNAddLiquidityAssetManagerCurveAddLiquidity extends Entity {
 
   set noteFooter(value: Bytes) {
     this.set("noteFooter", Value.fromBytes(value));
+  }
+
+  get blockNumber(): BigInt {
+    let value = this.get("blockNumber");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set blockNumber(value: BigInt) {
+    this.set("blockNumber", Value.fromBigInt(value));
+  }
+
+  get blockTimestamp(): BigInt {
+    let value = this.get("blockTimestamp");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set blockTimestamp(value: BigInt) {
+    this.set("blockTimestamp", Value.fromBigInt(value));
+  }
+
+  get transactionHash(): Bytes {
+    let value = this.get("transactionHash");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set transactionHash(value: Bytes) {
+    this.set("transactionHash", Value.fromBytes(value));
+  }
+}
+
+export class CurveFSNAddLiquidityAssetManagerCurveRemoveLiquidity extends Entity {
+  constructor(id: Bytes) {
+    super();
+    this.set("id", Value.fromBytes(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(
+      id != null,
+      "Cannot save CurveFSNAddLiquidityAssetManagerCurveRemoveLiquidity entity without an ID",
+    );
+    if (id) {
+      assert(
+        id.kind == ValueKind.BYTES,
+        `Entities of type CurveFSNAddLiquidityAssetManagerCurveRemoveLiquidity must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+      );
+      store.set(
+        "CurveFSNAddLiquidityAssetManagerCurveRemoveLiquidity",
+        id.toBytes().toHexString(),
+        this,
+      );
+    }
+  }
+
+  static loadInBlock(
+    id: Bytes,
+  ): CurveFSNAddLiquidityAssetManagerCurveRemoveLiquidity | null {
+    return changetype<CurveFSNAddLiquidityAssetManagerCurveRemoveLiquidity | null>(
+      store.get_in_block(
+        "CurveFSNAddLiquidityAssetManagerCurveRemoveLiquidity",
+        id.toHexString(),
+      ),
+    );
+  }
+
+  static load(
+    id: Bytes,
+  ): CurveFSNAddLiquidityAssetManagerCurveRemoveLiquidity | null {
+    return changetype<CurveFSNAddLiquidityAssetManagerCurveRemoveLiquidity | null>(
+      store.get(
+        "CurveFSNAddLiquidityAssetManagerCurveRemoveLiquidity",
+        id.toHexString(),
+      ),
+    );
+  }
+
+  get id(): Bytes {
+    let value = this.get("id");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set id(value: Bytes) {
+    this.set("id", Value.fromBytes(value));
+  }
+
+  get nullifier(): Bytes {
+    let value = this.get("nullifier");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set nullifier(value: Bytes) {
+    this.set("nullifier", Value.fromBytes(value));
+  }
+
+  get assets(): Array<Bytes> {
+    let value = this.get("assets");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytesArray();
+    }
+  }
+
+  set assets(value: Array<Bytes>) {
+    this.set("assets", Value.fromBytesArray(value));
+  }
+
+  get amountsOut(): Array<BigInt> {
+    let value = this.get("amountsOut");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigIntArray();
+    }
+  }
+
+  set amountsOut(value: Array<BigInt>) {
+    this.set("amountsOut", Value.fromBigIntArray(value));
+  }
+
+  get notesOut(): Array<Bytes> {
+    let value = this.get("notesOut");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytesArray();
+    }
+  }
+
+  set notesOut(value: Array<Bytes>) {
+    this.set("notesOut", Value.fromBytesArray(value));
+  }
+
+  get noteFooters(): Array<Bytes> {
+    let value = this.get("noteFooters");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytesArray();
+    }
+  }
+
+  set noteFooters(value: Array<Bytes>) {
+    this.set("noteFooters", Value.fromBytesArray(value));
   }
 
   get blockNumber(): BigInt {
@@ -2999,6 +3209,171 @@ export class CurveFSNAddLiquidityAssetManagerOwnershipTransferred extends Entity
   }
 }
 
+export class CurveFSNRemoveLiquidityAssetManagerCurveAddLiquidity extends Entity {
+  constructor(id: Bytes) {
+    super();
+    this.set("id", Value.fromBytes(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(
+      id != null,
+      "Cannot save CurveFSNRemoveLiquidityAssetManagerCurveAddLiquidity entity without an ID",
+    );
+    if (id) {
+      assert(
+        id.kind == ValueKind.BYTES,
+        `Entities of type CurveFSNRemoveLiquidityAssetManagerCurveAddLiquidity must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+      );
+      store.set(
+        "CurveFSNRemoveLiquidityAssetManagerCurveAddLiquidity",
+        id.toBytes().toHexString(),
+        this,
+      );
+    }
+  }
+
+  static loadInBlock(
+    id: Bytes,
+  ): CurveFSNRemoveLiquidityAssetManagerCurveAddLiquidity | null {
+    return changetype<CurveFSNRemoveLiquidityAssetManagerCurveAddLiquidity | null>(
+      store.get_in_block(
+        "CurveFSNRemoveLiquidityAssetManagerCurveAddLiquidity",
+        id.toHexString(),
+      ),
+    );
+  }
+
+  static load(
+    id: Bytes,
+  ): CurveFSNRemoveLiquidityAssetManagerCurveAddLiquidity | null {
+    return changetype<CurveFSNRemoveLiquidityAssetManagerCurveAddLiquidity | null>(
+      store.get(
+        "CurveFSNRemoveLiquidityAssetManagerCurveAddLiquidity",
+        id.toHexString(),
+      ),
+    );
+  }
+
+  get id(): Bytes {
+    let value = this.get("id");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set id(value: Bytes) {
+    this.set("id", Value.fromBytes(value));
+  }
+
+  get nullifiers(): Array<Bytes> {
+    let value = this.get("nullifiers");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytesArray();
+    }
+  }
+
+  set nullifiers(value: Array<Bytes>) {
+    this.set("nullifiers", Value.fromBytesArray(value));
+  }
+
+  get asset(): Bytes {
+    let value = this.get("asset");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set asset(value: Bytes) {
+    this.set("asset", Value.fromBytes(value));
+  }
+
+  get amountOut(): BigInt {
+    let value = this.get("amountOut");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set amountOut(value: BigInt) {
+    this.set("amountOut", Value.fromBigInt(value));
+  }
+
+  get noteOut(): Bytes {
+    let value = this.get("noteOut");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set noteOut(value: Bytes) {
+    this.set("noteOut", Value.fromBytes(value));
+  }
+
+  get noteFooter(): Bytes {
+    let value = this.get("noteFooter");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set noteFooter(value: Bytes) {
+    this.set("noteFooter", Value.fromBytes(value));
+  }
+
+  get blockNumber(): BigInt {
+    let value = this.get("blockNumber");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set blockNumber(value: BigInt) {
+    this.set("blockNumber", Value.fromBigInt(value));
+  }
+
+  get blockTimestamp(): BigInt {
+    let value = this.get("blockTimestamp");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set blockTimestamp(value: BigInt) {
+    this.set("blockTimestamp", Value.fromBigInt(value));
+  }
+
+  get transactionHash(): Bytes {
+    let value = this.get("transactionHash");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set transactionHash(value: Bytes) {
+    this.set("transactionHash", Value.fromBytes(value));
+  }
+}
+
 export class CurveFSNRemoveLiquidityAssetManagerCurveRemoveLiquidity extends Entity {
   constructor(id: Bytes) {
     super();
@@ -3059,8 +3434,21 @@ export class CurveFSNRemoveLiquidityAssetManagerCurveRemoveLiquidity extends Ent
     this.set("id", Value.fromBytes(value));
   }
 
-  get outPut(): Array<Bytes> {
-    let value = this.get("outPut");
+  get nullifier(): Bytes {
+    let value = this.get("nullifier");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set nullifier(value: Bytes) {
+    this.set("nullifier", Value.fromBytes(value));
+  }
+
+  get assets(): Array<Bytes> {
+    let value = this.get("assets");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
@@ -3068,12 +3456,47 @@ export class CurveFSNRemoveLiquidityAssetManagerCurveRemoveLiquidity extends Ent
     }
   }
 
-  set outPut(value: Array<CurveRemoveLiquidityOutPutStruct>) {
-    let result = new Array<Bytes>();
-    for (let i = 0; i < value.length; i++) {
-      result.push(serializeCurveRemoveLiquidityOutPutStruct(value[i]));
+  set assets(value: Array<Bytes>) {
+    this.set("assets", Value.fromBytesArray(value));
+  }
+
+  get amountsOut(): Array<BigInt> {
+    let value = this.get("amountsOut");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigIntArray();
     }
-    this.set("outPut", Value.fromBytesArray(result));
+  }
+
+  set amountsOut(value: Array<BigInt>) {
+    this.set("amountsOut", Value.fromBigIntArray(value));
+  }
+
+  get notesOut(): Array<Bytes> {
+    let value = this.get("notesOut");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytesArray();
+    }
+  }
+
+  set notesOut(value: Array<Bytes>) {
+    this.set("notesOut", Value.fromBytesArray(value));
+  }
+
+  get noteFooters(): Array<Bytes> {
+    let value = this.get("noteFooters");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytesArray();
+    }
+  }
+
+  set noteFooters(value: Array<Bytes>) {
+    this.set("noteFooters", Value.fromBytesArray(value));
   }
 
   get blockNumber(): BigInt {
@@ -3315,8 +3738,8 @@ export class CurveMPAddLiquidityAssetManagerCurveAddLiquidity extends Entity {
     this.set("nullifiers", Value.fromBytesArray(value));
   }
 
-  get noteOut(): Bytes {
-    let value = this.get("noteOut");
+  get asset(): Bytes {
+    let value = this.get("asset");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
@@ -3324,8 +3747,8 @@ export class CurveMPAddLiquidityAssetManagerCurveAddLiquidity extends Entity {
     }
   }
 
-  set noteOut(value: Bytes) {
-    this.set("noteOut", Value.fromBytes(value));
+  set asset(value: Bytes) {
+    this.set("asset", Value.fromBytes(value));
   }
 
   get amountOut(): BigInt {
@@ -3341,6 +3764,19 @@ export class CurveMPAddLiquidityAssetManagerCurveAddLiquidity extends Entity {
     this.set("amountOut", Value.fromBigInt(value));
   }
 
+  get noteOut(): Bytes {
+    let value = this.get("noteOut");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set noteOut(value: Bytes) {
+    this.set("noteOut", Value.fromBytes(value));
+  }
+
   get noteFooter(): Bytes {
     let value = this.get("noteFooter");
     if (!value || value.kind == ValueKind.NULL) {
@@ -3352,6 +3788,171 @@ export class CurveMPAddLiquidityAssetManagerCurveAddLiquidity extends Entity {
 
   set noteFooter(value: Bytes) {
     this.set("noteFooter", Value.fromBytes(value));
+  }
+
+  get blockNumber(): BigInt {
+    let value = this.get("blockNumber");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set blockNumber(value: BigInt) {
+    this.set("blockNumber", Value.fromBigInt(value));
+  }
+
+  get blockTimestamp(): BigInt {
+    let value = this.get("blockTimestamp");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set blockTimestamp(value: BigInt) {
+    this.set("blockTimestamp", Value.fromBigInt(value));
+  }
+
+  get transactionHash(): Bytes {
+    let value = this.get("transactionHash");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set transactionHash(value: Bytes) {
+    this.set("transactionHash", Value.fromBytes(value));
+  }
+}
+
+export class CurveMPAddLiquidityAssetManagerCurveRemoveLiquidity extends Entity {
+  constructor(id: Bytes) {
+    super();
+    this.set("id", Value.fromBytes(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(
+      id != null,
+      "Cannot save CurveMPAddLiquidityAssetManagerCurveRemoveLiquidity entity without an ID",
+    );
+    if (id) {
+      assert(
+        id.kind == ValueKind.BYTES,
+        `Entities of type CurveMPAddLiquidityAssetManagerCurveRemoveLiquidity must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+      );
+      store.set(
+        "CurveMPAddLiquidityAssetManagerCurveRemoveLiquidity",
+        id.toBytes().toHexString(),
+        this,
+      );
+    }
+  }
+
+  static loadInBlock(
+    id: Bytes,
+  ): CurveMPAddLiquidityAssetManagerCurveRemoveLiquidity | null {
+    return changetype<CurveMPAddLiquidityAssetManagerCurveRemoveLiquidity | null>(
+      store.get_in_block(
+        "CurveMPAddLiquidityAssetManagerCurveRemoveLiquidity",
+        id.toHexString(),
+      ),
+    );
+  }
+
+  static load(
+    id: Bytes,
+  ): CurveMPAddLiquidityAssetManagerCurveRemoveLiquidity | null {
+    return changetype<CurveMPAddLiquidityAssetManagerCurveRemoveLiquidity | null>(
+      store.get(
+        "CurveMPAddLiquidityAssetManagerCurveRemoveLiquidity",
+        id.toHexString(),
+      ),
+    );
+  }
+
+  get id(): Bytes {
+    let value = this.get("id");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set id(value: Bytes) {
+    this.set("id", Value.fromBytes(value));
+  }
+
+  get nullifier(): Bytes {
+    let value = this.get("nullifier");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set nullifier(value: Bytes) {
+    this.set("nullifier", Value.fromBytes(value));
+  }
+
+  get assets(): Array<Bytes> {
+    let value = this.get("assets");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytesArray();
+    }
+  }
+
+  set assets(value: Array<Bytes>) {
+    this.set("assets", Value.fromBytesArray(value));
+  }
+
+  get amountsOut(): Array<BigInt> {
+    let value = this.get("amountsOut");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigIntArray();
+    }
+  }
+
+  set amountsOut(value: Array<BigInt>) {
+    this.set("amountsOut", Value.fromBigIntArray(value));
+  }
+
+  get notesOut(): Array<Bytes> {
+    let value = this.get("notesOut");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytesArray();
+    }
+  }
+
+  set notesOut(value: Array<Bytes>) {
+    this.set("notesOut", Value.fromBytesArray(value));
+  }
+
+  get noteFooters(): Array<Bytes> {
+    let value = this.get("noteFooters");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytesArray();
+    }
+  }
+
+  set noteFooters(value: Array<Bytes>) {
+    this.set("noteFooters", Value.fromBytesArray(value));
   }
 
   get blockNumber(): BigInt {
@@ -3520,6 +4121,171 @@ export class CurveMPAddLiquidityAssetManagerOwnershipTransferred extends Entity 
   }
 }
 
+export class CurveMPRemoveLiquidityAssetManagerCurveAddLiquidity extends Entity {
+  constructor(id: Bytes) {
+    super();
+    this.set("id", Value.fromBytes(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(
+      id != null,
+      "Cannot save CurveMPRemoveLiquidityAssetManagerCurveAddLiquidity entity without an ID",
+    );
+    if (id) {
+      assert(
+        id.kind == ValueKind.BYTES,
+        `Entities of type CurveMPRemoveLiquidityAssetManagerCurveAddLiquidity must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+      );
+      store.set(
+        "CurveMPRemoveLiquidityAssetManagerCurveAddLiquidity",
+        id.toBytes().toHexString(),
+        this,
+      );
+    }
+  }
+
+  static loadInBlock(
+    id: Bytes,
+  ): CurveMPRemoveLiquidityAssetManagerCurveAddLiquidity | null {
+    return changetype<CurveMPRemoveLiquidityAssetManagerCurveAddLiquidity | null>(
+      store.get_in_block(
+        "CurveMPRemoveLiquidityAssetManagerCurveAddLiquidity",
+        id.toHexString(),
+      ),
+    );
+  }
+
+  static load(
+    id: Bytes,
+  ): CurveMPRemoveLiquidityAssetManagerCurveAddLiquidity | null {
+    return changetype<CurveMPRemoveLiquidityAssetManagerCurveAddLiquidity | null>(
+      store.get(
+        "CurveMPRemoveLiquidityAssetManagerCurveAddLiquidity",
+        id.toHexString(),
+      ),
+    );
+  }
+
+  get id(): Bytes {
+    let value = this.get("id");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set id(value: Bytes) {
+    this.set("id", Value.fromBytes(value));
+  }
+
+  get nullifiers(): Array<Bytes> {
+    let value = this.get("nullifiers");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytesArray();
+    }
+  }
+
+  set nullifiers(value: Array<Bytes>) {
+    this.set("nullifiers", Value.fromBytesArray(value));
+  }
+
+  get asset(): Bytes {
+    let value = this.get("asset");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set asset(value: Bytes) {
+    this.set("asset", Value.fromBytes(value));
+  }
+
+  get amountOut(): BigInt {
+    let value = this.get("amountOut");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set amountOut(value: BigInt) {
+    this.set("amountOut", Value.fromBigInt(value));
+  }
+
+  get noteOut(): Bytes {
+    let value = this.get("noteOut");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set noteOut(value: Bytes) {
+    this.set("noteOut", Value.fromBytes(value));
+  }
+
+  get noteFooter(): Bytes {
+    let value = this.get("noteFooter");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set noteFooter(value: Bytes) {
+    this.set("noteFooter", Value.fromBytes(value));
+  }
+
+  get blockNumber(): BigInt {
+    let value = this.get("blockNumber");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set blockNumber(value: BigInt) {
+    this.set("blockNumber", Value.fromBigInt(value));
+  }
+
+  get blockTimestamp(): BigInt {
+    let value = this.get("blockTimestamp");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set blockTimestamp(value: BigInt) {
+    this.set("blockTimestamp", Value.fromBigInt(value));
+  }
+
+  get transactionHash(): Bytes {
+    let value = this.get("transactionHash");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set transactionHash(value: Bytes) {
+    this.set("transactionHash", Value.fromBytes(value));
+  }
+}
+
 export class CurveMPRemoveLiquidityAssetManagerCurveRemoveLiquidity extends Entity {
   constructor(id: Bytes) {
     super();
@@ -3580,8 +4346,21 @@ export class CurveMPRemoveLiquidityAssetManagerCurveRemoveLiquidity extends Enti
     this.set("id", Value.fromBytes(value));
   }
 
-  get outPut(): Array<Bytes> {
-    let value = this.get("outPut");
+  get nullifier(): Bytes {
+    let value = this.get("nullifier");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set nullifier(value: Bytes) {
+    this.set("nullifier", Value.fromBytes(value));
+  }
+
+  get assets(): Array<Bytes> {
+    let value = this.get("assets");
     if (!value || value.kind == ValueKind.NULL) {
       throw new Error("Cannot return null for a required field.");
     } else {
@@ -3589,12 +4368,47 @@ export class CurveMPRemoveLiquidityAssetManagerCurveRemoveLiquidity extends Enti
     }
   }
 
-  set outPut(value: Array<CurveRemoveLiquidityOutPutStruct>) {
-    let result = new Array<Bytes>();
-    for (let i = 0; i < value.length; i++) {
-      result.push(serializeCurveRemoveLiquidityOutPutStruct(value[i]));
+  set assets(value: Array<Bytes>) {
+    this.set("assets", Value.fromBytesArray(value));
+  }
+
+  get amountsOut(): Array<BigInt> {
+    let value = this.get("amountsOut");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigIntArray();
     }
-    this.set("outPut", Value.fromBytesArray(result));
+  }
+
+  set amountsOut(value: Array<BigInt>) {
+    this.set("amountsOut", Value.fromBigIntArray(value));
+  }
+
+  get notesOut(): Array<Bytes> {
+    let value = this.get("notesOut");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytesArray();
+    }
+  }
+
+  set notesOut(value: Array<Bytes>) {
+    this.set("notesOut", Value.fromBytesArray(value));
+  }
+
+  get noteFooters(): Array<Bytes> {
+    let value = this.get("noteFooters");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytesArray();
+    }
+  }
+
+  set noteFooters(value: Array<Bytes>) {
+    this.set("noteFooters", Value.fromBytesArray(value));
   }
 
   get blockNumber(): BigInt {
@@ -3763,59 +4577,458 @@ export class CurveMPRemoveLiquidityAssetManagerOwnershipTransferred extends Enti
   }
 }
 
-export class CurveRemoveLiquidityOutPutStruct{
-  private _nullifiers: Bytes;
-  private _noteOut: Bytes;
-  private _amountOut: BigInt;
-  private _noteFooter: Bytes;
-
-  constructor(nullifiers: Bytes, noteOut: Bytes, amountOut: BigInt, noteFooter: Bytes) {
-    this._nullifiers = nullifiers;
-    this._noteOut = noteOut;
-    this._amountOut = amountOut;
-    this._noteFooter = noteFooter;
+export class CurveRemoveLiquidityAssetManagerCurveAddLiquidity extends Entity {
+  constructor(id: Bytes) {
+    super();
+    this.set("id", Value.fromBytes(id));
   }
 
-  get nullifiers(): Bytes {
-    return this._nullifiers;
+  save(): void {
+    let id = this.get("id");
+    assert(
+      id != null,
+      "Cannot save CurveRemoveLiquidityAssetManagerCurveAddLiquidity entity without an ID",
+    );
+    if (id) {
+      assert(
+        id.kind == ValueKind.BYTES,
+        `Entities of type CurveRemoveLiquidityAssetManagerCurveAddLiquidity must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+      );
+      store.set(
+        "CurveRemoveLiquidityAssetManagerCurveAddLiquidity",
+        id.toBytes().toHexString(),
+        this,
+      );
+    }
+  }
+
+  static loadInBlock(
+    id: Bytes,
+  ): CurveRemoveLiquidityAssetManagerCurveAddLiquidity | null {
+    return changetype<CurveRemoveLiquidityAssetManagerCurveAddLiquidity | null>(
+      store.get_in_block(
+        "CurveRemoveLiquidityAssetManagerCurveAddLiquidity",
+        id.toHexString(),
+      ),
+    );
+  }
+
+  static load(
+    id: Bytes,
+  ): CurveRemoveLiquidityAssetManagerCurveAddLiquidity | null {
+    return changetype<CurveRemoveLiquidityAssetManagerCurveAddLiquidity | null>(
+      store.get(
+        "CurveRemoveLiquidityAssetManagerCurveAddLiquidity",
+        id.toHexString(),
+      ),
+    );
+  }
+
+  get id(): Bytes {
+    let value = this.get("id");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set id(value: Bytes) {
+    this.set("id", Value.fromBytes(value));
+  }
+
+  get nullifiers(): Array<Bytes> {
+    let value = this.get("nullifiers");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytesArray();
+    }
+  }
+
+  set nullifiers(value: Array<Bytes>) {
+    this.set("nullifiers", Value.fromBytesArray(value));
+  }
+
+  get asset(): Bytes {
+    let value = this.get("asset");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set asset(value: Bytes) {
+    this.set("asset", Value.fromBytes(value));
+  }
+
+  get amountOut(): BigInt {
+    let value = this.get("amountOut");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set amountOut(value: BigInt) {
+    this.set("amountOut", Value.fromBigInt(value));
   }
 
   get noteOut(): Bytes {
-    return this._noteOut;
+    let value = this.get("noteOut");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
   }
 
-  get amountOut(): Bytes {
-    return changetype<Bytes>(Bytes.fromBigInt(this._amountOut));
+  set noteOut(value: Bytes) {
+    this.set("noteOut", Value.fromBytes(value));
   }
 
   get noteFooter(): Bytes {
-    return this._noteFooter;
+    let value = this.get("noteFooter");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set noteFooter(value: Bytes) {
+    this.set("noteFooter", Value.fromBytes(value));
+  }
+
+  get blockNumber(): BigInt {
+    let value = this.get("blockNumber");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set blockNumber(value: BigInt) {
+    this.set("blockNumber", Value.fromBigInt(value));
+  }
+
+  get blockTimestamp(): BigInt {
+    let value = this.get("blockTimestamp");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set blockTimestamp(value: BigInt) {
+    this.set("blockTimestamp", Value.fromBigInt(value));
+  }
+
+  get transactionHash(): Bytes {
+    let value = this.get("transactionHash");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set transactionHash(value: Bytes) {
+    this.set("transactionHash", Value.fromBytes(value));
   }
 }
 
-function serializeCurveRemoveLiquidityOutPutStruct
-    (value: CurveRemoveLiquidityOutPutStruct): Bytes {
-  let concatenatedBytes = Bytes.empty()
-    .concat(value.nullifiers)
-    .concat(value.noteOut)
-    .concat(value.amountOut)
-    .concat(value.noteFooter);
-
-  return concatenatedBytes;
-}
-
-function deserializeCurveRemoveLiquidityOutPutStruct
-    (bytes: Bytes): CurveRemoveLiquidityOutPutStruct {
-  const ELEMENT_SIZE = 32;
-  if (bytes.length < 4 * ELEMENT_SIZE) {
-    throw new Error("Bytes object too short to be a valid CurveRemoveLiquidityOutPutStruct serialization");
+export class CurveRemoveLiquidityAssetManagerCurveRemoveLiquidity extends Entity {
+  constructor(id: Bytes) {
+    super();
+    this.set("id", Value.fromBytes(id));
   }
 
-  let nullifiers = Bytes.fromUint8Array(bytes.slice(0, ELEMENT_SIZE));
-  let noteOut = Bytes.fromUint8Array(bytes.slice(ELEMENT_SIZE, 2 * ELEMENT_SIZE));
-  let amountOut = Bytes.fromUint8Array(bytes.slice(2 * ELEMENT_SIZE, 3 * ELEMENT_SIZE));
-  let noteFooter = Bytes.fromUint8Array(bytes.slice(3 * ELEMENT_SIZE, 4 * ELEMENT_SIZE));
+  save(): void {
+    let id = this.get("id");
+    assert(
+      id != null,
+      "Cannot save CurveRemoveLiquidityAssetManagerCurveRemoveLiquidity entity without an ID",
+    );
+    if (id) {
+      assert(
+        id.kind == ValueKind.BYTES,
+        `Entities of type CurveRemoveLiquidityAssetManagerCurveRemoveLiquidity must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+      );
+      store.set(
+        "CurveRemoveLiquidityAssetManagerCurveRemoveLiquidity",
+        id.toBytes().toHexString(),
+        this,
+      );
+    }
+  }
 
-  return new CurveRemoveLiquidityOutPutStruct(nullifiers, noteOut, BigInt.fromUnsignedBytes(amountOut), noteFooter);
-  
+  static loadInBlock(
+    id: Bytes,
+  ): CurveRemoveLiquidityAssetManagerCurveRemoveLiquidity | null {
+    return changetype<CurveRemoveLiquidityAssetManagerCurveRemoveLiquidity | null>(
+      store.get_in_block(
+        "CurveRemoveLiquidityAssetManagerCurveRemoveLiquidity",
+        id.toHexString(),
+      ),
+    );
+  }
+
+  static load(
+    id: Bytes,
+  ): CurveRemoveLiquidityAssetManagerCurveRemoveLiquidity | null {
+    return changetype<CurveRemoveLiquidityAssetManagerCurveRemoveLiquidity | null>(
+      store.get(
+        "CurveRemoveLiquidityAssetManagerCurveRemoveLiquidity",
+        id.toHexString(),
+      ),
+    );
+  }
+
+  get id(): Bytes {
+    let value = this.get("id");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set id(value: Bytes) {
+    this.set("id", Value.fromBytes(value));
+  }
+
+  get nullifier(): Bytes {
+    let value = this.get("nullifier");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set nullifier(value: Bytes) {
+    this.set("nullifier", Value.fromBytes(value));
+  }
+
+  get assets(): Array<Bytes> {
+    let value = this.get("assets");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytesArray();
+    }
+  }
+
+  set assets(value: Array<Bytes>) {
+    this.set("assets", Value.fromBytesArray(value));
+  }
+
+  get amountsOut(): Array<BigInt> {
+    let value = this.get("amountsOut");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigIntArray();
+    }
+  }
+
+  set amountsOut(value: Array<BigInt>) {
+    this.set("amountsOut", Value.fromBigIntArray(value));
+  }
+
+  get notesOut(): Array<Bytes> {
+    let value = this.get("notesOut");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytesArray();
+    }
+  }
+
+  set notesOut(value: Array<Bytes>) {
+    this.set("notesOut", Value.fromBytesArray(value));
+  }
+
+  get noteFooters(): Array<Bytes> {
+    let value = this.get("noteFooters");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytesArray();
+    }
+  }
+
+  set noteFooters(value: Array<Bytes>) {
+    this.set("noteFooters", Value.fromBytesArray(value));
+  }
+
+  get blockNumber(): BigInt {
+    let value = this.get("blockNumber");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set blockNumber(value: BigInt) {
+    this.set("blockNumber", Value.fromBigInt(value));
+  }
+
+  get blockTimestamp(): BigInt {
+    let value = this.get("blockTimestamp");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set blockTimestamp(value: BigInt) {
+    this.set("blockTimestamp", Value.fromBigInt(value));
+  }
+
+  get transactionHash(): Bytes {
+    let value = this.get("transactionHash");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set transactionHash(value: Bytes) {
+    this.set("transactionHash", Value.fromBytes(value));
+  }
+}
+
+export class CurveRemoveLiquidityAssetManagerOwnershipTransferred extends Entity {
+  constructor(id: Bytes) {
+    super();
+    this.set("id", Value.fromBytes(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(
+      id != null,
+      "Cannot save CurveRemoveLiquidityAssetManagerOwnershipTransferred entity without an ID",
+    );
+    if (id) {
+      assert(
+        id.kind == ValueKind.BYTES,
+        `Entities of type CurveRemoveLiquidityAssetManagerOwnershipTransferred must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+      );
+      store.set(
+        "CurveRemoveLiquidityAssetManagerOwnershipTransferred",
+        id.toBytes().toHexString(),
+        this,
+      );
+    }
+  }
+
+  static loadInBlock(
+    id: Bytes,
+  ): CurveRemoveLiquidityAssetManagerOwnershipTransferred | null {
+    return changetype<CurveRemoveLiquidityAssetManagerOwnershipTransferred | null>(
+      store.get_in_block(
+        "CurveRemoveLiquidityAssetManagerOwnershipTransferred",
+        id.toHexString(),
+      ),
+    );
+  }
+
+  static load(
+    id: Bytes,
+  ): CurveRemoveLiquidityAssetManagerOwnershipTransferred | null {
+    return changetype<CurveRemoveLiquidityAssetManagerOwnershipTransferred | null>(
+      store.get(
+        "CurveRemoveLiquidityAssetManagerOwnershipTransferred",
+        id.toHexString(),
+      ),
+    );
+  }
+
+  get id(): Bytes {
+    let value = this.get("id");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set id(value: Bytes) {
+    this.set("id", Value.fromBytes(value));
+  }
+
+  get previousOwner(): Bytes {
+    let value = this.get("previousOwner");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set previousOwner(value: Bytes) {
+    this.set("previousOwner", Value.fromBytes(value));
+  }
+
+  get newOwner(): Bytes {
+    let value = this.get("newOwner");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set newOwner(value: Bytes) {
+    this.set("newOwner", Value.fromBytes(value));
+  }
+
+  get blockNumber(): BigInt {
+    let value = this.get("blockNumber");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set blockNumber(value: BigInt) {
+    this.set("blockNumber", Value.fromBigInt(value));
+  }
+
+  get blockTimestamp(): BigInt {
+    let value = this.get("blockTimestamp");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set blockTimestamp(value: BigInt) {
+    this.set("blockTimestamp", Value.fromBigInt(value));
+  }
+
+  get transactionHash(): Bytes {
+    let value = this.get("transactionHash");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBytes();
+    }
+  }
+
+  set transactionHash(value: Bytes) {
+    this.set("transactionHash", Value.fromBytes(value));
+  }
 }

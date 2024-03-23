@@ -1,3 +1,4 @@
+import { Bytes } from "@graphprotocol/graph-ts"
 import {
   OwnershipTransferred as OwnershipTransferredEvent,
   UniswapCollectFees as UniswapCollectFeesEvent,
@@ -32,8 +33,10 @@ export function handleUniswapCollectFees(event: UniswapCollectFeesEvent): void {
     event.transaction.hash.concatI32(event.logIndex.toI32()),
   )
   entity.tokenId = event.params.tokenId
+  entity.assets = event.params.assets.map<Bytes>((value)=> value as Bytes)
   entity.amounts = event.params.amounts
   entity.feeNoteCommitments = event.params.feeNoteCommitments
+  entity.feeNoteFooters = event.params.feeNoteFooters
 
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp
@@ -72,6 +75,7 @@ export function handleUniswapRemoveLiquidity(
   entity.positionNullifier = event.params.positionNullifier
   entity.amounts = event.params.amounts
   entity.outNoteCommitments = event.params.outNoteCommitments
+  entity.outNoteFooters = event.params.outNoteFooters
 
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp

@@ -1,38 +1,38 @@
 {
-  "sepolia": {
+  "hardhat": {
     "DarkpoolAssetManager": {
-      "address": "0x8b2Ab8775a43D3958bF30A203f6C73e020BCE877",
-      "startBlock": 5387197
+      "address": "0x4E76FbE44fa5Dae076a7f4f676250e7941421fbA",
+      "startBlock": 19401351
     },
     "UniswapSwapAssetManager": {
-      "address": "0xbfD27E56d164D6AC08812cC93a6E679718FF7483"
+      "address": "0xA3b48c7b901fede641B596A4C10a4630052449A6"
     },
     "UniswapLiquidityAssetManager": {
-      "address": "0xB77bec6b1DCb52Df40e5301422466B0ddFb115Be"
+      "address": "0x72F853E9E202600c5017B5A060168603c3ed7368"
     },
     "CurveSingleExchangeAssetManager": {
-      "address": "0xb08F8db7fEd8bA55b552Eef1162D113B0e7D17FD"
+      "address": "0x2e13f7644014F6E934E314F0371585845de7B986"
     },
     "CurveMultiExchangeAssetManager": {
-      "address": "0x216d757Cf1033aAA49be2C689ca5c99fb010d13d"
+      "address": "0x725314746e727f586E9FCA65AeD5dBe45aA71B99"
     },
     "CurveAddLiquidityAssetManager": {
-      "address": "0x20D72e57b5d6b20f24E4Cd3681E227f360D0a8Ed"
-    },
-    "CurveRemoveLiquidityAssetManager": {
-      "address": "0x4c2A8c94Fa4F03C5AE2130C74bF5f92CfA86fB59"
+      "address": "0x04F75a27cE2FDC591C71a88f1EcaC7e5Ce44f5Fc"
     },
     "CurveFSNAddLiquidityAssetManager": {
-      "address": "0x9a7134047e3CceAa1A7c3fF68D2fFa8dF002c330"
+      "address": "0x10537D7bD661C9c34F547b38EC662D6FD482Ae95"
     },
     "CurveFSNRemoveLiquidityAssetManager": {
-      "address": "0x8685a4c866529B89894d13F5eAA3E3163e1A9735"
+      "address": "0xf42Ec71A4440F5e9871C643696DD6Dc9a38911F8"
     },
     "CurveMPAddLiquidityAssetManager": {
-      "address": "0x0eFCbAB3236Ef0e081F4bBB9A48062476AfAC309"
+      "address": "0x41219a0a9C0b86ED81933c788a6B63Dfef8f17eE"
     },
     "CurveMPRemoveLiquidityAssetManager": {
-      "address": "0x3136Ab3125b03AA0D9433B166A7aEf1136965AEa"
+      "address": "0x18b7CBdfFA52d1e7BB992fd50f394c5b59E20B72"
+    },
+    "CurveRemoveLiquidityAssetManager": {
+      "address": "0x64079a2Edd1104a2323E2b732A1244BCE011B1F5"
     }
   }
 }

@@ -7,11 +7,11 @@
     "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ singularity",
     "create-local": "graph create --node http://localhost:8020/ singularity",
     "remove-local": "graph remove --node http://localhost:8020/ singularity",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 --subgraph subgraph-hardhat.yaml singularity",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 singularity",
     "test": "graph test"
   },
   "dependencies": {
-    "@graphprotocol/graph-cli": "0.64.1",
+    "@graphprotocol/graph-cli": "0.68.5",
     "@graphprotocol/graph-ts": "0.32.0"
   },
   "devDependencies": { "matchstick-as": "0.5.0" }

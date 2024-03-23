@@ -1,14 +1,16 @@
 import { newMockEvent } from "matchstick-as"
-import { ethereum, Bytes, BigInt, Address } from "@graphprotocol/graph-ts"
+import { ethereum, Bytes, Address, BigInt } from "@graphprotocol/graph-ts"
 import {
   CurveAddLiquidity,
+  CurveRemoveLiquidity,
   OwnershipTransferred
 } from "../generated/CurveFSNAddLiquidityAssetManager/CurveFSNAddLiquidityAssetManager"
 
 export function createCurveAddLiquidityEvent(
   nullifiers: Array<Bytes>,
-  noteOut: Bytes,
+  asset: Address,
   amountOut: BigInt,
+  noteOut: Bytes,
   noteFooter: Bytes
 ): CurveAddLiquidity {
   let curveAddLiquidityEvent = changetype<CurveAddLiquidity>(newMockEvent())
@@ -22,13 +24,16 @@ export function createCurveAddLiquidityEvent(
     )
   )
   curveAddLiquidityEvent.parameters.push(
-    new ethereum.EventParam("noteOut", ethereum.Value.fromFixedBytes(noteOut))
+    new ethereum.EventParam("asset", ethereum.Value.fromAddress(asset))
   )
   curveAddLiquidityEvent.parameters.push(
     new ethereum.EventParam(
       "amountOut",
       ethereum.Value.fromUnsignedBigInt(amountOut)
     )
+  )
+  curveAddLiquidityEvent.parameters.push(
+    new ethereum.EventParam("noteOut", ethereum.Value.fromFixedBytes(noteOut))
   )
   curveAddLiquidityEvent.parameters.push(
     new ethereum.EventParam(
@@ -38,6 +43,50 @@ export function createCurveAddLiquidityEvent(
   )
 
   return curveAddLiquidityEvent
+}
+
+export function createCurveRemoveLiquidityEvent(
+  nullifier: Bytes,
+  assets: Array<Address>,
+  amountsOut: Array<BigInt>,
+  notesOut: Array<Bytes>,
+  noteFooters: Array<Bytes>
+): CurveRemoveLiquidity {
+  let curveRemoveLiquidityEvent = changetype<CurveRemoveLiquidity>(
+    newMockEvent()
+  )
+
+  curveRemoveLiquidityEvent.parameters = new Array()
+
+  curveRemoveLiquidityEvent.parameters.push(
+    new ethereum.EventParam(
+      "nullifier",
+      ethereum.Value.fromFixedBytes(nullifier)
+    )
+  )
+  curveRemoveLiquidityEvent.parameters.push(
+    new ethereum.EventParam("assets", ethereum.Value.fromAddressArray(assets))
+  )
+  curveRemoveLiquidityEvent.parameters.push(
+    new ethereum.EventParam(
+      "amountsOut",
+      ethereum.Value.fromUnsignedBigIntArray(amountsOut)
+    )
+  )
+  curveRemoveLiquidityEvent.parameters.push(
+    new ethereum.EventParam(
+      "notesOut",
+      ethereum.Value.fromFixedBytesArray(notesOut)
+    )
+  )
+  curveRemoveLiquidityEvent.parameters.push(
+    new ethereum.EventParam(
+      "noteFooters",
+      ethereum.Value.fromFixedBytesArray(noteFooters)
+    )
+  )
+
+  return curveRemoveLiquidityEvent
 }
 
 export function createOwnershipTransferredEvent(

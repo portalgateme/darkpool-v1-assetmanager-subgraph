@@ -9,8 +9,9 @@ export function handleCurveExchange(event: CurveExchangeEvent): void {
     event.transaction.hash.concatI32(event.logIndex.toI32()),
   )
   entity.nullifiers = event.params.nullifiers
-  entity.noteOut = event.params.noteOut
+  entity.assetOut = event.params.assetOut
   entity.amountOut = event.params.amountOut
+  entity.noteOut = event.params.noteOut
   entity.noteFooter = event.params.noteFooter
 
   entity.blockNumber = event.block.number

@@ -29,28 +29,18 @@ export function createOwnershipTransferredEvent(
 }
 
 export function createUniswapSwapEvent(
-  assetIn: Address,
   assetOut: Address,
-  amountIn: BigInt,
   amountOut: BigInt,
   noteNullifierIn: Bytes,
-  noteCommitmentOut: BigInt
+  noteFooter: Bytes,
+  noteCommitmentOut: Bytes
 ): UniswapSwap {
   let uniswapSwapEvent = changetype<UniswapSwap>(newMockEvent())
 
   uniswapSwapEvent.parameters = new Array()
 
   uniswapSwapEvent.parameters.push(
-    new ethereum.EventParam("assetIn", ethereum.Value.fromAddress(assetIn))
-  )
-  uniswapSwapEvent.parameters.push(
     new ethereum.EventParam("assetOut", ethereum.Value.fromAddress(assetOut))
-  )
-  uniswapSwapEvent.parameters.push(
-    new ethereum.EventParam(
-      "amountIn",
-      ethereum.Value.fromUnsignedBigInt(amountIn)
-    )
   )
   uniswapSwapEvent.parameters.push(
     new ethereum.EventParam(
@@ -66,8 +56,14 @@ export function createUniswapSwapEvent(
   )
   uniswapSwapEvent.parameters.push(
     new ethereum.EventParam(
+      "noteFooter",
+      ethereum.Value.fromFixedBytes(noteFooter)
+    )
+  )
+  uniswapSwapEvent.parameters.push(
+    new ethereum.EventParam(
       "noteCommitmentOut",
-      ethereum.Value.fromUnsignedBigInt(noteCommitmentOut)
+      ethereum.Value.fromFixedBytes(noteCommitmentOut)
     )
   )
 

@@ -27,16 +27,54 @@ export class CurveAddLiquidity__Params {
     return this._event.parameters[0].value.toBytesArray();
   }
 
-  get noteOut(): Bytes {
-    return this._event.parameters[1].value.toBytes();
+  get asset(): Address {
+    return this._event.parameters[1].value.toAddress();
   }
 
   get amountOut(): BigInt {
     return this._event.parameters[2].value.toBigInt();
   }
 
-  get noteFooter(): Bytes {
+  get noteOut(): Bytes {
     return this._event.parameters[3].value.toBytes();
+  }
+
+  get noteFooter(): Bytes {
+    return this._event.parameters[4].value.toBytes();
+  }
+}
+
+export class CurveRemoveLiquidity extends ethereum.Event {
+  get params(): CurveRemoveLiquidity__Params {
+    return new CurveRemoveLiquidity__Params(this);
+  }
+}
+
+export class CurveRemoveLiquidity__Params {
+  _event: CurveRemoveLiquidity;
+
+  constructor(event: CurveRemoveLiquidity) {
+    this._event = event;
+  }
+
+  get nullifier(): Bytes {
+    return this._event.parameters[0].value.toBytes();
+  }
+
+  get assets(): Array<Address> {
+    return this._event.parameters[1].value.toAddressArray();
+  }
+
+  get amountsOut(): Array<BigInt> {
+    return this._event.parameters[2].value.toBigIntArray();
+  }
+
+  get notesOut(): Array<Bytes> {
+    return this._event.parameters[3].value.toBytesArray();
+  }
+
+  get noteFooters(): Array<Bytes> {
+    return this._event.parameters[4].value.toBytesArray();
   }
 }
 

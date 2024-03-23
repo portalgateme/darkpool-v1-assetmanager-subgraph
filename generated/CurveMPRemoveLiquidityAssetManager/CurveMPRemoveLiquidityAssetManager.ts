@@ -10,6 +10,40 @@ import {
   BigInt,
 } from "@graphprotocol/graph-ts";
 
+export class CurveAddLiquidity extends ethereum.Event {
+  get params(): CurveAddLiquidity__Params {
+    return new CurveAddLiquidity__Params(this);
+  }
+}
+
+export class CurveAddLiquidity__Params {
+  _event: CurveAddLiquidity;
+
+  constructor(event: CurveAddLiquidity) {
+    this._event = event;
+  }
+
+  get nullifiers(): Array<Bytes> {
+    return this._event.parameters[0].value.toBytesArray();
+  }
+
+  get asset(): Address {
+    return this._event.parameters[1].value.toAddress();
+  }
+
+  get amountOut(): BigInt {
+    return this._event.parameters[2].value.toBigInt();
+  }
+
+  get noteOut(): Bytes {
+    return this._event.parameters[3].value.toBytes();
+  }
+
+  get noteFooter(): Bytes {
+    return this._event.parameters[4].value.toBytes();
+  }
+}
+
 export class CurveRemoveLiquidity extends ethereum.Event {
   get params(): CurveRemoveLiquidity__Params {
     return new CurveRemoveLiquidity__Params(this);
@@ -23,26 +57,24 @@ export class CurveRemoveLiquidity__Params {
     this._event = event;
   }
 
-  get outPut(): Array<CurveRemoveLiquidityOutPutStruct> {
-    return this._event.parameters[0].value.toTupleArray<CurveRemoveLiquidityOutPutStruct>();
-  }
-}
-
-export class CurveRemoveLiquidityOutPutStruct extends ethereum.Tuple {
-  get nullifiers(): Bytes {
-    return this[0].toBytes();
+  get nullifier(): Bytes {
+    return this._event.parameters[0].value.toBytes();
   }
 
-  get noteOut(): Bytes {
-    return this[1].toBytes();
+  get assets(): Array<Address> {
+    return this._event.parameters[1].value.toAddressArray();
   }
 
-  get amountOut(): BigInt {
-    return this[2].toBigInt();
+  get amountsOut(): Array<BigInt> {
+    return this._event.parameters[2].value.toBigIntArray();
   }
 
-  get noteFooter(): Bytes {
-    return this[3].toBytes();
+  get notesOut(): Array<Bytes> {
+    return this._event.parameters[3].value.toBytesArray();
+  }
+
+  get noteFooters(): Array<Bytes> {
+    return this._event.parameters[4].value.toBytesArray();
   }
 }
 

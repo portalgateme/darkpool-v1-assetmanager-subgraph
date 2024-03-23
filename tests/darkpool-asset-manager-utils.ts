@@ -1,5 +1,5 @@
 import { newMockEvent } from "matchstick-as"
-import { ethereum, Bytes, BigInt, Address } from "@graphprotocol/graph-ts"
+import { ethereum, Address, Bytes, BigInt } from "@graphprotocol/graph-ts"
 import {
   Deposit,
   Join,
@@ -11,6 +11,7 @@ import {
 } from "../generated/DarkpoolAssetManager/DarkpoolAssetManager"
 
 export function createDepositEvent(
+  depositor: Address,
   noteOut: Bytes,
   amount: BigInt,
   asset: Address
@@ -19,6 +20,9 @@ export function createDepositEvent(
 
   depositEvent.parameters = new Array()
 
+  depositEvent.parameters.push(
+    new ethereum.EventParam("depositor", ethereum.Value.fromAddress(depositor))
+  )
   depositEvent.parameters.push(
     new ethereum.EventParam("noteOut", ethereum.Value.fromFixedBytes(noteOut))
   )
@@ -142,7 +146,10 @@ export function createSplitEvent(
 
 export function createTransferEvent(
   nullifierIn: Bytes,
-  noteOut: Bytes
+  amount: BigInt,
+  asset: Address,
+  noteOut: Bytes,
+  noteFooter: Bytes
 ): Transfer {
   let transferEvent = changetype<Transfer>(newMockEvent())
 
@@ -155,7 +162,19 @@ export function createTransferEvent(
     )
   )
   transferEvent.parameters.push(
+    new ethereum.EventParam("amount", ethereum.Value.fromUnsignedBigInt(amount))
+  )
+  transferEvent.parameters.push(
+    new ethereum.EventParam("asset", ethereum.Value.fromAddress(asset))
+  )
+  transferEvent.parameters.push(
     new ethereum.EventParam("noteOut", ethereum.Value.fromFixedBytes(noteOut))
+  )
+  transferEvent.parameters.push(
+    new ethereum.EventParam(
+      "noteFooter",
+      ethereum.Value.fromFixedBytes(noteFooter)
+    )
   )
 
   return transferEvent

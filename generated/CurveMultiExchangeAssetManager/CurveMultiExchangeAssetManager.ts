@@ -27,16 +27,20 @@ export class CurveExchange__Params {
     return this._event.parameters[0].value.toBytes();
   }
 
-  get noteOut(): Bytes {
-    return this._event.parameters[1].value.toBytes();
+  get assetOut(): Address {
+    return this._event.parameters[1].value.toAddress();
   }
 
   get amountOut(): BigInt {
     return this._event.parameters[2].value.toBigInt();
   }
 
-  get noteFooter(): Bytes {
+  get noteOut(): Bytes {
     return this._event.parameters[3].value.toBytes();
+  }
+
+  get noteFooter(): Bytes {
+    return this._event.parameters[4].value.toBytes();
   }
 }
 

@@ -45,28 +45,24 @@ export class UniswapSwap__Params {
     this._event = event;
   }
 
-  get assetIn(): Address {
+  get assetOut(): Address {
     return this._event.parameters[0].value.toAddress();
   }
 
-  get assetOut(): Address {
-    return this._event.parameters[1].value.toAddress();
-  }
-
-  get amountIn(): BigInt {
-    return this._event.parameters[2].value.toBigInt();
-  }
-
   get amountOut(): BigInt {
-    return this._event.parameters[3].value.toBigInt();
+    return this._event.parameters[1].value.toBigInt();
   }
 
   get noteNullifierIn(): Bytes {
-    return this._event.parameters[4].value.toBytes();
+    return this._event.parameters[2].value.toBytes();
   }
 
-  get noteCommitmentOut(): BigInt {
-    return this._event.parameters[5].value.toBigInt();
+  get noteFooter(): Bytes {
+    return this._event.parameters[3].value.toBytes();
+  }
+
+  get noteCommitmentOut(): Bytes {
+    return this._event.parameters[4].value.toBytes();
   }
 }
 

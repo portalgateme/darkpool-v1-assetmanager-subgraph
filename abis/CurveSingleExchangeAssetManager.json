@@ -84,15 +84,21 @@
       },
       {
         "indexed": false,
-        "internalType": "bytes32",
-        "name": "noteOut",
-        "type": "bytes32"
+        "internalType": "address",
+        "name": "assetOut",
+        "type": "address"
       },
       {
         "indexed": false,
         "internalType": "uint256",
         "name": "amountOut",
         "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "noteOut",
+        "type": "bytes32"
       },
       {
         "indexed": false,

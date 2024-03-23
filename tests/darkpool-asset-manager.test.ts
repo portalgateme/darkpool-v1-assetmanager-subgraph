@@ -6,21 +6,24 @@ import {
   beforeAll,
   afterAll
 } from "matchstick-as/assembly/index"
-import { Bytes, BigInt, Address } from "@graphprotocol/graph-ts"
+import { Address, Bytes, BigInt } from "@graphprotocol/graph-ts"
 import { Deposit } from "../generated/schema"
 import { Deposit as DepositEvent } from "../generated/DarkpoolAssetManager/DarkpoolAssetManager"
-import { handleDeposit } from "../src/dark-pool-asset-manager"
-import { createDepositEvent } from "./dark-pool-asset-manager-utils"
+import { handleDeposit } from "../src/darkpool-asset-manager"
+import { createDepositEvent } from "./darkpool-asset-manager-utils"
 
 // Tests structure (matchstick-as >=0.5.0)
 // https://thegraph.com/docs/en/developer/matchstick/#tests-structure-0-5-0
 
 describe("Describe entity assertions", () => {
   beforeAll(() => {
+    let depositor = Address.fromString(
+      "0x0000000000000000000000000000000000000001"
+    )
     let noteOut = Bytes.fromI32(1234567890)
     let amount = BigInt.fromI32(234)
     let asset = Address.fromString("0x0000000000000000000000000000000000000001")
-    let newDepositEvent = createDepositEvent(noteOut, amount, asset)
+    let newDepositEvent = createDepositEvent(depositor, noteOut, amount, asset)
     handleDeposit(newDepositEvent)
   })
 
@@ -35,6 +38,12 @@ describe("Describe entity assertions", () => {
     assert.entityCount("Deposit", 1)
 
     // 0xa16081f360e3847006db660bae1c6d1b2e17ec2a is the default address used in newMockEvent() function
+    assert.fieldEquals(
+      "Deposit",
+      "0xa16081f360e3847006db660bae1c6d1b2e17ec2a-1",
+      "depositor",
+      "0x0000000000000000000000000000000000000001"
+    )
     assert.fieldEquals(
       "Deposit",
       "0xa16081f360e3847006db660bae1c6d1b2e17ec2a-1",

@@ -21,6 +21,7 @@ export function handleDeposit(event: DepositEvent): void {
   let entity = new Deposit(
     event.transaction.hash.concatI32(event.logIndex.toI32())
   )
+  entity.depositor = event.params.depositor
   entity.noteOut = event.params.noteOut
   entity.amount = event.params.amount
   entity.asset = event.params.asset
@@ -99,7 +100,10 @@ export function handleTransfer(event: TransferEvent): void {
     event.transaction.hash.concatI32(event.logIndex.toI32())
   )
   entity.nullifierIn = event.params.nullifierIn
+  entity.amount = event.params.amount
+  entity.asset = event.params.asset
   entity.noteOut = event.params.noteOut
+  entity.noteFooter = event.params.noteFooter
 
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp
