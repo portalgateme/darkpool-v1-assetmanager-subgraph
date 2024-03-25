@@ -100,7 +100,7 @@ type UniswapLiquidityAssetManagerOwnershipTransferred @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
-type UniswapCollectFees @entity(immutable: true) {
+type UniswapCollectFee @entity(immutable: true) {
   id: Bytes!
   tokenId: BigInt! # uint256
   assets: [Bytes!]! # address[2]

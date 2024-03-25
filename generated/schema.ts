@@ -1305,7 +1305,7 @@ export class UniswapLiquidityAssetManagerOwnershipTransferred extends Entity {
   }
 }
 
-export class UniswapCollectFees extends Entity {
+export class UniswapCollectFee extends Entity {
   constructor(id: Bytes) {
     super();
     this.set("id", Value.fromBytes(id));
@@ -1313,25 +1313,25 @@ export class UniswapCollectFees extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id != null, "Cannot save UniswapCollectFees entity without an ID");
+    assert(id != null, "Cannot save UniswapCollectFee entity without an ID");
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type UniswapCollectFees must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
+        `Entities of type UniswapCollectFee must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
-      store.set("UniswapCollectFees", id.toBytes().toHexString(), this);
+      store.set("UniswapCollectFee", id.toBytes().toHexString(), this);
     }
   }
 
-  static loadInBlock(id: Bytes): UniswapCollectFees | null {
-    return changetype<UniswapCollectFees | null>(
-      store.get_in_block("UniswapCollectFees", id.toHexString()),
+  static loadInBlock(id: Bytes): UniswapCollectFee | null {
+    return changetype<UniswapCollectFee | null>(
+      store.get_in_block("UniswapCollectFee", id.toHexString()),
     );
   }
 
-  static load(id: Bytes): UniswapCollectFees | null {
-    return changetype<UniswapCollectFees | null>(
-      store.get("UniswapCollectFees", id.toHexString()),
+  static load(id: Bytes): UniswapCollectFee | null {
+    return changetype<UniswapCollectFee | null>(
+      store.get("UniswapCollectFee", id.toHexString()),
     );
   }
 

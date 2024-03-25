@@ -7,7 +7,7 @@ import {
 } from "../generated/UniswapLiquidityAssetManager/UniswapLiquidityAssetManager"
 import {
   OwnershipTransferred,
-  UniswapCollectFees,
+  UniswapCollectFee,
   UniswapLiquidityProvision,
   UniswapRemoveLiquidity,
 } from "../generated/schema"
@@ -29,7 +29,7 @@ export function handleOwnershipTransferred(
 }
 
 export function handleUniswapCollectFees(event: UniswapCollectFeesEvent): void {
-  let entity = new UniswapCollectFees(
+  let entity = new UniswapCollectFee(
     event.transaction.hash.concatI32(event.logIndex.toI32()),
   )
   entity.tokenId = event.params.tokenId
