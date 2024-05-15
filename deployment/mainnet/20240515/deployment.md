@@ -1,0 +1,1 @@
+https://subgraph.satsuma-prod.com/pgs-team--611591/singularity-subgraph/version/v0.0.1/api
