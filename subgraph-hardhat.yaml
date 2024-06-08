@@ -8,7 +8,7 @@ dataSources:
     name: DarkpoolAssetManager
     network: mainnet
     source:
-      address: "0x0BbfcD7a557FFB8A70CB0948FF680F0E573bbFf2"
+      address: "0x81F82957608f74441E085851cA5Cc091b23d17A2"
       abi: DarkpoolAssetManager
       startBlock: 19824296
     mapping:
@@ -46,7 +46,7 @@ dataSources:
     name: UniswapSwapAssetManager
     network: mainnet
     source:
-      address: "0x5BFaaA02cAb795d576276a19CB1c2D2D2d652717"
+      address: "0x86c64cB21f88fA9E2c46b61c35889E75f08FDce1"
       abi: UniswapSwapAssetManager
       startBlock: 19824296
     mapping:
@@ -69,7 +69,7 @@ dataSources:
     name: UniswapLiquidityAssetManager
     network: mainnet
     source:
-      address: "0x0b5dcAf621a877dAcF3C540c1e5208C8a3eb7B23"
+      address: "0x30A6d2B697635a0ECf1975d2386A0FE6b608B0Fb"
       abi: UniswapLiquidityAssetManager
       startBlock: 19824296
     mapping:
@@ -98,7 +98,7 @@ dataSources:
     name: CurveSingleExchangeAssetManager
     network: mainnet
     source:
-      address: "0xC54051689e0931FdCF3e708b665f521f7ab42Fb0"
+      address: "0x221416CFa5A3CD92035E537ded1dD12d4d587c03"
       abi: CurveSingleExchangeAssetManager
       startBlock: 19824296
     mapping:
@@ -121,7 +121,7 @@ dataSources:
     name: CurveMultiExchangeAssetManager
     network: mainnet
     source:
-      address: "0x2ce1F0e20C1f69E9d9AEA83b25F0cEB69e2AA2b5"
+      address: "0x0C8542AB89c1C60D711B00F309f7EF63b5D9d6eb"
       abi: CurveMultiExchangeAssetManager
       startBlock: 19824296
     mapping:
@@ -144,7 +144,7 @@ dataSources:
     name: CurveAddLiquidityAssetManager
     network: mainnet
     source:
-      address: "0x67Fc5Aa53440518DdbAd4B381fD4b86fFD77B776"
+      address: "0xe519389F8c262d4301Fd2830196FB7D0021daf59"
       abi: CurveAddLiquidityAssetManager
       startBlock: 19824296
     mapping:
@@ -170,7 +170,7 @@ dataSources:
     name: CurveFSNAddLiquidityAssetManager
     network: mainnet
     source:
-      address: "0xcE7e5946C14Cdd1f8de4473dB9c20fd65EBd47d0"
+      address: "0x49AeF2C4005Bf572665b09014A563B5b9E46Df21"
       abi: CurveFSNAddLiquidityAssetManager
       startBlock: 19824296
     mapping:
@@ -196,7 +196,7 @@ dataSources:
     name: CurveFSNRemoveLiquidityAssetManager
     network: mainnet
     source:
-      address: "0xa9efDEf197130B945462163a0B852019BA529a66"
+      address: "0xD61210E756f7D71Cc4F74abF0747D65Ea9d7525b"
       abi: CurveFSNRemoveLiquidityAssetManager
       startBlock: 19824296
     mapping:
@@ -222,7 +222,7 @@ dataSources:
     name: CurveMPAddLiquidityAssetManager
     network: mainnet
     source:
-      address: "0x7aB5cEee0Ff304b053CE1F67d84C33F0ff407a55"
+      address: "0xB8d6D6b01bFe81784BE46e5771eF017Fa3c906d8"
       abi: CurveMPAddLiquidityAssetManager
       startBlock: 19824296
     mapping:
@@ -248,7 +248,7 @@ dataSources:
     name: CurveMPRemoveLiquidityAssetManager
     network: mainnet
     source:
-      address: "0xf524930660f75CF602e909C15528d58459AB2A56"
+      address: "0x81f4f47aa3bBd154171C877b4d70F6C9EeCAb216"
       abi: CurveMPRemoveLiquidityAssetManager
       startBlock: 19824296
     mapping:
@@ -274,7 +274,7 @@ dataSources:
     name: CurveRemoveLiquidityAssetManager
     network: mainnet
     source:
-      address: "0x33f4f8bf90d8AA3d19fF812B50e79c15Df0d0b03"
+      address: "0xB354ECF032e9e14442bE590D9Eaee37d2924B67A"
       abi: CurveRemoveLiquidityAssetManager
       startBlock: 19824296
     mapping:
