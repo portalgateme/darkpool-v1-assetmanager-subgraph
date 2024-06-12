@@ -2,7 +2,7 @@
   "hardhat": {
     "DarkpoolAssetManager": {
       "address": "0x4E76FbE44fa5Dae076a7f4f676250e7941421fbA",
-      "startBlock": 19401351
+      "startBlock": 20030270
     },
     "UniswapSwapAssetManager": {
       "address": "0xA3b48c7b901fede641B596A4C10a4630052449A6"
