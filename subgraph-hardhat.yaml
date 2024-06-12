@@ -10,7 +10,7 @@ dataSources:
     source:
       address: "0x6c383Ef7C9Bf496b5c847530eb9c49a3ED6E4C56"
       abi: DarkpoolAssetManager
-      startBlock: 19824296
+      startBlock: 20030270
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -48,7 +48,7 @@ dataSources:
     source:
       address: "0x1966dc8ff30Bc4AeDEd27178642253b3cCC9AA3f"
       abi: UniswapSwapAssetManager
-      startBlock: 19824296
+      startBlock: 20030270
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -71,7 +71,7 @@ dataSources:
     source:
       address: "0xd8E4Af8145A8288537B85878bb2371fa070Aa5eF"
       abi: UniswapLiquidityAssetManager
-      startBlock: 19824296
+      startBlock: 20030270
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -100,7 +100,7 @@ dataSources:
     source:
       address: "0x36B81ebd01C31643BAF132240C8Bc6874B329c4C"
       abi: CurveSingleExchangeAssetManager
-      startBlock: 19824296
+      startBlock: 20030270
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -123,7 +123,7 @@ dataSources:
     source:
       address: "0xa51807d5a12E7e78148c66dC4851CD33EEd1FDfD"
       abi: CurveMultiExchangeAssetManager
-      startBlock: 19824296
+      startBlock: 20030270
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -146,7 +146,7 @@ dataSources:
     source:
       address: "0xE5b6F5e695BA6E4aeD92B68c4CC8Df1160D69A81"
       abi: CurveAddLiquidityAssetManager
-      startBlock: 19824296
+      startBlock: 20030270
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -172,7 +172,7 @@ dataSources:
     source:
       address: "0x1F2C6E90F3DF741E0191eAbB1170f0B9673F12b3"
       abi: CurveFSNAddLiquidityAssetManager
-      startBlock: 19824296
+      startBlock: 20030270
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -198,7 +198,7 @@ dataSources:
     source:
       address: "0x00436c9F57dfFd96cECd129c04D9E488c57266cF"
       abi: CurveFSNRemoveLiquidityAssetManager
-      startBlock: 19824296
+      startBlock: 20030270
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -224,7 +224,7 @@ dataSources:
     source:
       address: "0xa591098680B1e183C332Ea8e2612a2Cf2e6ABC17"
       abi: CurveMPAddLiquidityAssetManager
-      startBlock: 19824296
+      startBlock: 20030270
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -250,7 +250,7 @@ dataSources:
     source:
       address: "0x9a8164cA007ff0899140719E9aEC9a9C889CbF1E"
       abi: CurveMPRemoveLiquidityAssetManager
-      startBlock: 19824296
+      startBlock: 20030270
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -276,7 +276,7 @@ dataSources:
     source:
       address: "0x0BFC626B583e93A5F793Bc2cAa195BDBB2ED9F20"
       abi: CurveRemoveLiquidityAssetManager
-      startBlock: 19824296
+      startBlock: 20030270
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
