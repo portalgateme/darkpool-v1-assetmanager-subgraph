@@ -296,3 +296,29 @@ dataSources:
         - event: OwnershipTransferred(indexed address,indexed address)
           handler: handleOwnershipTransferred
       file: ./src/curve-remove-liquidity-asset-manager.ts
+  - kind: ethereum
+    name: StakingAssetManager
+    network: mainnet
+    source:
+      address: "0x4Bd915C3e39cfF4eac842255965E79061c38cACD"
+      abi: StakingAssetManager
+      startBlock: 20030270
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Locked
+        - StakingAssetManagerOwnershipTransferred
+        - Unlocked
+      abis:
+        - name: StakingAssetManager
+          file: ./abis/StakingAssetManager.json
+      eventHandlers:
+        - event: Locked(address,address,address,uint256,bytes32,bytes32,bytes32)
+          handler: handleLocked
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Unlocked(address,address,uint256,bytes32,bytes32,bytes32)
+          handler: handleUnlocked
+      file: ./src/staking-asset-manager.ts

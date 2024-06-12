@@ -33,6 +33,9 @@
     },
     "CurveRemoveLiquidityAssetManager": {
       "address": "0x64079a2Edd1104a2323E2b732A1244BCE011B1F5"
+    },
+    "StakingAssetManager": {
+      "address": "0x4Bd915C3e39cfF4eac842255965E79061c38cACD"
     }
   }
 }
