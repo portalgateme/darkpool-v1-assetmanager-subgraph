@@ -36,6 +36,9 @@
     },
     "StakingAssetManager": {
       "address": "0x4Bd915C3e39cfF4eac842255965E79061c38cACD"
+    },
+    "RocketPoolStakeAssetManager": {
+      "address": "0x4Bd915C3e39cfF4eac842255965E79061c38cACD"
     }
   }
 }
