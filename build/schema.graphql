@@ -420,3 +420,33 @@ type Unlocked @entity(immutable: true) {
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
+type RocketPoolStakeAssetManagerOwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RocketDeposit @entity(immutable: true) {
+  id: Bytes!
+  nullifier: Bytes! # bytes32
+  amount: BigInt! # uint256
+  noteFooter: Bytes! # bytes32
+  noteCommitment: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RocketWithdrawal @entity(immutable: true) {
+  id: Bytes!
+  nullifier: Bytes! # bytes32
+  amount: BigInt! # uint256
+  noteFooter: Bytes! # bytes32
+  noteCommitment: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
