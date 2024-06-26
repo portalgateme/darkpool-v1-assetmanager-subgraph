@@ -94,3 +94,29 @@ dataSources:
         - event: UniswapRemoveLiquidity(uint256,bytes32,uint256[2],bytes32[2],bytes32[2])
           handler: handleUniswapRemoveLiquidity
       file: ./src/uniswap-liquidity-asset-manager.ts
+  - kind: ethereum
+    name: StakingAssetManager
+    network: arbitrum-one
+    source:
+      address: "0xB1CC5D9227323330E8a58e891c123B38D03f0BAA"
+      abi: StakingAssetManager
+      startBlock: 225559859
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Locked
+        - StakingAssetManagerOwnershipTransferred
+        - Unlocked
+      abis:
+        - name: StakingAssetManager
+          file: ./abis/StakingAssetManager.json
+      eventHandlers:
+        - event: Locked(address,address,address,uint256,bytes32,bytes32,bytes32)
+          handler: handleLocked
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Unlocked(address,address,uint256,bytes32,bytes32,bytes32)
+          handler: handleUnlocked
+      file: ./src/staking-asset-manager.ts
