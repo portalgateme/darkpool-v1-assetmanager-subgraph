@@ -2,7 +2,7 @@
   "hardhat": {
     "DarkpoolAssetManager": {
       "address": "0x4E76FbE44fa5Dae076a7f4f676250e7941421fbA",
-      "startBlock": 19401351
+      "startBlock": 20030270
     },
     "UniswapSwapAssetManager": {
       "address": "0xA3b48c7b901fede641B596A4C10a4630052449A6"
@@ -33,6 +33,12 @@
     },
     "CurveRemoveLiquidityAssetManager": {
       "address": "0x64079a2Edd1104a2323E2b732A1244BCE011B1F5"
+    },
+    "StakingAssetManager": {
+      "address": "0x4Bd915C3e39cfF4eac842255965E79061c38cACD"
+    },
+    "RocketPoolStakeAssetManager": {
+      "address": "0x4Bd915C3e39cfF4eac842255965E79061c38cACD"
     }
   }
 }
