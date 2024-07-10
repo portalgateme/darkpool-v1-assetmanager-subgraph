@@ -348,3 +348,55 @@ dataSources:
         - event: RocketWithdrawal(bytes32,uint256,bytes32,bytes32)
           handler: handleRocketWithdrawal
       file: ./src/rocket-pool-stake-asset-manager.ts
+  - kind: ethereum
+    name: SablierLinearAssetManager
+    network: mainnet
+    source:
+      address: "0xd2983525E903Ef198d5dD0777712EB66680463bc"
+      abi: SablierLinearAssetManager
+      startBlock: 19758958
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - SablierLinearAssetManagerOwnershipTransferred
+        - SablierClaimStream
+        - SablierCreateStream
+      abis:
+        - name: SablierLinearAssetManager
+          file: ./abis/SablierLinearAssetManager.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: SablierClaimStream(bytes32,address,uint256,bytes32,bytes32)
+          handler: handleSablierClaimStream
+        - event: SablierCreateStream(address,address,uint256[],bytes32[],bytes32[])
+          handler: handleSablierCreateStream
+      file: ./src/sablier-linear-asset-manager.ts
+  - kind: ethereum
+    name: SablierDynamicAssetManager
+    network: mainnet
+    source:
+      address: "0x71d2EBF08bF4FcB82dB5ddE46677263F4c534ef3"
+      abi: SablierDynamicAssetManager
+      startBlock: 19758958
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - SablierDynamicAssetManagerOwnershipTransferred
+        - SablierDynamicAssetManagerSablierClaimStream
+        - SablierDynamicAssetManagerSablierCreateStream
+      abis:
+        - name: SablierDynamicAssetManager
+          file: ./abis/SablierDynamicAssetManager.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: SablierClaimStream(bytes32,address,uint256,bytes32,bytes32)
+          handler: handleSablierClaimStream
+        - event: SablierCreateStream(address,address,uint256[],bytes32[],bytes32[])
+          handler: handleSablierCreateStream
+      file: ./src/sablier-dynamic-asset-manager.ts

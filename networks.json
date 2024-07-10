@@ -39,6 +39,12 @@
     },
     "RocketPoolStakeAssetManager": {
       "address": "0x4Bd915C3e39cfF4eac842255965E79061c38cACD"
+    },
+    "SablierLinearAssetManager": {
+      "address": "0xd2983525E903Ef198d5dD0777712EB66680463bc"
+    },
+    "SablierDynamicAssetManager": {
+      "address": "0x71d2EBF08bF4FcB82dB5ddE46677263F4c534ef3"
     }
   }
 }
