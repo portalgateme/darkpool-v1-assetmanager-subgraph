@@ -514,3 +514,36 @@ type SablierDynamicAssetManagerSablierCreateStream @entity(immutable: true) {
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
+
+
+type NftTransfer @entity(immutable: true) {
+  id: Bytes!
+  nullifierIn: Bytes! # bytes32
+  amount: BigInt! # uint256
+  asset: Bytes! # address
+  noteOut: Bytes! # bytes32
+  noteFooter: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type NftWithdraw @entity(immutable: true) {
+  id: Bytes!
+  nullifierIn: Bytes! # bytes32
+  amount: BigInt! # uint256
+  nftAsset: Bytes! # address
+  recipient: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type NftAssetManagerOwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
