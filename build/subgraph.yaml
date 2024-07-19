@@ -400,3 +400,29 @@ dataSources:
         - event: SablierCreateStream(address,address,uint256[],bytes32[],bytes32[])
           handler: handleSablierCreateStream
       file: SablierDynamicAssetManager/SablierDynamicAssetManager.wasm
+  - kind: ethereum
+    name: NftAssetManager
+    network: mainnet
+    source:
+      address: "0xe519389F8c262d4301Fd2830196FB7D0021daf59"
+      abi: NftAssetManager
+      startBlock: 19758958
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - NftTransfer
+        - NftWithdraw
+        - NftAssetManagerOwnershipTransferred
+      abis:
+        - name: NftAssetManager
+          file: NftAssetManager/abis/NftAssetManager.json
+      eventHandlers:
+        - event: NftTransfer(bytes32,uint256,address,bytes32,bytes32)
+          handler: handleNftTransfer
+        - event: NftWithdraw(bytes32,uint256,address,address)
+          handler: handleNftWithdraw
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: NftAssetManager/NftAssetManager.wasm
