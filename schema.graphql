@@ -565,3 +565,24 @@ type Swap @entity(immutable: true) {
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
+type DefiIntegration @entity(immutable: true) {
+  id: Bytes!
+  contractAddress: Bytes! # address
+  nullifiers: [Bytes!]! # bytes32[]
+  outNote: [Bytes!]! # bytes32[]
+  outAmount: [BigInt!]! # uint256[]
+  noteFooter: [Bytes!]! # bytes32[]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type GeneralDefiIntegrationAssetManagerOwnershipTransferred
+  @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
