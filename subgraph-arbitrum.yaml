@@ -198,3 +198,26 @@ dataSources:
         - event: OwnershipTransferred(indexed address,indexed address)
           handler: handleOwnershipTransferred
       file: ./src/nft-asset-manager.ts
+  - kind: ethereum
+    name: OTCSwapAssetManager
+    network: mainnet
+    source:
+      address: "0xcbFA6BB3eb4Bd9BF97866baE75FfB62f3aE897c0"
+      abi: OTCSwapAssetManager
+      startBlock: 239264172
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - OTCSwapAssetManagerOwnershipTransferred
+        - Swap
+      abis:
+        - name: OTCSwapAssetManager
+          file: ./abis/OTCSwapAssetManager.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Swap(bytes32,bytes32,bytes32,bytes32)
+          handler: handleSwap
+      file: ./src/otc-swap-asset-manager.ts

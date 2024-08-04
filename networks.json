@@ -48,6 +48,9 @@
     },
     "NftAssetManager": {
       "address": "0xe519389F8c262d4301Fd2830196FB7D0021daf59"
+    },
+    "OTCSwapAssetManager": {
+      "address": "0x49AeF2C4005Bf572665b09014A563B5b9E46Df21"
     }
   }
 }

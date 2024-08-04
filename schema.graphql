@@ -546,4 +546,22 @@ type NftAssetManagerOwnershipTransferred @entity(immutable: true) {
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
+}type OTCSwapAssetManagerOwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Swap @entity(immutable: true) {
+  id: Bytes!
+  nullifierIn1: Bytes! # bytes32
+  nullifierIn2: Bytes! # bytes32
+  noteOut1: Bytes! # bytes32
+  noteOut2: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
 }
