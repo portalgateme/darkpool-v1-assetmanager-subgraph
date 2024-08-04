@@ -121,12 +121,64 @@ dataSources:
           handler: handleUnlocked
       file: ./src/staking-asset-manager.ts
   - kind: ethereum
-    name: NftAssetManager
-    network: mainnet
+    name: SablierLinearAssetManager
+    network: arbitrum-one
     source:
-      address: "0x0"
+      address: "0xC0A5AD1f7B43794dC5d40CEdD8C809DEC4d298BB"
+      abi: SablierLinearAssetManager
+      startBlock: 239264172
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - SablierLinearAssetManagerOwnershipTransferred
+        - SablierClaimStream
+        - SablierCreateStream
+      abis:
+        - name: SablierLinearAssetManager
+          file: ./abis/SablierLinearAssetManager.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: SablierClaimStream(bytes32,address,uint256,bytes32,bytes32)
+          handler: handleSablierClaimStream
+        - event: SablierCreateStream(address,address,uint256[],bytes32[],bytes32[])
+          handler: handleSablierCreateStream
+      file: ./src/sablier-linear-asset-manager.ts
+  - kind: ethereum
+    name: SablierDynamicAssetManager
+    network: arbitrum-one
+    source:
+      address: "0x3dC5C6788E3ff47c4ba7e912cA1ceA3c8f9CAac4"
+      abi: SablierDynamicAssetManager
+      startBlock: 239264172
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - SablierDynamicAssetManagerOwnershipTransferred
+        - SablierDynamicAssetManagerSablierClaimStream
+        - SablierDynamicAssetManagerSablierCreateStream
+      abis:
+        - name: SablierDynamicAssetManager
+          file: ./abis/SablierDynamicAssetManager.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: SablierClaimStream(bytes32,address,uint256,bytes32,bytes32)
+          handler: handleSablierClaimStream
+        - event: SablierCreateStream(address,address,uint256[],bytes32[],bytes32[])
+          handler: handleSablierCreateStream
+      file: ./src/sablier-dynamic-asset-manager.ts
+  - kind: ethereum
+    name: NftAssetManager
+    network: arbitrum-one
+    source:
+      address: "0x143242Ff430620a3FA3f9fEaB576050fb20C63BB"
       abi: NftAssetManager
-      startBlock: 0
+      startBlock: 239264172
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
