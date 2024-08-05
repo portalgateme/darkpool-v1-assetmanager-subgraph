@@ -153,7 +153,6 @@ dataSources:
       language: wasm/assemblyscript
       entities:
         - CurveAddLiquidity
-        - CurveRemoveLiquidity
         - CurveAddLiquidityAssetManagerOwnershipTransferred
       abis:
         - name: CurveAddLiquidityAssetManager
@@ -161,8 +160,6 @@ dataSources:
       eventHandlers:
         - event: CurveAddLiquidity(bytes32[4],address,uint256,bytes32,bytes32)
           handler: handleCurveAddLiquidity
-        - event: CurveRemoveLiquidity(bytes32,address[5],uint256[5],bytes32[5],bytes32[5])
-          handler: handleCurveRemoveLiquidity
         - event: OwnershipTransferred(indexed address,indexed address)
           handler: handleOwnershipTransferred
       file: ./src/curve-add-liquidity-asset-manager.ts
@@ -178,8 +175,7 @@ dataSources:
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - CurveFSNAddLiquidityAssetManagerCurveAddLiquidity
-        - CurveFSNAddLiquidityAssetManagerCurveRemoveLiquidity
+        - CurveAddLiquidity
         - CurveFSNAddLiquidityAssetManagerOwnershipTransferred
       abis:
         - name: CurveFSNAddLiquidityAssetManager
@@ -187,8 +183,6 @@ dataSources:
       eventHandlers:
         - event: CurveAddLiquidity(bytes32[4],address,uint256,bytes32,bytes32)
           handler: handleCurveAddLiquidity
-        - event: CurveRemoveLiquidity(bytes32,address[5],uint256[5],bytes32[5],bytes32[5])
-          handler: handleCurveRemoveLiquidity
         - event: OwnershipTransferred(indexed address,indexed address)
           handler: handleOwnershipTransferred
       file: ./src/curve-fsn-add-liquidity-asset-manager.ts
@@ -204,15 +198,12 @@ dataSources:
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - CurveFSNRemoveLiquidityAssetManagerCurveAddLiquidity
-        - CurveFSNRemoveLiquidityAssetManagerCurveRemoveLiquidity
+        - CurveRemoveLiquidity
         - CurveFSNRemoveLiquidityAssetManagerOwnershipTransferred
       abis:
         - name: CurveFSNRemoveLiquidityAssetManager
           file: ./abis/CurveFSNRemoveLiquidityAssetManager.json
       eventHandlers:
-        - event: CurveAddLiquidity(bytes32[4],address,uint256,bytes32,bytes32)
-          handler: handleCurveAddLiquidity
         - event: CurveRemoveLiquidity(bytes32,address[5],uint256[5],bytes32[5],bytes32[5])
           handler: handleCurveRemoveLiquidity
         - event: OwnershipTransferred(indexed address,indexed address)
@@ -230,8 +221,7 @@ dataSources:
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - CurveMPAddLiquidityAssetManagerCurveAddLiquidity
-        - CurveMPAddLiquidityAssetManagerCurveRemoveLiquidity
+        - CurveAddLiquidity
         - CurveMPAddLiquidityAssetManagerOwnershipTransferred
       abis:
         - name: CurveMPAddLiquidityAssetManager
@@ -239,8 +229,6 @@ dataSources:
       eventHandlers:
         - event: CurveAddLiquidity(bytes32[4],address,uint256,bytes32,bytes32)
           handler: handleCurveAddLiquidity
-        - event: CurveRemoveLiquidity(bytes32,address[5],uint256[5],bytes32[5],bytes32[5])
-          handler: handleCurveRemoveLiquidity
         - event: OwnershipTransferred(indexed address,indexed address)
           handler: handleOwnershipTransferred
       file: ./src/curve-mp-add-liquidity-asset-manager.ts
@@ -256,15 +244,12 @@ dataSources:
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - CurveMPRemoveLiquidityAssetManagerCurveAddLiquidity
-        - CurveMPRemoveLiquidityAssetManagerCurveRemoveLiquidity
+        - CurveRemoveLiquidity
         - CurveMPRemoveLiquidityAssetManagerOwnershipTransferred
       abis:
         - name: CurveMPRemoveLiquidityAssetManager
           file: ./abis/CurveMPRemoveLiquidityAssetManager.json
       eventHandlers:
-        - event: CurveAddLiquidity(bytes32[4],address,uint256,bytes32,bytes32)
-          handler: handleCurveAddLiquidity
         - event: CurveRemoveLiquidity(bytes32,address[5],uint256[5],bytes32[5],bytes32[5])
           handler: handleCurveRemoveLiquidity
         - event: OwnershipTransferred(indexed address,indexed address)
@@ -282,15 +267,12 @@ dataSources:
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - CurveRemoveLiquidityAssetManagerCurveAddLiquidity
-        - CurveRemoveLiquidityAssetManagerCurveRemoveLiquidity
+        - CurveRemoveLiquidity
         - CurveRemoveLiquidityAssetManagerOwnershipTransferred
       abis:
         - name: CurveRemoveLiquidityAssetManager
           file: ./abis/CurveRemoveLiquidityAssetManager.json
       eventHandlers:
-        - event: CurveAddLiquidity(bytes32[4],address,uint256,bytes32,bytes32)
-          handler: handleCurveAddLiquidity
         - event: CurveRemoveLiquidity(bytes32,address[5],uint256[5],bytes32[5],bytes32[5])
           handler: handleCurveRemoveLiquidity
         - event: OwnershipTransferred(indexed address,indexed address)
