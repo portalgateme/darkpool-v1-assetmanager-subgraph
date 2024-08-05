@@ -430,7 +430,7 @@ dataSources:
     name: OTCSwapAssetManager
     network: mainnet
     source:
-      address: "0xB8096ecD7d3185b24AA218C509175185C11f13a9"
+      address: "0x2146FEEe38eee9D0573490577d5e348Ce7162194"
       abi: OTCSwapAssetManager
       startBlock: 20453501
     mapping:

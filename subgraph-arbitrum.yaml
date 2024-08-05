@@ -202,7 +202,7 @@ dataSources:
     name: OTCSwapAssetManager
     network: arbitrum-one
     source:
-      address: "0xcbFA6BB3eb4Bd9BF97866baE75FfB62f3aE897c0"
+      address: "0xFa368E046B4051582662f7d1C033756dB55058cF"
       abi: OTCSwapAssetManager
       startBlock: 239264172
     mapping:
