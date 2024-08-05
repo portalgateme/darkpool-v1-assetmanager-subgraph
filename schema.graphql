@@ -211,62 +211,12 @@ type CurveAddLiquidityAssetManagerOwnershipTransferred
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
-type CurveFSNAddLiquidityAssetManagerCurveAddLiquidity
-  @entity(immutable: true) {
-  id: Bytes!
-  nullifiers: [Bytes!]! # bytes32[4]
-  asset: Bytes! # address
-  amountOut: BigInt! # uint256
-  noteOut: Bytes! # bytes32
-  noteFooter: Bytes! # bytes32
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type CurveFSNAddLiquidityAssetManagerCurveRemoveLiquidity
-  @entity(immutable: true) {
-  id: Bytes!
-  nullifier: Bytes! # bytes32
-  assets: [Bytes!]! # address[5]
-  amountsOut: [BigInt!]! # uint256[5]
-  notesOut: [Bytes!]! # bytes32[5]
-  noteFooters: [Bytes!]! # bytes32[5]
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
 
 type CurveFSNAddLiquidityAssetManagerOwnershipTransferred
   @entity(immutable: true) {
   id: Bytes!
   previousOwner: Bytes! # address
   newOwner: Bytes! # address
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-type CurveFSNRemoveLiquidityAssetManagerCurveAddLiquidity
-  @entity(immutable: true) {
-  id: Bytes!
-  nullifiers: [Bytes!]! # bytes32[4]
-  asset: Bytes! # address
-  amountOut: BigInt! # uint256
-  noteOut: Bytes! # bytes32
-  noteFooter: Bytes! # bytes32
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type CurveFSNRemoveLiquidityAssetManagerCurveRemoveLiquidity
-  @entity(immutable: true) {
-  id: Bytes!
-  nullifier: Bytes! # bytes32
-  assets: [Bytes!]! # address[5]
-  amountsOut: [BigInt!]! # uint256[5]
-  notesOut: [Bytes!]! # bytes32[5]
-  noteFooters: [Bytes!]! # bytes32[5]
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
@@ -281,61 +231,12 @@ type CurveFSNRemoveLiquidityAssetManagerOwnershipTransferred
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
-type CurveMPAddLiquidityAssetManagerCurveAddLiquidity @entity(immutable: true) {
-  id: Bytes!
-  nullifiers: [Bytes!]! # bytes32[4]
-  asset: Bytes! # address
-  amountOut: BigInt! # uint256
-  noteOut: Bytes! # bytes32
-  noteFooter: Bytes! # bytes32
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type CurveMPAddLiquidityAssetManagerCurveRemoveLiquidity
-  @entity(immutable: true) {
-  id: Bytes!
-  nullifier: Bytes! # bytes32
-  assets: [Bytes!]! # address[5]
-  amountsOut: [BigInt!]! # uint256[5]
-  notesOut: [Bytes!]! # bytes32[5]
-  noteFooters: [Bytes!]! # bytes32[5]
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
 
 type CurveMPAddLiquidityAssetManagerOwnershipTransferred
   @entity(immutable: true) {
   id: Bytes!
   previousOwner: Bytes! # address
   newOwner: Bytes! # address
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-type CurveMPRemoveLiquidityAssetManagerCurveAddLiquidity
-  @entity(immutable: true) {
-  id: Bytes!
-  nullifiers: [Bytes!]! # bytes32[4]
-  asset: Bytes! # address
-  amountOut: BigInt! # uint256
-  noteOut: Bytes! # bytes32
-  noteFooter: Bytes! # bytes32
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type CurveMPRemoveLiquidityAssetManagerCurveRemoveLiquidity
-  @entity(immutable: true) {
-  id: Bytes!
-  nullifier: Bytes! # bytes32
-  assets: [Bytes!]! # address[5]
-  amountsOut: [BigInt!]! # uint256[5]
-  notesOut: [Bytes!]! # bytes32[5]
-  noteFooters: [Bytes!]! # bytes32[5]
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
@@ -350,31 +251,6 @@ type CurveMPRemoveLiquidityAssetManagerOwnershipTransferred
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
-type CurveRemoveLiquidityAssetManagerCurveAddLiquidity
-  @entity(immutable: true) {
-  id: Bytes!
-  nullifiers: [Bytes!]! # bytes32[4]
-  asset: Bytes! # address
-  amountOut: BigInt! # uint256
-  noteOut: Bytes! # bytes32
-  noteFooter: Bytes! # bytes32
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type CurveRemoveLiquidityAssetManagerCurveRemoveLiquidity
-  @entity(immutable: true) {
-  id: Bytes!
-  nullifier: Bytes! # bytes32
-  assets: [Bytes!]! # address[5]
-  amountsOut: [BigInt!]! # uint256[5]
-  notesOut: [Bytes!]! # bytes32[5]
-  noteFooters: [Bytes!]! # bytes32[5]
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
 
 type CurveRemoveLiquidityAssetManagerOwnershipTransferred
   @entity(immutable: true) {
@@ -385,6 +261,7 @@ type CurveRemoveLiquidityAssetManagerOwnershipTransferred
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
+
 type Locked @entity(immutable: true) {
   id: Bytes!
   locker: Bytes! # address

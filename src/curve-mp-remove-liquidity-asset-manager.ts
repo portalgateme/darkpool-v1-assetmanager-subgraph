@@ -1,31 +1,12 @@
 import { Bytes } from "@graphprotocol/graph-ts"
 import {
-  CurveAddLiquidity as CurveAddLiquidityEvent,
   CurveRemoveLiquidity as CurveRemoveLiquidityEvent,
   OwnershipTransferred as OwnershipTransferredEvent,
 } from "../generated/CurveMPRemoveLiquidityAssetManager/CurveMPRemoveLiquidityAssetManager"
 import {
-  CurveAddLiquidity,
   CurveRemoveLiquidity,
   OwnershipTransferred,
 } from "../generated/schema"
-
-export function handleCurveAddLiquidity(event: CurveAddLiquidityEvent): void {
-  let entity = new CurveAddLiquidity(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
-  )
-  entity.nullifiers = event.params.nullifiers
-  entity.asset = event.params.asset
-  entity.amountOut = event.params.amountOut
-  entity.noteOut = event.params.noteOut
-  entity.noteFooter = event.params.noteFooter
-
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
-
-  entity.save()
-}
 
 export function handleCurveRemoveLiquidity(
   event: CurveRemoveLiquidityEvent,
