@@ -10,40 +10,6 @@ import {
   BigInt,
 } from "@graphprotocol/graph-ts";
 
-export class CurveAddLiquidity extends ethereum.Event {
-  get params(): CurveAddLiquidity__Params {
-    return new CurveAddLiquidity__Params(this);
-  }
-}
-
-export class CurveAddLiquidity__Params {
-  _event: CurveAddLiquidity;
-
-  constructor(event: CurveAddLiquidity) {
-    this._event = event;
-  }
-
-  get nullifiers(): Array<Bytes> {
-    return this._event.parameters[0].value.toBytesArray();
-  }
-
-  get asset(): Address {
-    return this._event.parameters[1].value.toAddress();
-  }
-
-  get amountOut(): BigInt {
-    return this._event.parameters[2].value.toBigInt();
-  }
-
-  get noteOut(): Bytes {
-    return this._event.parameters[3].value.toBytes();
-  }
-
-  get noteFooter(): Bytes {
-    return this._event.parameters[4].value.toBytes();
-  }
-}
-
 export class CurveRemoveLiquidity extends ethereum.Event {
   get params(): CurveRemoveLiquidity__Params {
     return new CurveRemoveLiquidity__Params(this);

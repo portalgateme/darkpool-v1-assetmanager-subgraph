@@ -39,6 +39,21 @@
     },
     "RocketPoolStakeAssetManager": {
       "address": "0x4Bd915C3e39cfF4eac842255965E79061c38cACD"
+    },
+    "SablierLinearAssetManager": {
+      "address": "0xd2983525E903Ef198d5dD0777712EB66680463bc"
+    },
+    "SablierDynamicAssetManager": {
+      "address": "0x71d2EBF08bF4FcB82dB5ddE46677263F4c534ef3"
+    },
+    "NftAssetManager": {
+      "address": "0xe519389F8c262d4301Fd2830196FB7D0021daf59"
+    },
+    "OTCSwapAssetManager": {
+      "address": "0x49AeF2C4005Bf572665b09014A563B5b9E46Df21"
+    },
+    "GeneralDefiIntegrationAssetManager": {
+      "address": "0x1c32f8818e38a50d37d1E98c72B9516a50985227"
     }
   }
 }

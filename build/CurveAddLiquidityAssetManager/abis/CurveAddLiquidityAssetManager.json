@@ -206,43 +206,6 @@
     "anonymous": false,
     "inputs": [
       {
-        "indexed": false,
-        "internalType": "bytes32",
-        "name": "nullifier",
-        "type": "bytes32"
-      },
-      {
-        "indexed": false,
-        "internalType": "address[5]",
-        "name": "assets",
-        "type": "address[5]"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256[5]",
-        "name": "amountsOut",
-        "type": "uint256[5]"
-      },
-      {
-        "indexed": false,
-        "internalType": "bytes32[5]",
-        "name": "notesOut",
-        "type": "bytes32[5]"
-      },
-      {
-        "indexed": false,
-        "internalType": "bytes32[5]",
-        "name": "noteFooters",
-        "type": "bytes32[5]"
-      }
-    ],
-    "name": "CurveRemoveLiquidity",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
         "indexed": true,
         "internalType": "address",
         "name": "previousOwner",

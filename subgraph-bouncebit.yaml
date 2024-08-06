@@ -244,3 +244,75 @@ dataSources:
         - event: RocketWithdrawal(bytes32,uint256,bytes32,bytes32)
           handler: handleRocketWithdrawal
       file: ./src/rocket-pool-stake-asset-manager.ts
+  - kind: ethereum
+    name: NftAssetManager
+    network: mainnet
+    source:
+      address: "0x0"
+      abi: NftAssetManager
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - NftTransfer
+        - NftWithdraw
+        - NftAssetManagerOwnershipTransferred
+      abis:
+        - name: NftAssetManager
+          file: ./abis/NftAssetManager.json
+      eventHandlers:
+        - event: NftTransfer(bytes32,uint256,address,bytes32,bytes32)
+          handler: handleNftTransfer
+        - event: NftWithdraw(bytes32,uint256,address,address)
+          handler: handleNftWithdraw
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: ./src/nft-asset-manager.ts
+  - kind: ethereum
+    name: OTCSwapAssetManager
+    network: mainnet
+    source:
+      address: "0xAa5e02284d1Fd0f6C12AFBDABc28Ed5aC5a6474b"
+      abi: OTCSwapAssetManager
+      startBlock: 2141369
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - OTCSwapAssetManagerOwnershipTransferred
+        - Swap
+      abis:
+        - name: OTCSwapAssetManager
+          file: ./abis/OTCSwapAssetManager.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Swap(bytes32,bytes32,bytes32,bytes32)
+          handler: handleSwap
+      file: ./src/otc-swap-asset-manager.ts
+  - kind: ethereum
+    name: GeneralDefiIntegrationAssetManager
+    network: mainnet
+    source:
+      address: "0x881e3e5416D1b6acecD9d5BA20895D06Ecc40a28"
+      abi: GeneralDefiIntegrationAssetManager
+      startBlock: 2141369
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - DefiIntegration
+        - GeneralDefiIntegrationAssetManagerOwnershipTransferred
+      abis:
+        - name: GeneralDefiIntegrationAssetManager
+          file: ./abis/GeneralDefiIntegrationAssetManager.json
+      eventHandlers:
+        - event: DefiIntegration(address,bytes32[],bytes32[],uint256[],bytes32[])
+          handler: handleDefiIntegration
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: ./src/general-defi-integration-asset-manager.ts
