@@ -6,7 +6,7 @@ schema:
 dataSources:
   - kind: ethereum
     name: DarkpoolAssetManager
-    network: base
+    network: mainnet
     source:
       address: "0xe1708FA6bb2844D5384613ef0846F9Bc1e8eC55E"
       abi: DarkpoolAssetManager
@@ -41,7 +41,7 @@ dataSources:
       file: ./src/darkpool-asset-manager.ts
   - kind: ethereum
     name: UniswapSwapAssetManager
-    network: base
+    network: mainnet
     source:
       address: "0x286B8DecD5ED79c962b2d8F4346CD97FF0E2C352"
       abi: UniswapSwapAssetManager
@@ -61,7 +61,7 @@ dataSources:
       file: ./src/uniswap-swap-asset-manager.ts
   - kind: ethereum
     name: UniswapLiquidityAssetManager
-    network: base
+    network: mainnet
     source:
       address: "0x742489F22807ebB4C36ca6cD95c3e1C044B7B6c8"
       abi: UniswapLiquidityAssetManager
@@ -87,7 +87,7 @@ dataSources:
       file: ./src/uniswap-liquidity-asset-manager.ts
   - kind: ethereum
     name: StakingAssetManager
-    network: base
+    network: mainnet
     source:
       address: "0xdF46e54aAadC1d55198A4a8b4674D7a4c927097A"
       abi: StakingAssetManager
@@ -110,7 +110,7 @@ dataSources:
       file: ./src/staking-asset-manager.ts
   - kind: ethereum
     name: SablierLinearAssetManager
-    network: base
+    network: mainnet
     source:
       address: "0x4593ed9CbE6003e687e5e77368534bb04b162503"
       abi: SablierLinearAssetManager
@@ -133,7 +133,7 @@ dataSources:
       file: ./src/sablier-linear-asset-manager.ts
   - kind: ethereum
     name: SablierDynamicAssetManager
-    network: base
+    network: mainnet
     source:
       address: "0x2c8ED11fd7A058096F2e5828799c68BE88744E2F"
       abi: SablierDynamicAssetManager
@@ -156,7 +156,7 @@ dataSources:
       file: ./src/sablier-dynamic-asset-manager.ts
   - kind: ethereum
     name: NftAssetManager
-    network: base
+    network: mainnet
     source:
       address: "0xC1e0A9DB9eA830c52603798481045688c8AE99C2"
       abi: NftAssetManager
@@ -179,7 +179,7 @@ dataSources:
       file: ./src/nft-asset-manager.ts
   - kind: ethereum
     name: OTCSwapAssetManager
-    network: base
+    network: mainnet
     source:
       address: "0xb185E9f6531BA9877741022C92CE858cDCc5760E"
       abi: OTCSwapAssetManager
@@ -199,7 +199,7 @@ dataSources:
       file: ./src/otc-swap-asset-manager.ts
   - kind: ethereum
     name: GeneralDefiIntegrationAssetManager
-    network: base
+    network: mainnet
     source:
       address: "0xCBBe2A5c3A22BE749D5DDF24e9534f98951983e2"
       abi: GeneralDefiIntegrationAssetManager
@@ -219,7 +219,7 @@ dataSources:
       file: ./src/general-defi-integration-asset-manager.ts
   - kind: ethereum
     name: AerodromeSwapAssetManager
-    network: base
+    network: mainnet
     source:
       address: "0x95775fD3Afb1F4072794CA4ddA27F2444BCf8Ac3"
       abi: AerodromeSwapAssetManager
@@ -239,7 +239,7 @@ dataSources:
       file: ./src/aerodrome-swap-asset-manager.ts
   - kind: ethereum
     name: AerodromeAddLiquidityAssetManager
-    network: base
+    network: mainnet
     source:
       address: "0x3C1Cb427D20F15563aDa8C249E71db76d7183B6c"
       abi: AerodromeAddLiquidityAssetManager
@@ -262,7 +262,7 @@ dataSources:
       file: ./src/aerodrome-add-liquidity-asset-manager.ts
   - kind: ethereum
     name: AerodromeRemoveLiquidityAssetManager
-    network: base
+    network: mainnet
     source:
       address: "0x0a17FabeA4633ce714F1Fa4a2dcA62C3bAc4758d"
       abi: AerodromeRemoveLiquidityAssetManager
