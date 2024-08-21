@@ -454,3 +454,69 @@ dataSources:
         - event: OwnershipTransferred(indexed address,indexed address)
           handler: handleOwnershipTransferred
       file: GeneralDefiIntegrationAssetManager/GeneralDefiIntegrationAssetManager.wasm
+  - kind: ethereum
+    name: AerodromeSwapAssetManager
+    network: mainnet
+    source:
+      address: "0x95775fD3Afb1F4072794CA4ddA27F2444BCf8Ac3"
+      abi: AerodromeSwapAssetManager
+      startBlock: 18455067
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AerodromeSwap
+      abis:
+        - name: AerodromeSwapAssetManager
+          file: AerodromeSwapAssetManager/abis/AerodromeSwapAssetManager.json
+      eventHandlers:
+        - event: AerodromeSwap(bytes32,address,uint256,bytes32,bytes32)
+          handler: handleAerodromeSwap
+      file: AerodromeSwapAssetManager/AerodromeSwapAssetManager.wasm
+  - kind: ethereum
+    name: AerodromeAddLiquidityAssetManager
+    network: mainnet
+    source:
+      address: "0x3C1Cb427D20F15563aDa8C249E71db76d7183B6c"
+      abi: AerodromeAddLiquidityAssetManager
+      startBlock: 18455067
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AerodromeAddLiquidity
+        - AerodromeZapIn
+      abis:
+        - name: AerodromeAddLiquidityAssetManager
+          file: AerodromeAddLiquidityAssetManager/abis/AerodromeAddLiquidityAssetManager.json
+      eventHandlers:
+        - event: AerodromeAddLiquidity(bytes32[2],address[3],uint256[3],bytes32[3],bytes32[3])
+          handler: handleAerodromeAddLiquidity
+        - event: AerodromeZapIn(bytes32,address,uint256,bytes32,bytes32)
+          handler: handleAerodromeZapIn
+      file: AerodromeAddLiquidityAssetManager/AerodromeAddLiquidityAssetManager.wasm
+  - kind: ethereum
+    name: AerodromeRemoveLiquidityAssetManager
+    network: mainnet
+    source:
+      address: "0x0a17FabeA4633ce714F1Fa4a2dcA62C3bAc4758d"
+      abi: AerodromeRemoveLiquidityAssetManager
+      startBlock: 18455067
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AerodromeRemoveLiquidity
+        - AerodromeZapOut
+      abis:
+        - name: AerodromeRemoveLiquidityAssetManager
+          file: AerodromeRemoveLiquidityAssetManager/abis/AerodromeRemoveLiquidityAssetManager.json
+      eventHandlers:
+        - event: AerodromeRemoveLiquidity(bytes32,address[3],uint256[3],bytes32[3],bytes32[3])
+          handler: handleAerodromeRemoveLiquidity
+        - event: AerodromeZapOut(bytes32,address[2],uint256[2],bytes32[2],bytes32[2])
+          handler: handleAerodromeZapOut
+      file: AerodromeRemoveLiquidityAssetManager/AerodromeRemoveLiquidityAssetManager.wasm

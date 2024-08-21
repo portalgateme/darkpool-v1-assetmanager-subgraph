@@ -463,3 +463,61 @@ type GeneralDefiIntegrationAssetManagerOwnershipTransferred
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
+type AerodromeSwap @entity(immutable: true) {
+  id: Bytes!
+  nullifier: Bytes! # bytes32
+  assetOut: Bytes! # address
+  amountOut: BigInt! # uint256
+  noteCommitment: Bytes! # bytes32
+  noteFooter: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+type AerodromeAddLiquidity @entity(immutable: true) {
+  id: Bytes!
+  nullifiers: [Bytes!]! # bytes32[2]
+  assetsOut: [Bytes!]! # address[3]
+  amountsOut: [BigInt!]! # uint256[3]
+  noteCommitments: [Bytes!]! # bytes32[3]
+  noteFooters: [Bytes!]! # bytes32[3]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type AerodromeZapIn @entity(immutable: true) {
+  id: Bytes!
+  nullifier: Bytes! # bytes32
+  assetOut: Bytes! # address
+  amountOut: BigInt! # uint256
+  noteCommitment: Bytes! # bytes32
+  noteFooter: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type AerodromeRemoveLiquidity @entity(immutable: true) {
+  id: Bytes!
+  nullifier: Bytes! # bytes32
+  assetsOut: [Bytes!]! # address[3]
+  amountsOut: [BigInt!]! # uint256[3]
+  noteCommitments: [Bytes!]! # bytes32[3]
+  noteFooters: [Bytes!]! # bytes32[3]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type AerodromeZapOut @entity(immutable: true) {
+  id: Bytes!
+  nullifier: Bytes! # bytes32
+  assetOut: [Bytes!]! # address[2]
+  amountOut: [BigInt!]! # uint256[2]
+  noteCommitments: [Bytes!]! # bytes32[2]
+  noteFooters: [Bytes!]! # bytes32[2]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
