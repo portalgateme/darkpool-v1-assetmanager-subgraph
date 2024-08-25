@@ -6,11 +6,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: DarkpoolAssetManager
-    network: mainnet
+    network: base
     source:
-      address: "0x159F3668c72BBeCdF1fb31beeD606Ec9649654eB"
+      address: "0x84eb120A35802460484015e6748375369e40468a"
       abi: DarkpoolAssetManager
-      startBlock: 19875035
+      startBlock: 18807627
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -19,7 +19,6 @@ dataSources:
         - Deposit
         - Join
         - JoinSplit
-        - OwnershipTransferred
         - Split
         - Transfer
         - Withdraw
@@ -33,8 +32,6 @@ dataSources:
           handler: handleJoin
         - event: JoinSplit(bytes32,bytes32,bytes32,bytes32)
           handler: handleJoinSplit
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
         - event: Split(bytes32,bytes32,bytes32)
           handler: handleSplit
         - event: Transfer(bytes32,uint256,address,bytes32,bytes32)
@@ -44,40 +41,36 @@ dataSources:
       file: DarkpoolAssetManager/DarkpoolAssetManager.wasm
   - kind: ethereum
     name: UniswapSwapAssetManager
-    network: mainnet
+    network: base
     source:
-      address: "0xc98b275a309f187b691e025b956e03603e12b420"
+      address: "0x6bb88BF6Ca504C00C6B451d1B547C305850050C6"
       abi: UniswapSwapAssetManager
-      startBlock: 19875035
+      startBlock: 18807627
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - UniswapSwapAssetManagerOwnershipTransferred
         - UniswapSwap
       abis:
         - name: UniswapSwapAssetManager
           file: UniswapSwapAssetManager/abis/UniswapSwapAssetManager.json
       eventHandlers:
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
         - event: UniswapSwap(address,uint256,bytes32,bytes32,bytes32)
           handler: handleUniswapSwap
       file: UniswapSwapAssetManager/UniswapSwapAssetManager.wasm
   - kind: ethereum
     name: UniswapLiquidityAssetManager
-    network: mainnet
+    network: base
     source:
-      address: "0x53e5A08c95CF866E34F2A6A685ee9f90366e154E"
+      address: "0xEC45a7379Ce48EcCdA153664D789A4Da00153b52"
       abi: UniswapLiquidityAssetManager
-      startBlock: 19875035
+      startBlock: 18807627
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - UniswapLiquidityAssetManagerOwnershipTransferred
         - UniswapCollectFees
         - UniswapLiquidityProvision
         - UniswapRemoveLiquidity
@@ -85,8 +78,6 @@ dataSources:
         - name: UniswapLiquidityAssetManager
           file: UniswapLiquidityAssetManager/abis/UniswapLiquidityAssetManager.json
       eventHandlers:
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
         - event: UniswapCollectFees(uint256,address[2],uint256[2],bytes32[2],bytes32[2])
           handler: handleUniswapCollectFees
         - event: UniswapLiquidityProvision(uint256,bytes32,bytes32[2],uint256[2],bytes32[2],bytes32[2])
@@ -95,203 +86,18 @@ dataSources:
           handler: handleUniswapRemoveLiquidity
       file: UniswapLiquidityAssetManager/UniswapLiquidityAssetManager.wasm
   - kind: ethereum
-    name: CurveSingleExchangeAssetManager
-    network: mainnet
-    source:
-      address: "0xB1CC5D9227323330E8a58e891c123B38D03f0BAA"
-      abi: CurveSingleExchangeAssetManager
-      startBlock: 19875035
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.7
-      language: wasm/assemblyscript
-      entities:
-        - CurveExchange
-        - CurveSingleExchangeAssetManagerOwnershipTransferred
-      abis:
-        - name: CurveSingleExchangeAssetManager
-          file: CurveSingleExchangeAssetManager/abis/CurveSingleExchangeAssetManager.json
-      eventHandlers:
-        - event: CurveExchange(bytes32,address,uint256,bytes32,bytes32)
-          handler: handleCurveExchange
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
-      file: CurveSingleExchangeAssetManager/CurveSingleExchangeAssetManager.wasm
-  - kind: ethereum
-    name: CurveMultiExchangeAssetManager
-    network: mainnet
-    source:
-      address: "0x3D76Fd85FCc2593970d22Aa34bcC4c5444c57c9D"
-      abi: CurveMultiExchangeAssetManager
-      startBlock: 19875035
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.7
-      language: wasm/assemblyscript
-      entities:
-        - CurveMultiExchangeAssetManagerCurveExchange
-        - CurveMultiExchangeAssetManagerOwnershipTransferred
-      abis:
-        - name: CurveMultiExchangeAssetManager
-          file: CurveMultiExchangeAssetManager/abis/CurveMultiExchangeAssetManager.json
-      eventHandlers:
-        - event: CurveExchange(bytes32,address,uint256,bytes32,bytes32)
-          handler: handleCurveExchange
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
-      file: CurveMultiExchangeAssetManager/CurveMultiExchangeAssetManager.wasm
-  - kind: ethereum
-    name: CurveAddLiquidityAssetManager
-    network: mainnet
-    source:
-      address: "0xEBeD6c7C2189bf8ad6687D3A4cf4b83fB4D1a3D2"
-      abi: CurveAddLiquidityAssetManager
-      startBlock: 19875035
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.7
-      language: wasm/assemblyscript
-      entities:
-        - CurveAddLiquidity
-        - CurveAddLiquidityAssetManagerOwnershipTransferred
-      abis:
-        - name: CurveAddLiquidityAssetManager
-          file: CurveAddLiquidityAssetManager/abis/CurveAddLiquidityAssetManager.json
-      eventHandlers:
-        - event: CurveAddLiquidity(bytes32[4],address,uint256,bytes32,bytes32)
-          handler: handleCurveAddLiquidity
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
-      file: CurveAddLiquidityAssetManager/CurveAddLiquidityAssetManager.wasm
-  - kind: ethereum
-    name: CurveFSNAddLiquidityAssetManager
-    network: mainnet
-    source:
-      address: "0x43fbE6066886F7b89EA6091f6cea8E3AD0FA7C71"
-      abi: CurveFSNAddLiquidityAssetManager
-      startBlock: 19875035
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.7
-      language: wasm/assemblyscript
-      entities:
-        - CurveAddLiquidity
-        - CurveFSNAddLiquidityAssetManagerOwnershipTransferred
-      abis:
-        - name: CurveFSNAddLiquidityAssetManager
-          file: CurveFSNAddLiquidityAssetManager/abis/CurveFSNAddLiquidityAssetManager.json
-      eventHandlers:
-        - event: CurveAddLiquidity(bytes32[4],address,uint256,bytes32,bytes32)
-          handler: handleCurveAddLiquidity
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
-      file: CurveFSNAddLiquidityAssetManager/CurveFSNAddLiquidityAssetManager.wasm
-  - kind: ethereum
-    name: CurveFSNRemoveLiquidityAssetManager
-    network: mainnet
-    source:
-      address: "0xfdA33b941E6C014bD079C6917b815EFA58976f37"
-      abi: CurveFSNRemoveLiquidityAssetManager
-      startBlock: 19875035
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.7
-      language: wasm/assemblyscript
-      entities:
-        - RemoveLiquidity
-        - CurveFSNRemoveLiquidityAssetManagerOwnershipTransferred
-      abis:
-        - name: CurveFSNRemoveLiquidityAssetManager
-          file: CurveFSNRemoveLiquidityAssetManager/abis/CurveFSNRemoveLiquidityAssetManager.json
-      eventHandlers:
-        - event: CurveRemoveLiquidity(bytes32,address[5],uint256[5],bytes32[5],bytes32[5])
-          handler: handleCurveRemoveLiquidity
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
-      file: CurveFSNRemoveLiquidityAssetManager/CurveFSNRemoveLiquidityAssetManager.wasm
-  - kind: ethereum
-    name: CurveMPAddLiquidityAssetManager
-    network: mainnet
-    source:
-      address: "0x84eb120A35802460484015e6748375369e40468a"
-      abi: CurveMPAddLiquidityAssetManager
-      startBlock: 19875035
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.7
-      language: wasm/assemblyscript
-      entities:
-        - CurveAddLiquidity
-        - CurveMPAddLiquidityAssetManagerOwnershipTransferred
-      abis:
-        - name: CurveMPAddLiquidityAssetManager
-          file: CurveMPAddLiquidityAssetManager/abis/CurveMPAddLiquidityAssetManager.json
-      eventHandlers:
-        - event: CurveAddLiquidity(bytes32[4],address,uint256,bytes32,bytes32)
-          handler: handleCurveAddLiquidity
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
-      file: CurveMPAddLiquidityAssetManager/CurveMPAddLiquidityAssetManager.wasm
-  - kind: ethereum
-    name: CurveMPRemoveLiquidityAssetManager
-    network: mainnet
-    source:
-      address: "0xC4e979C922E93938dBaBb6e1623a19cbc6132489"
-      abi: CurveMPRemoveLiquidityAssetManager
-      startBlock: 19875035
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.7
-      language: wasm/assemblyscript
-      entities:
-        - CurveRemoveLiquidity
-        - CurveMPRemoveLiquidityAssetManagerOwnershipTransferred
-      abis:
-        - name: CurveMPRemoveLiquidityAssetManager
-          file: CurveMPRemoveLiquidityAssetManager/abis/CurveMPRemoveLiquidityAssetManager.json
-      eventHandlers:
-        - event: CurveRemoveLiquidity(bytes32,address[5],uint256[5],bytes32[5],bytes32[5])
-          handler: handleCurveRemoveLiquidity
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
-      file: CurveMPRemoveLiquidityAssetManager/CurveMPRemoveLiquidityAssetManager.wasm
-  - kind: ethereum
-    name: CurveRemoveLiquidityAssetManager
-    network: mainnet
-    source:
-      address: "0xfBf0dDceF9360757fCA368911b6719a35DD8C660"
-      abi: CurveRemoveLiquidityAssetManager
-      startBlock: 19875035
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.7
-      language: wasm/assemblyscript
-      entities:
-        - CurveRemoveLiquidity
-        - CurveRemoveLiquidityAssetManagerOwnershipTransferred
-      abis:
-        - name: CurveRemoveLiquidityAssetManager
-          file: CurveRemoveLiquidityAssetManager/abis/CurveRemoveLiquidityAssetManager.json
-      eventHandlers:
-        - event: CurveRemoveLiquidity(bytes32,address[5],uint256[5],bytes32[5],bytes32[5])
-          handler: handleCurveRemoveLiquidity
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
-      file: CurveRemoveLiquidityAssetManager/CurveRemoveLiquidityAssetManager.wasm
-  - kind: ethereum
     name: StakingAssetManager
-    network: mainnet
+    network: base
     source:
-      address: "0x1Fa7Cb4925086128f3bb9e26761C9C75dbAC3CD1"
+      address: "0xa3d27E1Ca5057372478011FB781479B8A1fF7AA3"
       abi: StakingAssetManager
-      startBlock: 20168930
+      startBlock: 18807627
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
         - Locked
-        - StakingAssetManagerOwnershipTransferred
         - Unlocked
       abis:
         - name: StakingAssetManager
@@ -299,58 +105,27 @@ dataSources:
       eventHandlers:
         - event: Locked(address,address,address,uint256,bytes32,bytes32,bytes32)
           handler: handleLocked
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
         - event: Unlocked(address,address,uint256,bytes32,bytes32,bytes32)
           handler: handleUnlocked
       file: StakingAssetManager/StakingAssetManager.wasm
   - kind: ethereum
-    name: RocketPoolStakeAssetManager
-    network: mainnet
-    source:
-      address: "0xEF8F70bB29DEAd5CEcaE26C6Cb19B987475B3e48"
-      abi: RocketPoolStakeAssetManager
-      startBlock: 20168930
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.7
-      language: wasm/assemblyscript
-      entities:
-        - RocketPoolStakeAssetManagerOwnershipTransferred
-        - RocketDeposit
-        - RocketWithdrawal
-      abis:
-        - name: RocketPoolStakeAssetManager
-          file: RocketPoolStakeAssetManager/abis/RocketPoolStakeAssetManager.json
-      eventHandlers:
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
-        - event: RocketDeposit(bytes32,uint256,bytes32,bytes32)
-          handler: handleRocketDeposit
-        - event: RocketWithdrawal(bytes32,uint256,bytes32,bytes32)
-          handler: handleRocketWithdrawal
-      file: RocketPoolStakeAssetManager/RocketPoolStakeAssetManager.wasm
-  - kind: ethereum
     name: SablierLinearAssetManager
-    network: mainnet
+    network: base
     source:
-      address: "0xe0fE2642FFc6C58A324Ad65DC37B6B3f9C0f9933"
+      address: "0x4d459dDe25707CA353De15CC3B85b7C2e4bb380c"
       abi: SablierLinearAssetManager
-      startBlock: 20453501
+      startBlock: 18807627
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - SablierLinearAssetManagerOwnershipTransferred
         - SablierClaimStream
         - SablierCreateStream
       abis:
         - name: SablierLinearAssetManager
           file: SablierLinearAssetManager/abis/SablierLinearAssetManager.json
       eventHandlers:
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
         - event: SablierClaimStream(bytes32,address,uint256,bytes32,bytes32)
           handler: handleSablierClaimStream
         - event: SablierCreateStream(address,address,uint256[],bytes32[],bytes32[])
@@ -358,25 +133,22 @@ dataSources:
       file: SablierLinearAssetManager/SablierLinearAssetManager.wasm
   - kind: ethereum
     name: SablierDynamicAssetManager
-    network: mainnet
+    network: base
     source:
-      address: "0x0Cd1600114b3e83a212e6570f8ee50988673B84e"
+      address: "0xc98b275a309F187b691e025B956e03603e12b420"
       abi: SablierDynamicAssetManager
-      startBlock: 20453501
+      startBlock: 18807627
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - SablierDynamicAssetManagerOwnershipTransferred
         - SablierDynamicAssetManagerSablierClaimStream
         - SablierDynamicAssetManagerSablierCreateStream
       abis:
         - name: SablierDynamicAssetManager
           file: SablierDynamicAssetManager/abis/SablierDynamicAssetManager.json
       eventHandlers:
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
         - event: SablierClaimStream(bytes32,address,uint256,bytes32,bytes32)
           handler: handleSablierClaimStream
         - event: SablierCreateStream(address,address,uint256[],bytes32[],bytes32[])
@@ -384,11 +156,11 @@ dataSources:
       file: SablierDynamicAssetManager/SablierDynamicAssetManager.wasm
   - kind: ethereum
     name: NftAssetManager
-    network: mainnet
+    network: base
     source:
-      address: "0xbB0679f6831Ee3736AE53D8fcECB9c0e684615d0"
+      address: "0xC4e979C922E93938dBaBb6e1623a19cbc6132489"
       abi: NftAssetManager
-      startBlock: 20453501
+      startBlock: 18807627
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -396,7 +168,6 @@ dataSources:
       entities:
         - NftTransfer
         - NftWithdraw
-        - NftAssetManagerOwnershipTransferred
       abis:
         - name: NftAssetManager
           file: NftAssetManager/abis/NftAssetManager.json
@@ -405,62 +176,54 @@ dataSources:
           handler: handleNftTransfer
         - event: NftWithdraw(bytes32,uint256,address,address)
           handler: handleNftWithdraw
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
       file: NftAssetManager/NftAssetManager.wasm
   - kind: ethereum
     name: OTCSwapAssetManager
-    network: mainnet
+    network: base
     source:
-      address: "0x2146FEEe38eee9D0573490577d5e348Ce7162194"
+      address: "0x3D76Fd85FCc2593970d22Aa34bcC4c5444c57c9D"
       abi: OTCSwapAssetManager
-      startBlock: 20453501
+      startBlock: 18807627
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - OTCSwapAssetManagerOwnershipTransferred
         - Swap
       abis:
         - name: OTCSwapAssetManager
           file: OTCSwapAssetManager/abis/OTCSwapAssetManager.json
       eventHandlers:
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
         - event: Swap(bytes32,bytes32,bytes32,bytes32)
           handler: handleSwap
       file: OTCSwapAssetManager/OTCSwapAssetManager.wasm
   - kind: ethereum
     name: GeneralDefiIntegrationAssetManager
-    network: mainnet
+    network: base
     source:
-      address: "0x2bddBe60A53569be99896769b9c831ea5d3A587a"
+      address: "0x53e5A08c95CF866E34F2A6A685ee9f90366e154E"
       abi: GeneralDefiIntegrationAssetManager
-      startBlock: 20453501
+      startBlock: 18807627
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
         - DefiIntegration
-        - GeneralDefiIntegrationAssetManagerOwnershipTransferred
       abis:
         - name: GeneralDefiIntegrationAssetManager
           file: GeneralDefiIntegrationAssetManager/abis/GeneralDefiIntegrationAssetManager.json
       eventHandlers:
         - event: DefiIntegration(address,bytes32[],bytes32[],uint256[],bytes32[])
           handler: handleDefiIntegration
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
       file: GeneralDefiIntegrationAssetManager/GeneralDefiIntegrationAssetManager.wasm
   - kind: ethereum
     name: AerodromeSwapAssetManager
-    network: mainnet
+    network: base
     source:
-      address: "0x95775fD3Afb1F4072794CA4ddA27F2444BCf8Ac3"
+      address: "0x159F3668c72BBeCdF1fb31beeD606Ec9649654eB"
       abi: AerodromeSwapAssetManager
-      startBlock: 18455067
+      startBlock: 18807627
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -476,11 +239,11 @@ dataSources:
       file: AerodromeSwapAssetManager/AerodromeSwapAssetManager.wasm
   - kind: ethereum
     name: AerodromeAddLiquidityAssetManager
-    network: mainnet
+    network: base
     source:
-      address: "0x3C1Cb427D20F15563aDa8C249E71db76d7183B6c"
+      address: "0xfBf0dDceF9360757fCA368911b6719a35DD8C660"
       abi: AerodromeAddLiquidityAssetManager
-      startBlock: 18455067
+      startBlock: 18807627
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -499,11 +262,11 @@ dataSources:
       file: AerodromeAddLiquidityAssetManager/AerodromeAddLiquidityAssetManager.wasm
   - kind: ethereum
     name: AerodromeRemoveLiquidityAssetManager
-    network: mainnet
+    network: base
     source:
-      address: "0x0a17FabeA4633ce714F1Fa4a2dcA62C3bAc4758d"
+      address: "0xB1CC5D9227323330E8a58e891c123B38D03f0BAA"
       abi: AerodromeRemoveLiquidityAssetManager
-      startBlock: 18455067
+      startBlock: 18807627
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
