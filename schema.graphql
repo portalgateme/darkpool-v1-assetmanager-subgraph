@@ -521,3 +521,26 @@ type AerodromeZapOut @entity(immutable: true) {
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
+
+type TorosDeposit @entity(immutable: true) {
+  id: Bytes!
+  nullifier: Bytes! # bytes32
+  tokenId: BigInt!
+  noteFooter: Bytes! # bytes32
+  noteCommitment: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TorosWithdrawal @entity(immutable: true) {
+  id: Bytes!
+  nullifier: Bytes! # bytes32
+  asset: [Bytes!]! # address[2]
+  amount: [BigInt!]! # uint256[2]
+  noteFooters: [Bytes!]! # bytes32[2]
+  noteCommitments: [Bytes!]! # bytes32[2]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

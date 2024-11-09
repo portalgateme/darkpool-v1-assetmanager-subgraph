@@ -8,9 +8,9 @@ dataSources:
     name: DarkpoolAssetManager
     network: mainnet
     source:
-      address: "0xd4aa396CBEC88F1b2D76137eEBF4ef80e309169D"
+      address: "0xc5B86EcB7Cf82213B392D668614429A0d0763745"
       abi: DarkpoolAssetManager
-      startBlock: 249888375
+      startBlock: 270800000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -46,9 +46,9 @@ dataSources:
     name: UniswapSwapAssetManager
     network: mainnet
     source:
-      address: "0x62153519C210d21f1B67dE11Cf60d6F467190707"
+      address: "0x3D7CD28EfD08FfE9Ce8cA329EC2e67822C756526"
       abi: UniswapSwapAssetManager
-      startBlock: 249888375
+      startBlock: 270800000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -69,9 +69,9 @@ dataSources:
     name: UniswapLiquidityAssetManager
     network: mainnet
     source:
-      address: "0x0127Bf9EA71b69dBa5246dEcc4523E8b46dB1604"
+      address: "0xd1d50299505DE6C56e564E15eeF88CcA3b168832"
       abi: UniswapLiquidityAssetManager
-      startBlock: 249888375
+      startBlock: 270800000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -98,9 +98,9 @@ dataSources:
     name: StakingAssetManager
     network: mainnet
     source:
-      address: "0xc4c9df455BeEc9724A43D2507d7790bE61a2981a"
+      address: "0x6D13297026894C958807F34957e58D7CAC18C5A6"
       abi: StakingAssetManager
-      startBlock: 249888375
+      startBlock: 270800000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -124,9 +124,9 @@ dataSources:
     name: SablierLinearAssetManager
     network: mainnet
     source:
-      address: "0xfd51c294b28067EF650c7EE429f3BdBFB93e05BD"
+      address: "0xb4d3f14A8FE911fE8A0Cc68F3C0424fD88C0a96E"
       abi: SablierLinearAssetManager
-      startBlock: 249888375
+      startBlock: 270800000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -150,9 +150,9 @@ dataSources:
     name: SablierDynamicAssetManager
     network: mainnet
     source:
-      address: "0xefFEA911a7d05d960355F2F32d2101138c9631dd"
+      address: "0xf7461a489c71EAE6fA1Bfe69F8c3d661De0619Da"
       abi: SablierDynamicAssetManager
-      startBlock: 249888375
+      startBlock: 270800000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -176,9 +176,9 @@ dataSources:
     name: NftAssetManager
     network: mainnet
     source:
-      address: "0x1687d4BDE380019748605231C956335a473Fd3dc"
+      address: "0x443729DFF68Dcc675463b0ED918ae57E00A3133b"
       abi: NftAssetManager
-      startBlock: 249888375
+      startBlock: 270800000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -202,9 +202,9 @@ dataSources:
     name: OTCSwapAssetManager
     network: mainnet
     source:
-      address: "0xDF3201eB257FB75E57E394b53AA1A215025230Dc"
+      address: "0xa40E009b306B3b4f27374f6e833291DaAeC88cc6"
       abi: OTCSwapAssetManager
-      startBlock: 249888375
+      startBlock: 270800000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -221,3 +221,26 @@ dataSources:
         - event: Swap(bytes32,bytes32,bytes32,bytes32)
           handler: handleSwap
       file: ./src/otc-swap-asset-manager.ts
+  - kind: ethereum
+    name: TorosAssetManager
+    network: mainnet
+    source:
+      address: "0x4268eD4F726727974861AD319F29cC3354d6526B"
+      abi: TorosAssetManager
+      startBlock: 270800000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - TorosDeposit
+        - TorosWithdrawal
+      abis:
+        - name: TorosAssetManager
+          file: ./abis/TorosAssetManager.json
+      eventHandlers:
+        - event: TorosDeposit(bytes32,uint256,bytes32,bytes32)
+          handler: handleTorosDeposit
+        - event: TorosWithdrawal(bytes32,address[2],uint256[2],bytes32[2],bytes32[2])
+          handler: handleTorosWithdrawal
+      file: ./src/toros-asset-manager.ts
