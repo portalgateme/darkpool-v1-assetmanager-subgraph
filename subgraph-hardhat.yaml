@@ -8,9 +8,9 @@ dataSources:
     name: DarkpoolAssetManager
     network: mainnet
     source:
-      address: "0xe24e7570Fe7207AdAaAa8c6c89a59850391B5276"
+      address: "0x71d75C9A9e1a4fFa5a16556b51D6e630A4FA902A"
       abi: DarkpoolAssetManager
-      startBlock: 19758958
+      startBlock: 21626960
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -46,9 +46,9 @@ dataSources:
     name: UniswapSwapAssetManager
     network: mainnet
     source:
-      address: "0x63ecE4C05B8fB272D16844E96702Ea2f26370982"
+      address: "0x7930AC7ddD1e35fD4b25230121A9C45923894e67"
       abi: UniswapSwapAssetManager
-      startBlock: 19758958
+      startBlock: 21626960
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -69,9 +69,9 @@ dataSources:
     name: UniswapLiquidityAssetManager
     network: mainnet
     source:
-      address: "0xfaA7b3a4b5c3f54a934a2e33D34C7bC099f96CCE"
+      address: "0x240A60DC5e0B9013Cb8CF39aa6f9dDd8f25E40D2"
       abi: UniswapLiquidityAssetManager
-      startBlock: 19758958
+      startBlock: 21626960
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -98,9 +98,9 @@ dataSources:
     name: CurveSingleExchangeAssetManager
     network: mainnet
     source:
-      address: "0xE0a1556ef66873d965A2F4caD06F051646BE6707"
+      address: "0xf102f0173707c6726543d65fA38025Eb72026c37"
       abi: CurveSingleExchangeAssetManager
-      startBlock: 19758958
+      startBlock: 21626960
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -121,9 +121,9 @@ dataSources:
     name: CurveMultiExchangeAssetManager
     network: mainnet
     source:
-      address: "0x221416CFa5A3CD92035E537ded1dD12d4d587c03"
+      address: "0x222D74f33b0d07687a769A44399E2272A4cB9FfE"
       abi: CurveMultiExchangeAssetManager
-      startBlock: 19758958
+      startBlock: 21626960
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -144,9 +144,9 @@ dataSources:
     name: CurveAddLiquidityAssetManager
     network: mainnet
     source:
-      address: "0xD61210E756f7D71Cc4F74abF0747D65Ea9d7525b"
+      address: "0xe3e4631D734e4b3F900AfcC396440641Ed0df339"
       abi: CurveAddLiquidityAssetManager
-      startBlock: 19758958
+      startBlock: 21626960
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -167,9 +167,9 @@ dataSources:
     name: CurveFSNAddLiquidityAssetManager
     network: mainnet
     source:
-      address: "0xB8d6D6b01bFe81784BE46e5771eF017Fa3c906d8"
+      address: "0x2ac430E52F47420A00984E11Ef0DDba80652419a"
       abi: CurveFSNAddLiquidityAssetManager
-      startBlock: 19758958
+      startBlock: 21626960
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -190,9 +190,9 @@ dataSources:
     name: CurveFSNRemoveLiquidityAssetManager
     network: mainnet
     source:
-      address: "0x81f4f47aa3bBd154171C877b4d70F6C9EeCAb216"
+      address: "0x97915c43511f8cB4Fbe7Ea03B96EEe940eC4AF12"
       abi: CurveFSNRemoveLiquidityAssetManager
-      startBlock: 19758958
+      startBlock: 21626960
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -213,9 +213,9 @@ dataSources:
     name: CurveMPAddLiquidityAssetManager
     network: mainnet
     source:
-      address: "0x0C8542AB89c1C60D711B00F309f7EF63b5D9d6eb"
+      address: "0xbF97DEfeb6a387215E3e67DFb988c675c9bb1a29"
       abi: CurveMPAddLiquidityAssetManager
-      startBlock: 19758958
+      startBlock: 21626960
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -236,9 +236,9 @@ dataSources:
     name: CurveMPRemoveLiquidityAssetManager
     network: mainnet
     source:
-      address: "0xB354ECF032e9e14442bE590D9Eaee37d2924B67A"
+      address: "0xA7240bcff60Eef40F31B8eD5d921BaD6DB13B199"
       abi: CurveMPRemoveLiquidityAssetManager
-      startBlock: 19758958
+      startBlock: 21626960
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -259,9 +259,9 @@ dataSources:
     name: CurveRemoveLiquidityAssetManager
     network: mainnet
     source:
-      address: "0x81F82957608f74441E085851cA5Cc091b23d17A2"
+      address: "0x48288D0e3079A03f6EC1846554CFc58C2696Aaee"
       abi: CurveRemoveLiquidityAssetManager
-      startBlock: 19758958
+      startBlock: 21626960
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -282,9 +282,9 @@ dataSources:
     name: StakingAssetManager
     network: mainnet
     source:
-      address: "0xCd9BC6cE45194398d12e27e1333D5e1d783104dD"
+      address: "0xAf7868a9BB72E16B930D50636519038d7F057470"
       abi: StakingAssetManager
-      startBlock: 19758958
+      startBlock: 21626960
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -308,9 +308,9 @@ dataSources:
     name: RocketPoolStakeAssetManager
     network: mainnet
     source:
-      address: "0xe8c3F27D20472e4f3C546A3f73C04B54DD72871d"
+      address: "0x9cC87998ba85D81e017E6B7662aC00eE2Ab8fe13"
       abi: RocketPoolStakeAssetManager
-      startBlock: 19758958
+      startBlock: 21626960
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -334,9 +334,9 @@ dataSources:
     name: SablierLinearAssetManager
     network: mainnet
     source:
-      address: "0x72aC6A36de2f72BD39e9c782e9db0DCc41FEbfe2"
+      address: "0xc91B651f770ed996a223a16dA9CCD6f7Df56C987"
       abi: SablierLinearAssetManager
-      startBlock: 19758958
+      startBlock: 21626960
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -360,9 +360,9 @@ dataSources:
     name: SablierDynamicAssetManager
     network: mainnet
     source:
-      address: "0xd2983525E903Ef198d5dD0777712EB66680463bc"
+      address: "0xB1fC11F03b084FfF8daE95fA08e8D69ad2547Ec1"
       abi: SablierDynamicAssetManager
-      startBlock: 19758958
+      startBlock: 21626960
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -386,9 +386,9 @@ dataSources:
     name: NftAssetManager
     network: mainnet
     source:
-      address: "0xe519389F8c262d4301Fd2830196FB7D0021daf59"
+      address: "0xA4f9885550548c6a45b9D18C57B114c06f3c39B8"
       abi: NftAssetManager
-      startBlock: 19758958
+      startBlock: 21626960
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -412,9 +412,9 @@ dataSources:
     name: OTCSwapAssetManager
     network: mainnet
     source:
-      address: "0x49AeF2C4005Bf572665b09014A563B5b9E46Df21"
+      address: "0x5aA185fbEFc205072FaecC6B9D564383e761f8C2"
       abi: OTCSwapAssetManager
-      startBlock: 19758958
+      startBlock: 21626960
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
