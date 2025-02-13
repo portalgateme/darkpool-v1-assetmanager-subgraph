@@ -451,3 +451,29 @@ dataSources:
         - event: BatchJoinSplit(bytes32[],bytes32[])
           handler: handleBatchJoinSplit
       file: ./src/batch-join-split-asset-manager.ts
+  - kind: ethereum
+    name: DarkPoolSwapAssetManager
+    network: mainnet
+    source:
+      address: "0x8797847c9d63D8Ed9C30B058F408d4257A33B76C"
+      abi: DarkPoolSwapAssetManager
+      startBlock: 21626960
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - DarkPoolCancelOrder
+        - DarkPoolCreateOrder
+        - DarkPoolSwap
+      abis:
+        - name: DarkPoolSwapAssetManager
+          file: ./abis/DarkPoolSwapAssetManager.json
+      eventHandlers:
+        - event: DarkPoolCancelOrder(bytes32)
+          handler: handleDarkPoolCancelOrder
+        - event: DarkPoolCreateOrder(bytes32)
+          handler: handleDarkPoolCreateOrder
+        - event: DarkPoolSwap(bytes32,bytes32,bytes32,bytes32)
+          handler: handleDarkPoolSwap
+      file: ./src/dark-pool-swap-asset-manager.ts

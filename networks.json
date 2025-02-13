@@ -66,6 +66,9 @@
     },
     "BatchJoinSplitAssetManager": {
       "address": "0x17f4B55A352Be71CC03856765Ad04147119Aa09B"
+    },
+    "DarkPoolSwapAssetManager": {
+      "address": "0x8797847c9d63D8Ed9C30B058F408d4257A33B76C"
     }
   }
 }

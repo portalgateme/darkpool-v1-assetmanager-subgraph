@@ -553,3 +553,30 @@ type BatchJoinSplit @entity(immutable: true) {
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
+
+type DarkPoolCancelOrder @entity(immutable: true) {
+  id: Bytes!
+  nullifier: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type DarkPoolCreateOrder @entity(immutable: true) {
+  id: Bytes!
+  nullifier: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type DarkPoolSwap @entity(immutable: true) {
+  id: Bytes!
+  aliceOutNullifierIn: Bytes! # bytes32
+  botOutnullifierIn: Bytes! # bytes32
+  aliceInNote: Bytes! # bytes32
+  bobInNote: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
