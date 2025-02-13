@@ -544,3 +544,12 @@ type TorosWithdrawal @entity(immutable: true) {
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
+
+type BatchJoinSplit @entity(immutable: true) {
+  id: Bytes!
+  nullifiersIn: [Bytes!]! # bytes32[]
+  notesOut: [Bytes!]! # bytes32[]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

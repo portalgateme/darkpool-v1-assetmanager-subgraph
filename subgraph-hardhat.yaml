@@ -431,3 +431,23 @@ dataSources:
         - event: Swap(bytes32,bytes32,bytes32,bytes32)
           handler: handleSwap
       file: ./src/otc-swap-asset-manager.ts
+  - kind: ethereum
+    name: BatchJoinSplitAssetManager
+    network: mainnet
+    source:
+      address: "0x17f4B55A352Be71CC03856765Ad04147119Aa09B"
+      abi: BatchJoinSplitAssetManager
+      startBlock: 21626960
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - BatchJoinSplit
+      abis:
+        - name: BatchJoinSplitAssetManager
+          file: ./abis/BatchJoinSplitAssetManager.json
+      eventHandlers:
+        - event: BatchJoinSplit(bytes32[],bytes32[])
+          handler: handleBatchJoinSplit
+      file: ./src/batch-join-split-asset-manager.ts
