@@ -1,0 +1,217 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: DarkpoolAssetManager
+    network: sepolia
+    source:
+      address: "0x03bCF6421a6042Ae262874E428fEd4bB1f9A862f"
+      abi: DarkpoolAssetManager
+      startBlock: 7641262
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Deposit
+        - Join
+        - JoinSplit
+        - OwnershipTransferred
+        - Split
+        - Transfer
+        - Withdraw
+      abis:
+        - name: DarkpoolAssetManager
+          file: ./abis/DarkpoolAssetManager.json
+      eventHandlers:
+        - event: Deposit(address,bytes32,uint256,address)
+          handler: handleDeposit
+        - event: Join(bytes32,bytes32,bytes32)
+          handler: handleJoin
+        - event: JoinSplit(bytes32,bytes32,bytes32,bytes32)
+          handler: handleJoinSplit
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Split(bytes32,bytes32,bytes32)
+          handler: handleSplit
+        - event: Transfer(bytes32,uint256,address,bytes32,bytes32)
+          handler: handleTransfer
+        - event: Withdraw(bytes32,uint256,address,address)
+          handler: handleWithdraw
+      file: ./src/darkpool-asset-manager.ts
+  - kind: ethereum
+    name: StakingAssetManager
+    network: sepolia
+    source:
+      address: "0xccb9edf607a3554735e41283B0bfC29BAed66C42"
+      abi: StakingAssetManager
+      startBlock: 7641295
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Locked
+        - StakingAssetManagerOwnershipTransferred
+        - Unlocked
+      abis:
+        - name: StakingAssetManager
+          file: ./abis/StakingAssetManager.json
+      eventHandlers:
+        - event: Locked(address,address,address,uint256,bytes32,bytes32,bytes32)
+          handler: handleLocked
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Unlocked(address,address,uint256,bytes32,bytes32,bytes32)
+          handler: handleUnlocked
+      file: ./src/staking-asset-manager.ts
+  - kind: ethereum
+    name: SablierLinearAssetManager
+    network: sepolia
+    source:
+      address: "0x6667889310308C9537B53ea64B01036D73B299Fb"
+      abi: SablierLinearAssetManager
+      startBlock: 7641295
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - SablierLinearAssetManagerOwnershipTransferred
+        - SablierClaimStream
+        - SablierCreateStream
+      abis:
+        - name: SablierLinearAssetManager
+          file: ./abis/SablierLinearAssetManager.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: SablierClaimStream(bytes32,address,uint256,bytes32,bytes32)
+          handler: handleSablierClaimStream
+        - event: SablierCreateStream(address,address,uint256[],bytes32[],bytes32[])
+          handler: handleSablierCreateStream
+      file: ./src/sablier-linear-asset-manager.ts
+  - kind: ethereum
+    name: SablierDynamicAssetManager
+    network: sepolia
+    source:
+      address: "0x54Ea206f4DF7676A41Df9e44778B5Af4fB0B7a58"
+      abi: SablierDynamicAssetManager
+      startBlock: 7641295
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - SablierDynamicAssetManagerOwnershipTransferred
+        - SablierDynamicAssetManagerSablierClaimStream
+        - SablierDynamicAssetManagerSablierCreateStream
+      abis:
+        - name: SablierDynamicAssetManager
+          file: ./abis/SablierDynamicAssetManager.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: SablierClaimStream(bytes32,address,uint256,bytes32,bytes32)
+          handler: handleSablierClaimStream
+        - event: SablierCreateStream(address,address,uint256[],bytes32[],bytes32[])
+          handler: handleSablierCreateStream
+      file: ./src/sablier-dynamic-asset-manager.ts
+  - kind: ethereum
+    name: NftAssetManager
+    network: sepolia
+    source:
+      address: "0x310c5d768C7F01f68789DE84223725203d0a162F"
+      abi: NftAssetManager
+      startBlock: 7641295
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - NftTransfer
+        - NftWithdraw
+        - NftAssetManagerOwnershipTransferred
+      abis:
+        - name: NftAssetManager
+          file: ./abis/NftAssetManager.json
+      eventHandlers:
+        - event: NftTransfer(bytes32,uint256,address,bytes32,bytes32)
+          handler: handleNftTransfer
+        - event: NftWithdraw(bytes32,uint256,address,address)
+          handler: handleNftWithdraw
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: ./src/nft-asset-manager.ts
+  - kind: ethereum
+    name: OTCSwapAssetManager
+    network: sepolia
+    source:
+      address: "0xD3070435b0cF2D8D31Ea5A45cF32805e540D9407"
+      abi: OTCSwapAssetManager
+      startBlock: 7641295
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - OTCSwapAssetManagerOwnershipTransferred
+        - Swap
+      abis:
+        - name: OTCSwapAssetManager
+          file: ./abis/OTCSwapAssetManager.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Swap(bytes32,bytes32,bytes32,bytes32)
+          handler: handleSwap
+      file: ./src/otc-swap-asset-manager.ts
+  - kind: ethereum
+    name: BatchJoinSplitAssetManager
+    network: sepolia
+    source:
+      address: "0x31816E27809fdc3cF73539d761133a301beEb9B0"
+      abi: BatchJoinSplitAssetManager
+      startBlock: 7641295
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - BatchJoinSplit
+      abis:
+        - name: BatchJoinSplitAssetManager
+          file: ./abis/BatchJoinSplitAssetManager.json
+      eventHandlers:
+        - event: BatchJoinSplit(bytes32[],bytes32[])
+          handler: handleBatchJoinSplit
+      file: ./src/batch-join-split-asset-manager.ts
+  - kind: ethereum
+    name: DarkPoolSwapAssetManager
+    network: sepolia
+    source:
+      address: "0x802ae625C2bdac1873B8bbb709679CC401F57abc"
+      abi: DarkPoolSwapAssetManager
+      startBlock: 7641295
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - DarkPoolCancelOrder
+        - DarkPoolCreateOrder
+        - DarkPoolSwap
+      abis:
+        - name: DarkPoolSwapAssetManager
+          file: ./abis/DarkPoolSwapAssetManager.json
+      eventHandlers:
+        - event: DarkPoolCancelOrder(bytes32)
+          handler: handleDarkPoolCancelOrder
+        - event: DarkPoolCreateOrder(bytes32)
+          handler: handleDarkPoolCreateOrder
+        - event: DarkPoolSwap(bytes32,bytes32,bytes32,bytes32)
+          handler: handleDarkPoolSwap
+      file: ./src/dark-pool-swap-asset-manager.ts
