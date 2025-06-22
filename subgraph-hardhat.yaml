@@ -477,3 +477,48 @@ dataSources:
         - event: DarkPoolSwap(bytes32,bytes32,bytes32,bytes32)
           handler: handleDarkPoolSwap
       file: ./src/dark-pool-swap-asset-manager.ts
+  - kind: ethereum
+    name: DarkSwapAssetManager
+    network: mainnet
+    source:
+      address: "0x9D8946A8A0c5a583Bf05bE83B981406182ac9d2f"
+      abi: DarkSwapAssetManager
+      startBlock: 21626960
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - DarkSwapCancelOrder
+        - DarkSwapCancelOrderWithdraw
+        - DarkSwapDeposit
+        - DarkSwapJoin
+        - DarkSwapProCreateOrder
+        - DarkSwapProSwap
+        - DarkSwapRetailDepositCreateOrder
+        - DarkSwapRetailSwap
+        - DarkSwapWithdraw
+        - DarkSwapAssetManagerOwnershipTransferred
+      abis:
+        - name: DarkSwapAssetManager
+          file: ./abis/DarkSwapAssetManager.json
+      eventHandlers:
+        - event: DarkSwapCancelOrder(address,bytes32,bytes32,bytes32,bytes32)
+          handler: handleDarkSwapCancelOrder
+        - event: DarkSwapCancelOrderWithdraw(bytes32,address,address,uint256)
+          handler: handleDarkSwapCancelOrderWithdraw
+        - event: DarkSwapDeposit(address,bytes32,address,uint256)
+          handler: handleDarkSwapDeposit
+        - event: DarkSwapJoin(bytes32[3],bytes32)
+          handler: handleDarkSwapJoin
+        - event: DarkSwapProCreateOrder(address,bytes32,bytes32,bytes32,bytes32,bytes32)
+          handler: handleDarkSwapProCreateOrder
+        - event: DarkSwapProSwap(bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32)
+          handler: handleDarkSwapProSwap
+        - event: DarkSwapRetailDepositCreateOrder(address,bytes32,bytes32,bytes32,bytes32)
+          handler: handleDarkSwapRetailDepositCreateOrder
+        - event: DarkSwapRetailSwap(bytes32,bytes32,bytes32,bytes32,bytes32,bytes32)
+          handler: handleDarkSwapRetailSwap
+        - event: DarkSwapWithdraw(bytes32,uint256,address,bytes32,address)
+          handler: handleDarkSwapWithdraw
+      file: ./src/dark-swap-asset-manager.ts
