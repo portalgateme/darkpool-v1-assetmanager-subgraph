@@ -8,7 +8,7 @@ dataSources:
     name: DarkpoolAssetManager
     network: mainnet
     source:
-      address: "0x71d75C9A9e1a4fFa5a16556b51D6e630A4FA902A"
+      address: "0x2D6E6A6430F0121d6949D743DF54730b40C5c74F"
       abi: DarkpoolAssetManager
       startBlock: 21626960
     mapping:
@@ -46,7 +46,7 @@ dataSources:
     name: UniswapSwapAssetManager
     network: mainnet
     source:
-      address: "0x7930AC7ddD1e35fD4b25230121A9C45923894e67"
+      address: "0x4a680B00eEacbcCA480eB9aB57161A7B08A8F0Ba"
       abi: UniswapSwapAssetManager
       startBlock: 21626960
     mapping:
@@ -69,7 +69,7 @@ dataSources:
     name: UniswapLiquidityAssetManager
     network: mainnet
     source:
-      address: "0x240A60DC5e0B9013Cb8CF39aa6f9dDd8f25E40D2"
+      address: "0x3aD2306eDfBe72ce013cdb6b429212d9CdDE4F96"
       abi: UniswapLiquidityAssetManager
       startBlock: 21626960
     mapping:
@@ -98,7 +98,7 @@ dataSources:
     name: CurveSingleExchangeAssetManager
     network: mainnet
     source:
-      address: "0xf102f0173707c6726543d65fA38025Eb72026c37"
+      address: "0x5EdB3Ff1EA450d1FF6d614F24f5C760761F7f688"
       abi: CurveSingleExchangeAssetManager
       startBlock: 21626960
     mapping:
@@ -121,7 +121,7 @@ dataSources:
     name: CurveMultiExchangeAssetManager
     network: mainnet
     source:
-      address: "0x222D74f33b0d07687a769A44399E2272A4cB9FfE"
+      address: "0x88777418972fB3F58489303d763d4DaF398A6527"
       abi: CurveMultiExchangeAssetManager
       startBlock: 21626960
     mapping:
@@ -144,7 +144,7 @@ dataSources:
     name: CurveAddLiquidityAssetManager
     network: mainnet
     source:
-      address: "0xe3e4631D734e4b3F900AfcC396440641Ed0df339"
+      address: "0x8729c0238b265BaCF6fE397E8309897BB5c40473"
       abi: CurveAddLiquidityAssetManager
       startBlock: 21626960
     mapping:
@@ -167,7 +167,7 @@ dataSources:
     name: CurveFSNAddLiquidityAssetManager
     network: mainnet
     source:
-      address: "0x2ac430E52F47420A00984E11Ef0DDba80652419a"
+      address: "0x2550d6424b46f78F4E31F1CCf88Da26dda7826C6"
       abi: CurveFSNAddLiquidityAssetManager
       startBlock: 21626960
     mapping:
@@ -190,7 +190,7 @@ dataSources:
     name: CurveFSNRemoveLiquidityAssetManager
     network: mainnet
     source:
-      address: "0x97915c43511f8cB4Fbe7Ea03B96EEe940eC4AF12"
+      address: "0xC6A09F78CfB85275e5261200442b0B9AA9D4D0ce"
       abi: CurveFSNRemoveLiquidityAssetManager
       startBlock: 21626960
     mapping:
@@ -213,7 +213,7 @@ dataSources:
     name: CurveMPAddLiquidityAssetManager
     network: mainnet
     source:
-      address: "0xbF97DEfeb6a387215E3e67DFb988c675c9bb1a29"
+      address: "0xaE7b7A1c6C4d859e19301ccAc2C6eD28A4C51288"
       abi: CurveMPAddLiquidityAssetManager
       startBlock: 21626960
     mapping:
@@ -236,7 +236,7 @@ dataSources:
     name: CurveMPRemoveLiquidityAssetManager
     network: mainnet
     source:
-      address: "0xA7240bcff60Eef40F31B8eD5d921BaD6DB13B199"
+      address: "0xc565EB7363769f8ffAe0005285ccD854c631A0a0"
       abi: CurveMPRemoveLiquidityAssetManager
       startBlock: 21626960
     mapping:
@@ -259,7 +259,7 @@ dataSources:
     name: CurveRemoveLiquidityAssetManager
     network: mainnet
     source:
-      address: "0x48288D0e3079A03f6EC1846554CFc58C2696Aaee"
+      address: "0x74Ce26A2e4c1368C48A0157CE762944d282896Db"
       abi: CurveRemoveLiquidityAssetManager
       startBlock: 21626960
     mapping:
@@ -282,7 +282,7 @@ dataSources:
     name: StakingAssetManager
     network: mainnet
     source:
-      address: "0xAf7868a9BB72E16B930D50636519038d7F057470"
+      address: "0x4B7099FD879435a087C364aD2f9E7B3f94d20bBe"
       abi: StakingAssetManager
       startBlock: 21626960
     mapping:
@@ -308,7 +308,7 @@ dataSources:
     name: RocketPoolStakeAssetManager
     network: mainnet
     source:
-      address: "0x9cC87998ba85D81e017E6B7662aC00eE2Ab8fe13"
+      address: "0xB1fC11F03b084FfF8daE95fA08e8D69ad2547Ec1"
       abi: RocketPoolStakeAssetManager
       startBlock: 21626960
     mapping:
@@ -334,7 +334,7 @@ dataSources:
     name: SablierLinearAssetManager
     network: mainnet
     source:
-      address: "0xc91B651f770ed996a223a16dA9CCD6f7Df56C987"
+      address: "0xB90AcF57C3BFE8e0E8215defc282B5F48b3edC74"
       abi: SablierLinearAssetManager
       startBlock: 21626960
     mapping:
@@ -360,7 +360,7 @@ dataSources:
     name: SablierDynamicAssetManager
     network: mainnet
     source:
-      address: "0xB1fC11F03b084FfF8daE95fA08e8D69ad2547Ec1"
+      address: "0x453439300B6C5C645737324b990f2d51137027bC"
       abi: SablierDynamicAssetManager
       startBlock: 21626960
     mapping:
@@ -386,7 +386,7 @@ dataSources:
     name: NftAssetManager
     network: mainnet
     source:
-      address: "0xA4f9885550548c6a45b9D18C57B114c06f3c39B8"
+      address: "0x886a2A3ABF5B79AA5dFF1C73016BD07CFc817e04"
       abi: NftAssetManager
       startBlock: 21626960
     mapping:
@@ -412,7 +412,7 @@ dataSources:
     name: OTCSwapAssetManager
     network: mainnet
     source:
-      address: "0x5aA185fbEFc205072FaecC6B9D564383e761f8C2"
+      address: "0x63275D081C4A77AE69f76c4952F9747a5559a519"
       abi: OTCSwapAssetManager
       startBlock: 21626960
     mapping:
@@ -477,3 +477,48 @@ dataSources:
         - event: DarkPoolSwap(bytes32,bytes32,bytes32,bytes32)
           handler: handleDarkPoolSwap
       file: ./src/dark-pool-swap-asset-manager.ts
+  - kind: ethereum
+    name: DarkSwapAssetManager
+    network: mainnet
+    source:
+      address: "0x9D8946A8A0c5a583Bf05bE83B981406182ac9d2f"
+      abi: DarkSwapAssetManager
+      startBlock: 21626960
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - DarkSwapCancelOrder
+        - DarkSwapCancelOrderWithdraw
+        - DarkSwapDeposit
+        - DarkSwapJoin
+        - DarkSwapProCreateOrder
+        - DarkSwapProSwap
+        - DarkSwapRetailDepositCreateOrder
+        - DarkSwapRetailSwap
+        - DarkSwapWithdraw
+        - DarkSwapAssetManagerOwnershipTransferred
+      abis:
+        - name: DarkSwapAssetManager
+          file: ./abis/DarkSwapAssetManager.json
+      eventHandlers:
+        - event: DarkSwapCancelOrder(address,bytes32,bytes32,bytes32,bytes32)
+          handler: handleDarkSwapCancelOrder
+        - event: DarkSwapCancelOrderWithdraw(bytes32,address,address,uint256)
+          handler: handleDarkSwapCancelOrderWithdraw
+        - event: DarkSwapDeposit(address,bytes32,address,uint256)
+          handler: handleDarkSwapDeposit
+        - event: DarkSwapJoin(bytes32[3],bytes32)
+          handler: handleDarkSwapJoin
+        - event: DarkSwapProCreateOrder(address,bytes32,bytes32,bytes32,bytes32,bytes32)
+          handler: handleDarkSwapProCreateOrder
+        - event: DarkSwapProSwap(bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32)
+          handler: handleDarkSwapProSwap
+        - event: DarkSwapRetailDepositCreateOrder(address,bytes32,bytes32,bytes32,bytes32)
+          handler: handleDarkSwapRetailDepositCreateOrder
+        - event: DarkSwapRetailSwap(bytes32,bytes32,bytes32,bytes32,bytes32,bytes32)
+          handler: handleDarkSwapRetailSwap
+        - event: DarkSwapWithdraw(bytes32,uint256,address,bytes32,address)
+          handler: handleDarkSwapWithdraw
+      file: ./src/dark-swap-asset-manager.ts

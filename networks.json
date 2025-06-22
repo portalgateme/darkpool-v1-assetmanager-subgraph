@@ -69,6 +69,9 @@
     },
     "DarkPoolSwapAssetManager": {
       "address": "0x8797847c9d63D8Ed9C30B058F408d4257A33B76C"
+    },
+    "DarkSwapAssetManager": {
+      "address": "0x9D8946A8A0c5a583Bf05bE83B981406182ac9d2f"
     }
   }
 }
