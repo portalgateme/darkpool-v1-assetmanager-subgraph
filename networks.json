@@ -72,6 +72,9 @@
     },
     "DarkSwapAssetManager": {
       "address": "0x9D8946A8A0c5a583Bf05bE83B981406182ac9d2f"
+    },
+    "TheDeepVaultAssetManager": {
+      "address": "0xA7c59f010700930003b33aB25a7a0679C860f29c"
     }
   }
 }

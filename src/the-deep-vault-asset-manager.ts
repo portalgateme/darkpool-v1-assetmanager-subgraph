@@ -1,0 +1,42 @@
+import {
+  TheDeepDeposit as TheDeepDepositEvent,
+  TheDeepWithdrawal as TheDeepWithdrawalEvent,
+} from "../generated/TheDeepVaultAssetManager/TheDeepVaultAssetManager"
+import {
+  TheDeepDeposit,
+  TheDeepWithdrawal,
+} from "../generated/schema"
+
+export function handleTheDeepDeposit(event: TheDeepDepositEvent): void {
+  let entity = new TheDeepDeposit(
+    event.transaction.hash.concatI32(event.logIndex.toI32()),
+  )
+  entity.depositor = event.params.depositor
+  entity.noteFooter = event.params.noteFooter
+  entity.noteOut = event.params.noteOut
+  entity.amount = event.params.amount
+  entity.asset = event.params.asset
+
+  entity.blockNumber = event.block.number
+  entity.blockTimestamp = event.block.timestamp
+  entity.transactionHash = event.transaction.hash
+
+  entity.save()
+}
+
+export function handleTheDeepWithdrawal(event: TheDeepWithdrawalEvent): void {
+  let entity = new TheDeepWithdrawal(
+    event.transaction.hash.concatI32(event.logIndex.toI32()),
+  )
+  entity.nullifier = event.params.nullifier
+  entity.assetsOut = event.params.assetsOut
+  entity.amountsOut = event.params.amountsOut
+  entity.noteFooters = event.params.noteFooters
+  entity.notesOut = event.params.notesOut
+
+  entity.blockNumber = event.block.number
+  entity.blockTimestamp = event.block.timestamp
+  entity.transactionHash = event.transaction.hash
+
+  entity.save()
+}

@@ -686,3 +686,27 @@ type DarkSwapWithdraw @entity(immutable: true) {
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
+
+type TheDeepDeposit @entity(immutable: true) {
+  id: Bytes!
+  depositor: Bytes! # address
+  noteFooter: Bytes! # bytes32
+  noteOut: Bytes! # bytes32
+  amount: BigInt! # uint256
+  asset: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TheDeepWithdrawal @entity(immutable: true) {
+  id: Bytes!
+  nullifier: Bytes! # bytes32
+  assetsOut: [Bytes!]! # address[2]
+  amountsOut: [BigInt!]! # uint256[2]
+  noteFooters: [Bytes!]! # bytes32[2]
+  notesOut: [Bytes!]! # bytes32[2]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
