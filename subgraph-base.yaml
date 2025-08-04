@@ -258,7 +258,7 @@ dataSources:
         - event: AerodromeAddLiquidity(bytes32[2],address[3],uint256[3],bytes32[3],bytes32[3])
           handler: handleAerodromeAddLiquidity
         - event: AerodromeZapIn(bytes32,address,uint256,bytes32,bytes32)
-          handler: handleAerodromeZapIn      
+          handler: handleAerodromeZapIn
       file: ./src/aerodrome-add-liquidity-asset-manager.ts
   - kind: ethereum
     name: AerodromeRemoveLiquidityAssetManager
@@ -283,3 +283,26 @@ dataSources:
         - event: AerodromeZapOut(bytes32,address[2],uint256[2],bytes32[2],bytes32[2])
           handler: handleAerodromeZapOut
       file: ./src/aerodrome-remove-liquidity-asset-manager.ts
+  - kind: ethereum
+    name: TheDeepVaultAssetManager
+    network: base
+    source:
+      address: "0x105D350E91a4a9603F0c5381bB722A30ceE7C2CC"
+      abi: TheDeepVaultAssetManager
+      startBlock: 33539648
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - TheDeepDeposit
+        - TheDeepWithdrawal
+      abis:
+        - name: TheDeepVaultAssetManager
+          file: ./abis/TheDeepVaultAssetManager.json
+      eventHandlers:
+        - event: TheDeepDeposit(address,bytes32,bytes32,uint256,address)
+          handler: handleTheDeepDeposit
+        - event: TheDeepWithdrawal(bytes32,address,address[2],uint256[2])
+          handler: handleTheDeepWithdrawal
+      file: ./src/the-deep-vault-asset-manager.ts

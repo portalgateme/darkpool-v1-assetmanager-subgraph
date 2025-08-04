@@ -26,12 +26,7 @@
         "type": "address"
       },
       { "internalType": "address", "name": "mimc254", "type": "address" },
-      { "internalType": "address", "name": "initialOwner", "type": "address" },
-      {
-        "internalType": "address",
-        "name": "volatilityCheckAddress",
-        "type": "address"
-      }
+      { "internalType": "address", "name": "initialOwner", "type": "address" }
     ],
     "stateMutability": "nonpayable",
     "type": "constructor"
@@ -151,6 +146,12 @@
       },
       {
         "indexed": false,
+        "internalType": "address",
+        "name": "receipt",
+        "type": "address"
+      },
+      {
+        "indexed": false,
         "internalType": "address[2]",
         "name": "assetsOut",
         "type": "address[2]"
@@ -160,18 +161,6 @@
         "internalType": "uint256[2]",
         "name": "amountsOut",
         "type": "uint256[2]"
-      },
-      {
-        "indexed": false,
-        "internalType": "bytes32[2]",
-        "name": "noteFooters",
-        "type": "bytes32[2]"
-      },
-      {
-        "indexed": false,
-        "internalType": "bytes32[2]",
-        "name": "notesOut",
-        "type": "bytes32[2]"
       }
     ],
     "name": "TheDeepWithdrawal",
@@ -195,13 +184,6 @@
     "inputs": [],
     "name": "P",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "VolatilityCheck",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"
   },
@@ -282,8 +264,6 @@
     ],
     "name": "quoteDecreaseLiquidity",
     "outputs": [
-      { "internalType": "uint256", "name": "", "type": "uint256" },
-      { "internalType": "uint256", "name": "", "type": "uint256" },
       { "internalType": "uint256", "name": "", "type": "uint256" },
       { "internalType": "uint256", "name": "", "type": "uint256" }
     ],
@@ -380,8 +360,19 @@
   },
   {
     "inputs": [
+      { "internalType": "uint8", "name": "_vaultType", "type": "uint8" },
+      { "internalType": "address", "name": "_addr", "type": "address" }
+    ],
+    "name": "setVolatilityCheck",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
       {
         "components": [
+          { "internalType": "uint8", "name": "vaultType", "type": "uint8" },
           { "internalType": "address", "name": "asset1", "type": "address" },
           { "internalType": "uint128", "name": "amount1", "type": "uint128" },
           { "internalType": "address", "name": "asset2", "type": "address" },
@@ -413,6 +404,63 @@
     "inputs": [
       {
         "components": [
+          { "internalType": "uint8", "name": "vaultType", "type": "uint8" },
+          {
+            "internalType": "bytes32",
+            "name": "merkleRoot",
+            "type": "bytes32"
+          },
+          { "internalType": "address", "name": "asset1", "type": "address" },
+          { "internalType": "uint128", "name": "amount1", "type": "uint128" },
+          { "internalType": "address", "name": "asset2", "type": "address" },
+          { "internalType": "uint128", "name": "amount2", "type": "uint128" },
+          {
+            "internalType": "bytes32",
+            "name": "inNullifier1",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "inNullifier2",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "noteFooter",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "address",
+            "name": "vaultAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "volatility",
+            "type": "uint256"
+          },
+          { "internalType": "address", "name": "relayer", "type": "address" },
+          {
+            "internalType": "uint256[2]",
+            "name": "gasRefund",
+            "type": "uint256[2]"
+          }
+        ],
+        "internalType": "struct TheDeepVaultAssetManager.TheDeepNoteDepositArgs",
+        "name": "_args",
+        "type": "tuple"
+      },
+      { "internalType": "bytes", "name": "_proof", "type": "bytes" }
+    ],
+    "name": "theDeepNoteDeposit",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
           {
             "internalType": "bytes32",
             "name": "merkleRoot",
@@ -430,16 +478,7 @@
             "name": "gasRefund",
             "type": "uint256[2]"
           },
-          {
-            "internalType": "bytes32[2]",
-            "name": "outNoteFooters",
-            "type": "bytes32[2]"
-          },
-          {
-            "internalType": "address[2]",
-            "name": "assetsOut",
-            "type": "address[2]"
-          }
+          { "internalType": "address", "name": "receipt", "type": "address" }
         ],
         "internalType": "struct TheDeepVaultAssetManager.TheDeepWithdrawArgs",
         "name": "_args",
@@ -459,6 +498,15 @@
     "name": "transferOwnership",
     "outputs": [],
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint8", "name": "vault", "type": "uint8" }],
+    "name": "volatilityCheck",
+    "outputs": [
+      { "internalType": "address", "name": "addr", "type": "address" }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   { "stateMutability": "payable", "type": "receive" }

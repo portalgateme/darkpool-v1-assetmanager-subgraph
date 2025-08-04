@@ -1,3 +1,4 @@
+import { Bytes } from "@graphprotocol/graph-ts"
 import {
   TheDeepDeposit as TheDeepDepositEvent,
   TheDeepWithdrawal as TheDeepWithdrawalEvent,
@@ -29,10 +30,9 @@ export function handleTheDeepWithdrawal(event: TheDeepWithdrawalEvent): void {
     event.transaction.hash.concatI32(event.logIndex.toI32()),
   )
   entity.nullifier = event.params.nullifier
-  entity.assetsOut = event.params.assetsOut
+  entity.receipt = event.params.receipt
+  entity.assetsOut = event.params.assetsOut.map<Bytes>((value)=> value as Bytes)
   entity.amountsOut = event.params.amountsOut
-  entity.noteFooters = event.params.noteFooters
-  entity.notesOut = event.params.notesOut
 
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp

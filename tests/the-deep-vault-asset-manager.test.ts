@@ -13,12 +13,6 @@ import { Address, Bytes, BigInt } from "@graphprotocol/graph-ts"
 
 describe("Describe entity assertions", () => {
   beforeAll(() => {
-    let previousOwner = Address.fromString(
-      "0x0000000000000000000000000000000000000001"
-    )
-    let newOwner = Address.fromString(
-      "0x0000000000000000000000000000000000000001"
-    )
   })
 
   afterAll(() => {
@@ -27,25 +21,4 @@ describe("Describe entity assertions", () => {
 
   // For more test scenarios, see:
   // https://thegraph.com/docs/en/developer/matchstick/#write-a-unit-test
-
-  test("OwnershipTransferred created and stored", () => {
-    assert.entityCount("OwnershipTransferred", 1)
-
-    // 0xa16081f360e3847006db660bae1c6d1b2e17ec2a is the default address used in newMockEvent() function
-    assert.fieldEquals(
-      "OwnershipTransferred",
-      "0xa16081f360e3847006db660bae1c6d1b2e17ec2a-1",
-      "previousOwner",
-      "0x0000000000000000000000000000000000000001"
-    )
-    assert.fieldEquals(
-      "OwnershipTransferred",
-      "0xa16081f360e3847006db660bae1c6d1b2e17ec2a-1",
-      "newOwner",
-      "0x0000000000000000000000000000000000000001"
-    )
-
-    // More assert options:
-    // https://thegraph.com/docs/en/developer/matchstick/#asserts
-  })
 })

@@ -1,33 +1,9 @@
 import { newMockEvent } from "matchstick-as"
 import { ethereum, Address, Bytes, BigInt } from "@graphprotocol/graph-ts"
 import {
-  OwnershipTransferred,
   TheDeepDeposit,
   TheDeepWithdrawal
 } from "../generated/TheDeepVaultAssetManager/TheDeepVaultAssetManager"
-
-export function createOwnershipTransferredEvent(
-  previousOwner: Address,
-  newOwner: Address
-): OwnershipTransferred {
-  let ownershipTransferredEvent = changetype<OwnershipTransferred>(
-    newMockEvent()
-  )
-
-  ownershipTransferredEvent.parameters = new Array()
-
-  ownershipTransferredEvent.parameters.push(
-    new ethereum.EventParam(
-      "previousOwner",
-      ethereum.Value.fromAddress(previousOwner)
-    )
-  )
-  ownershipTransferredEvent.parameters.push(
-    new ethereum.EventParam("newOwner", ethereum.Value.fromAddress(newOwner))
-  )
-
-  return ownershipTransferredEvent
-}
 
 export function createTheDeepDepositEvent(
   depositor: Address,
@@ -64,10 +40,9 @@ export function createTheDeepDepositEvent(
 
 export function createTheDeepWithdrawalEvent(
   nullifier: Bytes,
+  receipt: Address,
   assetsOut: Array<Address>,
-  amountsOut: Array<BigInt>,
-  noteFooters: Array<Bytes>,
-  notesOut: Array<Bytes>
+  amountsOut: Array<BigInt>
 ): TheDeepWithdrawal {
   let theDeepWithdrawalEvent = changetype<TheDeepWithdrawal>(newMockEvent())
 
@@ -80,6 +55,9 @@ export function createTheDeepWithdrawalEvent(
     )
   )
   theDeepWithdrawalEvent.parameters.push(
+    new ethereum.EventParam("receipt", ethereum.Value.fromAddress(receipt))
+  )
+  theDeepWithdrawalEvent.parameters.push(
     new ethereum.EventParam(
       "assetsOut",
       ethereum.Value.fromAddressArray(assetsOut)
@@ -89,18 +67,6 @@ export function createTheDeepWithdrawalEvent(
     new ethereum.EventParam(
       "amountsOut",
       ethereum.Value.fromUnsignedBigIntArray(amountsOut)
-    )
-  )
-  theDeepWithdrawalEvent.parameters.push(
-    new ethereum.EventParam(
-      "noteFooters",
-      ethereum.Value.fromFixedBytesArray(noteFooters)
-    )
-  )
-  theDeepWithdrawalEvent.parameters.push(
-    new ethereum.EventParam(
-      "notesOut",
-      ethereum.Value.fromFixedBytesArray(notesOut)
     )
   )
 
