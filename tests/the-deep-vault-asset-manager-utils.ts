@@ -10,7 +10,8 @@ export function createTheDeepDepositEvent(
   noteFooter: Bytes,
   noteOut: Bytes,
   amount: BigInt,
-  asset: Address
+  asset: Address,
+  nullifier: Bytes
 ): TheDeepDeposit {
   let theDeepDepositEvent = changetype<TheDeepDeposit>(newMockEvent())
 
@@ -33,6 +34,12 @@ export function createTheDeepDepositEvent(
   )
   theDeepDepositEvent.parameters.push(
     new ethereum.EventParam("asset", ethereum.Value.fromAddress(asset))
+  )
+  theDeepDepositEvent.parameters.push(
+    new ethereum.EventParam(
+      "nullifier",
+      ethereum.Value.fromFixedBytes(nullifier)
+    )
   )
 
   return theDeepDepositEvent

@@ -8,9 +8,9 @@ dataSources:
     name: DarkpoolAssetManager
     network: mainnet
     source:
-      address: "0xe1708FA6bb2844D5384613ef0846F9Bc1e8eC55E"
+      address: "0x5f77B042e245f87E14b28e949b9EDEe622EAAa78"
       abi: DarkpoolAssetManager
-      startBlock: 18455067
+      startBlock: 33371000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -43,9 +43,9 @@ dataSources:
     name: UniswapSwapAssetManager
     network: mainnet
     source:
-      address: "0x286B8DecD5ED79c962b2d8F4346CD97FF0E2C352"
+      address: "0x3b19cF7e100C1c45993BdA0831DC34ebAd5eC41B"
       abi: UniswapSwapAssetManager
-      startBlock: 18455067
+      startBlock: 33371000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -63,9 +63,9 @@ dataSources:
     name: UniswapLiquidityAssetManager
     network: mainnet
     source:
-      address: "0x742489F22807ebB4C36ca6cD95c3e1C044B7B6c8"
+      address: "0xFaB6ECCbF46964bd6ebB707B7CCcb2e939B037CC"
       abi: UniswapLiquidityAssetManager
-      startBlock: 18455067
+      startBlock: 33371000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -89,9 +89,9 @@ dataSources:
     name: StakingAssetManager
     network: mainnet
     source:
-      address: "0xdF46e54aAadC1d55198A4a8b4674D7a4c927097A"
+      address: "0x4013dA2Cae8E0e07289db3ae4AA8C5D3f4280330"
       abi: StakingAssetManager
-      startBlock: 18455067
+      startBlock: 33371000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -112,9 +112,9 @@ dataSources:
     name: SablierLinearAssetManager
     network: mainnet
     source:
-      address: "0x4593ed9CbE6003e687e5e77368534bb04b162503"
+      address: "0xA46A708E99c4340C9C5C46Ead490735aAD9e615e"
       abi: SablierLinearAssetManager
-      startBlock: 18455067
+      startBlock: 33371000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -135,9 +135,9 @@ dataSources:
     name: SablierDynamicAssetManager
     network: mainnet
     source:
-      address: "0x2c8ED11fd7A058096F2e5828799c68BE88744E2F"
+      address: "0x07853e30cdFF5b8343A4fC210752B78B17f2d834"
       abi: SablierDynamicAssetManager
-      startBlock: 18455067
+      startBlock: 33371000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -158,9 +158,9 @@ dataSources:
     name: NftAssetManager
     network: mainnet
     source:
-      address: "0xC1e0A9DB9eA830c52603798481045688c8AE99C2"
+      address: "0x2b67E4233B41f9cA0624a56346A1312911cAbe2d"
       abi: NftAssetManager
-      startBlock: 18455067
+      startBlock: 33371000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -181,9 +181,9 @@ dataSources:
     name: OTCSwapAssetManager
     network: mainnet
     source:
-      address: "0xb185E9f6531BA9877741022C92CE858cDCc5760E"
+      address: "0x1aD8DeeD31e82a53A74aD1D49FdB6e225cA42afa"
       abi: OTCSwapAssetManager
-      startBlock: 18455067
+      startBlock: 33371000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -198,32 +198,12 @@ dataSources:
           handler: handleSwap
       file: ./src/otc-swap-asset-manager.ts
   - kind: ethereum
-    name: GeneralDefiIntegrationAssetManager
-    network: mainnet
-    source:
-      address: "0xCBBe2A5c3A22BE749D5DDF24e9534f98951983e2"
-      abi: GeneralDefiIntegrationAssetManager
-      startBlock: 18455067
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.7
-      language: wasm/assemblyscript
-      entities:
-        - DefiIntegration
-      abis:
-        - name: GeneralDefiIntegrationAssetManager
-          file: ./abis/GeneralDefiIntegrationAssetManager.json
-      eventHandlers:
-        - event: DefiIntegration(address,bytes32[],bytes32[],uint256[],bytes32[])
-          handler: handleDefiIntegration
-      file: ./src/general-defi-integration-asset-manager.ts
-  - kind: ethereum
     name: AerodromeSwapAssetManager
     network: mainnet
     source:
-      address: "0x95775fD3Afb1F4072794CA4ddA27F2444BCf8Ac3"
+      address: "0x36B41f2516319c211290e3c4E84a54EdED9Bc4C9"
       abi: AerodromeSwapAssetManager
-      startBlock: 18455067
+      startBlock: 33371000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -241,9 +221,9 @@ dataSources:
     name: AerodromeAddLiquidityAssetManager
     network: mainnet
     source:
-      address: "0x3C1Cb427D20F15563aDa8C249E71db76d7183B6c"
+      address: "0x597002082033Ac30A9DFB7c67918d2Ca70e52819"
       abi: AerodromeAddLiquidityAssetManager
-      startBlock: 18455067
+      startBlock: 33371000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -258,15 +238,15 @@ dataSources:
         - event: AerodromeAddLiquidity(bytes32[2],address[3],uint256[3],bytes32[3],bytes32[3])
           handler: handleAerodromeAddLiquidity
         - event: AerodromeZapIn(bytes32,address,uint256,bytes32,bytes32)
-          handler: handleAerodromeZapIn      
+          handler: handleAerodromeZapIn
       file: ./src/aerodrome-add-liquidity-asset-manager.ts
   - kind: ethereum
     name: AerodromeRemoveLiquidityAssetManager
     network: mainnet
     source:
-      address: "0x0a17FabeA4633ce714F1Fa4a2dcA62C3bAc4758d"
+      address: "0xCC952b47cFe3cCE6847D98685c5f82Ad49E25A1A"
       abi: AerodromeRemoveLiquidityAssetManager
-      startBlock: 18455067
+      startBlock: 33371000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -287,9 +267,9 @@ dataSources:
     name: TheDeepVaultAssetManager
     network: mainnet
     source:
-      address: "0xA7c59f010700930003b33aB25a7a0679C860f29c"
+      address: "0x68C4143228E64836d693D4ff3aaEBb8f69a4Dc7B"
       abi: TheDeepVaultAssetManager
-      startBlock: 18455067
+      startBlock: 33371000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -301,8 +281,8 @@ dataSources:
         - name: TheDeepVaultAssetManager
           file: ./abis/TheDeepVaultAssetManager.json
       eventHandlers:
-        - event: TheDeepDeposit(address,bytes32,bytes32,uint256,address)
+        - event: TheDeepDeposit(address,bytes32,bytes32,uint256,address,bytes32)
           handler: handleTheDeepDeposit
-        - event: TheDeepWithdrawal(bytes32,address[2],uint256[2],bytes32[2],bytes32[2])
+        - event: TheDeepWithdrawal(bytes32,address,address[2],uint256[2])
           handler: handleTheDeepWithdrawal
       file: ./src/the-deep-vault-asset-manager.ts

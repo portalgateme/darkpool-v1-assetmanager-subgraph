@@ -694,6 +694,7 @@ type TheDeepDeposit @entity(immutable: true) {
   noteOut: Bytes! # bytes32
   amount: BigInt! # uint256
   asset: Bytes! # address
+  nullifier: Bytes! # bytes32
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!

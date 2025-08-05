@@ -17,6 +17,7 @@ export function handleTheDeepDeposit(event: TheDeepDepositEvent): void {
   entity.noteOut = event.params.noteOut
   entity.amount = event.params.amount
   entity.asset = event.params.asset
+  entity.nullifier = event.params.nullifier
 
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp
