@@ -710,3 +710,13 @@ type TheDeepWithdrawal @entity(immutable: true) {
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
+
+type TransferAssetManagerTransfer @entity(immutable: true) {
+  id: Bytes!
+  nullifierIn: Bytes! # bytes32
+  noteOut: Bytes! # bytes32
+  noteFooter: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

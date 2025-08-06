@@ -286,3 +286,23 @@ dataSources:
         - event: TheDeepWithdrawal(bytes32,address,address[2],uint256[2])
           handler: handleTheDeepWithdrawal
       file: ./src/the-deep-vault-asset-manager.ts
+  - kind: ethereum
+    name: TransferAssetManager
+    network: mainnet
+    source:
+      address: "0x597002082033Ac30A9DFB7c67918d2Ca70e52819"
+      abi: TransferAssetManager
+      startBlock: 33371000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - TransferAssetManagerTransfer
+      abis:
+        - name: TransferAssetManager
+          file: ./abis/TransferAssetManager.json
+      eventHandlers:
+        - event: Transfer(bytes32,bytes32,bytes32)
+          handler: handleTransfer
+      file: ./src/transfer-asset-manager.ts

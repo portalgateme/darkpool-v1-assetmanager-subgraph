@@ -75,6 +75,17 @@
     },
     "TheDeepVaultAssetManager": {
       "address": "0xA7c59f010700930003b33aB25a7a0679C860f29c"
+    },
+    "TransferAssetManager": {
+      "address": "0x597002082033Ac30A9DFB7c67918d2Ca70e52819"
+    }
+  },
+  "mainnet": {
+    "TheDeepVaultAssetManager": {
+      "address": "0x68C4143228E64836d693D4ff3aaEBb8f69a4Dc7B"
+    },
+    "TransferAssetManager": {
+      "address": "0x597002082033Ac30A9DFB7c67918d2Ca70e52819"
     }
   }
 }
