@@ -1,10 +1,10 @@
 import {
   Transfer as TransferEvent,
 } from "../generated/TransferAssetManager/TransferAssetManager"
-import { Transfer } from "../generated/schema"
+import { TransferAssetManagerTransfer } from "../generated/schema"
 
 export function handleTransfer(event: TransferEvent): void {
-  let entity = new Transfer(
+  let entity = new TransferAssetManagerTransfer(
     event.transaction.hash.concatI32(event.logIndex.toI32()),
   )
   entity.nullifierIn = event.params.nullifierIn
