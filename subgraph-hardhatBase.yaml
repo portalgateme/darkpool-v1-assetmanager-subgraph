@@ -43,7 +43,7 @@ dataSources:
     name: UniswapSwapAssetManager
     network: mainnet
     source:
-      address: "0x3b19cF7e100C1c45993BdA0831DC34ebAd5eC41B"
+      address: "0x11db3d12B234497eC594c13a23cE6529E9e36733"
       abi: UniswapSwapAssetManager
       startBlock: 33371000
     mapping:
@@ -63,7 +63,7 @@ dataSources:
     name: UniswapLiquidityAssetManager
     network: mainnet
     source:
-      address: "0xFaB6ECCbF46964bd6ebB707B7CCcb2e939B037CC"
+      address: "0x3b19cF7e100C1c45993BdA0831DC34ebAd5eC41B"
       abi: UniswapLiquidityAssetManager
       startBlock: 33371000
     mapping:
@@ -89,7 +89,7 @@ dataSources:
     name: StakingAssetManager
     network: mainnet
     source:
-      address: "0x4013dA2Cae8E0e07289db3ae4AA8C5D3f4280330"
+      address: "0x68C4143228E64836d693D4ff3aaEBb8f69a4Dc7B"
       abi: StakingAssetManager
       startBlock: 33371000
     mapping:
@@ -112,7 +112,7 @@ dataSources:
     name: SablierLinearAssetManager
     network: mainnet
     source:
-      address: "0xA46A708E99c4340C9C5C46Ead490735aAD9e615e"
+      address: "0x4013dA2Cae8E0e07289db3ae4AA8C5D3f4280330"
       abi: SablierLinearAssetManager
       startBlock: 33371000
     mapping:
@@ -135,7 +135,7 @@ dataSources:
     name: SablierDynamicAssetManager
     network: mainnet
     source:
-      address: "0x07853e30cdFF5b8343A4fC210752B78B17f2d834"
+      address: "0xA46A708E99c4340C9C5C46Ead490735aAD9e615e"
       abi: SablierDynamicAssetManager
       startBlock: 33371000
     mapping:
@@ -201,7 +201,7 @@ dataSources:
     name: AerodromeSwapAssetManager
     network: mainnet
     source:
-      address: "0x36B41f2516319c211290e3c4E84a54EdED9Bc4C9"
+      address: "0x03944E45B18Baad773e5355eDFB739C311eF6F01"
       abi: AerodromeSwapAssetManager
       startBlock: 33371000
     mapping:
@@ -221,7 +221,7 @@ dataSources:
     name: AerodromeAddLiquidityAssetManager
     network: mainnet
     source:
-      address: "0x597002082033Ac30A9DFB7c67918d2Ca70e52819"
+      address: "0xCC952b47cFe3cCE6847D98685c5f82Ad49E25A1A"
       abi: AerodromeAddLiquidityAssetManager
       startBlock: 33371000
     mapping:
@@ -244,7 +244,7 @@ dataSources:
     name: AerodromeRemoveLiquidityAssetManager
     network: mainnet
     source:
-      address: "0xCC952b47cFe3cCE6847D98685c5f82Ad49E25A1A"
+      address: "0x36B41f2516319c211290e3c4E84a54EdED9Bc4C9"
       abi: AerodromeRemoveLiquidityAssetManager
       startBlock: 33371000
     mapping:
@@ -267,7 +267,7 @@ dataSources:
     name: TheDeepVaultAssetManager
     network: mainnet
     source:
-      address: "0x68C4143228E64836d693D4ff3aaEBb8f69a4Dc7B"
+      address: "0xFaB6ECCbF46964bd6ebB707B7CCcb2e939B037CC"
       abi: TheDeepVaultAssetManager
       startBlock: 33371000
     mapping:
