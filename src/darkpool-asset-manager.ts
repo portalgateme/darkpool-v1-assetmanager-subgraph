@@ -2,7 +2,6 @@ import {
   Deposit as DepositEvent,
   Join as JoinEvent,
   JoinSplit as JoinSplitEvent,
-  OwnershipTransferred as OwnershipTransferredEvent,
   Split as SplitEvent,
   Transfer as TransferEvent,
   Withdraw as WithdrawEvent
@@ -11,7 +10,6 @@ import {
   Deposit,
   Join,
   JoinSplit,
-  OwnershipTransferred,
   Split,
   Transfer,
   Withdraw
@@ -56,22 +54,6 @@ export function handleJoinSplit(event: JoinSplitEvent): void {
   entity.nullifierIn2 = event.params.nullifierIn2
   entity.noteOut1 = event.params.noteOut1
   entity.noteOut2 = event.params.noteOut2
-
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
-
-  entity.save()
-}
-
-export function handleOwnershipTransferred(
-  event: OwnershipTransferredEvent
-): void {
-  let entity = new OwnershipTransferred(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
-  )
-  entity.previousOwner = event.params.previousOwner
-  entity.newOwner = event.params.newOwner
 
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp
