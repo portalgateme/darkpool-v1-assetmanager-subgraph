@@ -201,9 +201,9 @@ dataSources:
     name: AerodromeSwapAssetManager
     network: base
     source:
-      address: "0x159F3668c72BBeCdF1fb31beeD606Ec9649654eB"
+      address: "0x75640878dF057a994771e60992840C2FD400c821"
       abi: AerodromeSwapAssetManager
-      startBlock: 18807627
+      startBlock: 34261399
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
