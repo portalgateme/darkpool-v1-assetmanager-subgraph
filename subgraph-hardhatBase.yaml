@@ -198,11 +198,11 @@ dataSources:
           handler: handleSwap
       file: ./src/otc-swap-asset-manager.ts
   - kind: ethereum
-    name: AerodromeUniversalSwapAssetManager
+    name: AerodromeSwapAssetManager
     network: mainnet
     source:
       address: "0x07853e30cdFF5b8343A4fC210752B78B17f2d834"
-      abi: AerodromeUniversalSwapAssetManager
+      abi: AerodromeSwapAssetManager
       startBlock: 33371000
     mapping:
       kind: ethereum/events
@@ -211,7 +211,7 @@ dataSources:
       entities:
         - AerodromeSwap
       abis:
-        - name: AerodromeUniversalSwapAssetManager
+        - name: AerodromeSwapAssetManager
           file: ./abis/AerodromeSwapAssetManager.json
       eventHandlers:
         - event: AerodromeSwap(bytes32,address,uint256,bytes32,bytes32)
