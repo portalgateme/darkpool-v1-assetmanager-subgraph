@@ -1,0 +1,312 @@
+type Deposit @entity(immutable: true) {
+  id: Bytes!
+  depositor: Bytes! # address
+  noteOut: Bytes! # bytes32
+  amount: BigInt! # uint256
+  asset: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Join @entity(immutable: true) {
+  id: Bytes!
+  nullifierIn1: Bytes! # bytes32
+  nullifierIn2: Bytes! # bytes32
+  noteOut1: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type JoinSplit @entity(immutable: true) {
+  id: Bytes!
+  nullifierIn1: Bytes! # bytes32
+  nullifierIn2: Bytes! # bytes32
+  noteOut1: Bytes! # bytes32
+  noteOut2: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Split @entity(immutable: true) {
+  id: Bytes!
+  nullifierIn: Bytes! # bytes32
+  noteOut1: Bytes! # bytes32
+  noteOut2: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Transfer @entity(immutable: true) {
+  id: Bytes!
+  nullifierIn: Bytes! # bytes32
+  amount: BigInt! # uint256
+  asset: Bytes! # address
+  noteOut: Bytes! # bytes32
+  noteFooter: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Withdraw @entity(immutable: true) {
+  id: Bytes!
+  nullifierIn: Bytes! # bytes32
+  amount: BigInt! # uint256
+  asset: Bytes! # address
+  recipient: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type UniswapSwap @entity(immutable: true) {
+  id: Bytes!
+  assetOut: Bytes! # address
+  amountOut: BigInt! # uint256
+  noteNullifierIn: Bytes! # bytes32
+  noteFooter: Bytes! # bytes32
+  noteCommitmentOut: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type UniswapCollectFee @entity(immutable: true) {
+  id: Bytes!
+  tokenId: BigInt! # uint256
+  assets: [Bytes!]! # address[2]
+  amounts: [BigInt!]! # uint256[2]
+  feeNoteCommitments: [Bytes!]! # bytes32[2]
+  feeNoteFooters: [Bytes!]! # bytes32[2]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type UniswapLiquidityProvision @entity(immutable: true) {
+  id: Bytes!
+  tokenId: BigInt! # uint256
+  positionNote: Bytes! # bytes32
+  nullifiers: [Bytes!]! # bytes32[2]
+  changeAmounts: [BigInt!]! # uint256[2]
+  changeNoteCommitments: [Bytes!]! # bytes32[2]
+  changeNoteFooters: [Bytes!]! # bytes32[2]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type UniswapRemoveLiquidity @entity(immutable: true) {
+  id: Bytes!
+  tokenId: BigInt! # uint256
+  positionNullifier: Bytes! # bytes32
+  amounts: [BigInt!]! # uint256[2]
+  outNoteCommitments: [Bytes!]! # bytes32[2]
+  outNoteFooters: [Bytes!]! # bytes32[2]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+type CurveExchange @entity(immutable: true) {
+  id: Bytes!
+  nullifiers: Bytes! # bytes32
+  assetOut: Bytes! # address
+  amountOut: BigInt! # uint256
+  noteOut: Bytes! # bytes32
+  noteFooter: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CurveMultiExchangeAssetManagerCurveExchange @entity(immutable: true) {
+  id: Bytes!
+  nullifiers: Bytes! # bytes32
+  assetOut: Bytes! # address
+  amountOut: BigInt! # uint256
+  noteOut: Bytes! # bytes32
+  noteFooter: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CurveAddLiquidity @entity(immutable: true) {
+  id: Bytes!
+  nullifiers: [Bytes!]! # bytes32[4]
+  asset: Bytes! # address
+  amountOut: BigInt! # uint256
+  noteOut: Bytes! # bytes32
+  noteFooter: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CurveRemoveLiquidity @entity(immutable: true) {
+  id: Bytes!
+  nullifier: Bytes! # bytes32
+  assets: [Bytes!]! # address[5]
+  amountsOut: [BigInt!]! # uint256[5]
+  notesOut: [Bytes!]! # bytes32[5]
+  noteFooters: [Bytes!]! # bytes32[5]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Locked @entity(immutable: true) {
+  id: Bytes!
+  locker: Bytes! # address
+  assetIn: Bytes! # address
+  assetOut: Bytes! # address
+  amountOut: BigInt! # uint256
+  noteNullifierIn: Bytes! # bytes32
+  noteFooter: Bytes! # bytes32
+  noteCommitmentOut: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Unlocked @entity(immutable: true) {
+  id: Bytes!
+  assetIn: Bytes! # address
+  assetOut: Bytes! # address
+  amountOut: BigInt! # uint256
+  noteNullifierIn: Bytes! # bytes32
+  noteFooter: Bytes! # bytes32
+  noteCommitmentOut: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+type RocketDeposit @entity(immutable: true) {
+  id: Bytes!
+  nullifier: Bytes! # bytes32
+  amount: BigInt! # uint256
+  noteFooter: Bytes! # bytes32
+  noteCommitment: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RocketWithdrawal @entity(immutable: true) {
+  id: Bytes!
+  nullifier: Bytes! # bytes32
+  amount: BigInt! # uint256
+  noteFooter: Bytes! # bytes32
+  noteCommitment: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SablierClaimStream @entity(immutable: true) {
+  id: Bytes!
+  nullifier: Bytes! # bytes32
+  asset: Bytes! # address
+  amountOut: BigInt! # uint256
+  noteOut: Bytes! # bytes32
+  noteFooter: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SablierCreateStream @entity(immutable: true) {
+  id: Bytes!
+  sender: Bytes! # address
+  nft: Bytes! # address
+  streamIDs: [BigInt!]! # uint256[]
+  notesOut: [Bytes!]! # bytes32[]
+  noteFooters: [Bytes!]! # bytes32[]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SablierDynamicAssetManagerSablierClaimStream @entity(immutable: true) {
+  id: Bytes!
+  nullifier: Bytes! # bytes32
+  asset: Bytes! # address
+  amountOut: BigInt! # uint256
+  noteOut: Bytes! # bytes32
+  noteFooter: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SablierDynamicAssetManagerSablierCreateStream @entity(immutable: true) {
+  id: Bytes!
+  sender: Bytes! # address
+  nft: Bytes! # address
+  streamIDs: [BigInt!]! # uint256[]
+  notesOut: [Bytes!]! # bytes32[]
+  noteFooters: [Bytes!]! # bytes32[]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+
+type NftTransfer @entity(immutable: true) {
+  id: Bytes!
+  nullifierIn: Bytes! # bytes32
+  amount: BigInt! # uint256
+  asset: Bytes! # address
+  noteOut: Bytes! # bytes32
+  noteFooter: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type NftWithdraw @entity(immutable: true) {
+  id: Bytes!
+  nullifierIn: Bytes! # bytes32
+  amount: BigInt! # uint256
+  nftAsset: Bytes! # address
+  recipient: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+
+type Swap @entity(immutable: true) {
+  id: Bytes!
+  nullifierIn1: Bytes! # bytes32
+  nullifierIn2: Bytes! # bytes32
+  noteOut1: Bytes! # bytes32
+  noteOut2: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type BatchJoinSplit @entity(immutable: true) {
+  id: Bytes!
+  nullifiersIn: [Bytes!]! # bytes32[]
+  notesOut: [Bytes!]! # bytes32[]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+
+type TransferAssetManagerTransfer @entity(immutable: true) {
+  id: Bytes!
+  nullifierIn: Bytes! # bytes32
+  noteOut: Bytes! # bytes32
+  noteFooter: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

@@ -1,0 +1,50 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: DarkSwapAssetManager
+    network: horizenTestnet
+    source:
+      address: "0xEBeD6c7C2189bf8ad6687D3A4cf4b83fB4D1a3D2"
+      abi: DarkSwapAssetManager
+      startBlock: 14032457
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - DarkSwapCancelOrder
+        - DarkSwapCancelOrderWithdraw
+        - DarkSwapDeposit
+        - DarkSwapJoin
+        - DarkSwapProCreateOrder
+        - DarkSwapProSwap
+        - DarkSwapRetailDepositCreateOrder
+        - DarkSwapRetailSwap
+        - DarkSwapWithdraw
+      abis:
+        - name: DarkSwapAssetManager
+          file: ./abis/DarkSwapAssetManager.json
+      eventHandlers:
+        - event: DarkSwapCancelOrder(address,bytes32,bytes32,bytes32,bytes32)
+          handler: handleDarkSwapCancelOrder
+        - event: DarkSwapCancelOrderWithdraw(bytes32,address,address,uint256)
+          handler: handleDarkSwapCancelOrderWithdraw
+        - event: DarkSwapDeposit(address,bytes32,address,uint256)
+          handler: handleDarkSwapDeposit
+        - event: DarkSwapJoin(bytes32[3],bytes32)
+          handler: handleDarkSwapJoin
+        - event: DarkSwapProCreateOrder(address,bytes32,bytes32,bytes32,bytes32,bytes32)
+          handler: handleDarkSwapProCreateOrder
+        - event: DarkSwapProSwap(bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32)
+          handler: handleDarkSwapProSwap
+        - event: DarkSwapRetailDepositCreateOrder(address,bytes32,bytes32,bytes32,bytes32)
+          handler: handleDarkSwapRetailDepositCreateOrder
+        - event: DarkSwapRetailSwap(bytes32,bytes32,bytes32,bytes32,bytes32,bytes32)
+          handler: handleDarkSwapRetailSwap
+        - event: DarkSwapWithdraw(bytes32,uint256,address,bytes32,address)
+          handler: handleDarkSwapWithdraw
+      file: ./src/dark-swap-asset-manager.ts

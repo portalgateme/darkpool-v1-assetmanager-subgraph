@@ -1,0 +1,292 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: DarkpoolAssetManager
+    network: mainnet
+    source:
+      address: "0xc5B86EcB7Cf82213B392D668614429A0d0763745"
+      abi: DarkpoolAssetManager
+      startBlock: 270800000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Deposit
+        - Join
+        - JoinSplit
+        - OwnershipTransferred
+        - Split
+        - Transfer
+        - Withdraw
+      abis:
+        - name: DarkpoolAssetManager
+          file: ./abis/DarkpoolAssetManager.json
+      eventHandlers:
+        - event: Deposit(address,bytes32,uint256,address)
+          handler: handleDeposit
+        - event: Join(bytes32,bytes32,bytes32)
+          handler: handleJoin
+        - event: JoinSplit(bytes32,bytes32,bytes32,bytes32)
+          handler: handleJoinSplit
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Split(bytes32,bytes32,bytes32)
+          handler: handleSplit
+        - event: Transfer(bytes32,uint256,address,bytes32,bytes32)
+          handler: handleTransfer
+        - event: Withdraw(bytes32,uint256,address,address)
+          handler: handleWithdraw
+      file: ./src/darkpool-asset-manager.ts
+  - kind: ethereum
+    name: UniswapSwapAssetManager
+    network: mainnet
+    source:
+      address: "0x3D7CD28EfD08FfE9Ce8cA329EC2e67822C756526"
+      abi: UniswapSwapAssetManager
+      startBlock: 270800000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - UniswapSwapAssetManagerOwnershipTransferred
+        - UniswapSwap
+      abis:
+        - name: UniswapSwapAssetManager
+          file: ./abis/UniswapSwapAssetManager.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: UniswapSwap(address,uint256,bytes32,bytes32,bytes32)
+          handler: handleUniswapSwap
+      file: ./src/uniswap-swap-asset-manager.ts
+  - kind: ethereum
+    name: UniswapLiquidityAssetManager
+    network: mainnet
+    source:
+      address: "0xd1d50299505DE6C56e564E15eeF88CcA3b168832"
+      abi: UniswapLiquidityAssetManager
+      startBlock: 270800000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - UniswapLiquidityAssetManagerOwnershipTransferred
+        - UniswapCollectFees
+        - UniswapLiquidityProvision
+        - UniswapRemoveLiquidity
+      abis:
+        - name: UniswapLiquidityAssetManager
+          file: ./abis/UniswapLiquidityAssetManager.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: UniswapCollectFees(uint256,address[2],uint256[2],bytes32[2],bytes32[2])
+          handler: handleUniswapCollectFees
+        - event: UniswapLiquidityProvision(uint256,bytes32,bytes32[2],uint256[2],bytes32[2],bytes32[2])
+          handler: handleUniswapLiquidityProvision
+        - event: UniswapRemoveLiquidity(uint256,bytes32,uint256[2],bytes32[2],bytes32[2])
+          handler: handleUniswapRemoveLiquidity
+      file: ./src/uniswap-liquidity-asset-manager.ts
+  - kind: ethereum
+    name: StakingAssetManager
+    network: mainnet
+    source:
+      address: "0x6D13297026894C958807F34957e58D7CAC18C5A6"
+      abi: StakingAssetManager
+      startBlock: 270800000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Locked
+        - StakingAssetManagerOwnershipTransferred
+        - Unlocked
+      abis:
+        - name: StakingAssetManager
+          file: ./abis/StakingAssetManager.json
+      eventHandlers:
+        - event: Locked(address,address,address,uint256,bytes32,bytes32,bytes32)
+          handler: handleLocked
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Unlocked(address,address,uint256,bytes32,bytes32,bytes32)
+          handler: handleUnlocked
+      file: ./src/staking-asset-manager.ts
+  - kind: ethereum
+    name: SablierLinearAssetManager
+    network: mainnet
+    source:
+      address: "0xb4d3f14A8FE911fE8A0Cc68F3C0424fD88C0a96E"
+      abi: SablierLinearAssetManager
+      startBlock: 270800000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - SablierLinearAssetManagerOwnershipTransferred
+        - SablierClaimStream
+        - SablierCreateStream
+      abis:
+        - name: SablierLinearAssetManager
+          file: ./abis/SablierLinearAssetManager.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: SablierClaimStream(bytes32,address,uint256,bytes32,bytes32)
+          handler: handleSablierClaimStream
+        - event: SablierCreateStream(address,address,uint256[],bytes32[],bytes32[])
+          handler: handleSablierCreateStream
+      file: ./src/sablier-linear-asset-manager.ts
+  - kind: ethereum
+    name: SablierDynamicAssetManager
+    network: mainnet
+    source:
+      address: "0xf7461a489c71EAE6fA1Bfe69F8c3d661De0619Da"
+      abi: SablierDynamicAssetManager
+      startBlock: 270800000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - SablierDynamicAssetManagerOwnershipTransferred
+        - SablierDynamicAssetManagerSablierClaimStream
+        - SablierDynamicAssetManagerSablierCreateStream
+      abis:
+        - name: SablierDynamicAssetManager
+          file: ./abis/SablierDynamicAssetManager.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: SablierClaimStream(bytes32,address,uint256,bytes32,bytes32)
+          handler: handleSablierClaimStream
+        - event: SablierCreateStream(address,address,uint256[],bytes32[],bytes32[])
+          handler: handleSablierCreateStream
+      file: ./src/sablier-dynamic-asset-manager.ts
+  - kind: ethereum
+    name: NftAssetManager
+    network: mainnet
+    source:
+      address: "0x443729DFF68Dcc675463b0ED918ae57E00A3133b"
+      abi: NftAssetManager
+      startBlock: 270800000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - NftTransfer
+        - NftWithdraw
+        - NftAssetManagerOwnershipTransferred
+      abis:
+        - name: NftAssetManager
+          file: ./abis/NftAssetManager.json
+      eventHandlers:
+        - event: NftTransfer(bytes32,uint256,address,bytes32,bytes32)
+          handler: handleNftTransfer
+        - event: NftWithdraw(bytes32,uint256,address,address)
+          handler: handleNftWithdraw
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: ./src/nft-asset-manager.ts
+  - kind: ethereum
+    name: OTCSwapAssetManager
+    network: mainnet
+    source:
+      address: "0xa40E009b306B3b4f27374f6e833291DaAeC88cc6"
+      abi: OTCSwapAssetManager
+      startBlock: 270800000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - OTCSwapAssetManagerOwnershipTransferred
+        - Swap
+      abis:
+        - name: OTCSwapAssetManager
+          file: ./abis/OTCSwapAssetManager.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Swap(bytes32,bytes32,bytes32,bytes32)
+          handler: handleSwap
+      file: ./src/otc-swap-asset-manager.ts
+  - kind: ethereum
+    name: TorosAssetManager
+    network: mainnet
+    source:
+      address: "0x4268eD4F726727974861AD319F29cC3354d6526B"
+      abi: TorosAssetManager
+      startBlock: 270800000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - TorosDeposit
+        - TorosWithdrawal
+      abis:
+        - name: TorosAssetManager
+          file: ./abis/TorosAssetManager.json
+      eventHandlers:
+        - event: TorosDeposit(bytes32,uint256,bytes32,bytes32)
+          handler: handleTorosDeposit
+        - event: TorosWithdrawal(bytes32,address[2],uint256[2],bytes32[2],bytes32[2])
+          handler: handleTorosWithdrawal
+      file: ./src/toros-asset-manager.ts
+  - kind: ethereum
+    name: BatchJoinSplitAssetManager
+    network: mainnet
+    source:
+      address: "0x17f4B55A352Be71CC03856765Ad04147119Aa09B"
+      abi: BatchJoinSplitAssetManager
+      startBlock: 21626960
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - BatchJoinSplit
+      abis:
+        - name: BatchJoinSplitAssetManager
+          file: ./abis/BatchJoinSplitAssetManager.json
+      eventHandlers:
+        - event: BatchJoinSplit(bytes32[],bytes32[])
+          handler: handleBatchJoinSplit
+      file: ./src/batch-join-split-asset-manager.ts
+  - kind: ethereum
+    name: DarkPoolSwapAssetManager
+    network: mainnet
+    source:
+      address: "0x8797847c9d63D8Ed9C30B058F408d4257A33B76C"
+      abi: DarkPoolSwapAssetManager
+      startBlock: 21626960
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - DarkPoolCancelOrder
+        - DarkPoolCreateOrder
+        - DarkPoolSwap
+      abis:
+        - name: DarkPoolSwapAssetManager
+          file: ./abis/DarkPoolSwapAssetManager.json
+      eventHandlers:
+        - event: DarkPoolCancelOrder(bytes32)
+          handler: handleDarkPoolCancelOrder
+        - event: DarkPoolCreateOrder(bytes32)
+          handler: handleDarkPoolCreateOrder
+        - event: DarkPoolSwap(bytes32,bytes32,bytes32,bytes32)
+          handler: handleDarkPoolSwap
+      file: ./src/dark-pool-swap-asset-manager.ts

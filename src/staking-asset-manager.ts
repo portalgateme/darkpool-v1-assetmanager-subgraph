@@ -1,9 +1,8 @@
 import {
   Locked as LockedEvent,
-  OwnershipTransferred as OwnershipTransferredEvent,
   Unlocked as UnlockedEvent,
 } from "../generated/StakingAssetManager/StakingAssetManager"
-import { Locked, OwnershipTransferred, Unlocked } from "../generated/schema"
+import { Locked, Unlocked } from "../generated/schema"
 
 export function handleLocked(event: LockedEvent): void {
   let entity = new Locked(
@@ -24,21 +23,6 @@ export function handleLocked(event: LockedEvent): void {
   entity.save()
 }
 
-export function handleOwnershipTransferred(
-  event: OwnershipTransferredEvent,
-): void {
-  let entity = new OwnershipTransferred(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
-  )
-  entity.previousOwner = event.params.previousOwner
-  entity.newOwner = event.params.newOwner
-
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
-
-  entity.save()
-}
 
 export function handleUnlocked(event: UnlockedEvent): void {
   let entity = new Unlocked(

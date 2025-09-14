@@ -1,11 +1,8 @@
-import { Bytes } from "@graphprotocol/graph-ts"
 import {
-  CurveAddLiquidity as CurveAddLiquidityEvent,
-  OwnershipTransferred as OwnershipTransferredEvent,
+  CurveAddLiquidity as CurveAddLiquidityEvent
 } from "../generated/CurveFSNAddLiquidityAssetManager/CurveFSNAddLiquidityAssetManager"
 import {
-  CurveAddLiquidity,
-  OwnershipTransferred,
+  CurveAddLiquidity
 } from "../generated/schema"
 
 export function handleCurveAddLiquidity(event: CurveAddLiquidityEvent): void {
@@ -17,22 +14,6 @@ export function handleCurveAddLiquidity(event: CurveAddLiquidityEvent): void {
   entity.amountOut = event.params.amountOut
   entity.noteOut = event.params.noteOut
   entity.noteFooter = event.params.noteFooter
-
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
-
-  entity.save()
-}
-
-export function handleOwnershipTransferred(
-  event: OwnershipTransferredEvent,
-): void {
-  let entity = new OwnershipTransferred(
-    event.transaction.hash.concatI32(event.logIndex.toI32()),
-  )
-  entity.previousOwner = event.params.previousOwner
-  entity.newOwner = event.params.newOwner
 
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp

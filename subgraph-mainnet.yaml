@@ -19,7 +19,6 @@ dataSources:
         - Deposit
         - Join
         - JoinSplit
-        - OwnershipTransferred
         - Split
         - Transfer
         - Withdraw
@@ -33,8 +32,6 @@ dataSources:
           handler: handleJoin
         - event: JoinSplit(bytes32,bytes32,bytes32,bytes32)
           handler: handleJoinSplit
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
         - event: Split(bytes32,bytes32,bytes32)
           handler: handleSplit
         - event: Transfer(bytes32,uint256,address,bytes32,bytes32)
@@ -54,14 +51,11 @@ dataSources:
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - UniswapSwapAssetManagerOwnershipTransferred
         - UniswapSwap
       abis:
         - name: UniswapSwapAssetManager
           file: ./abis/UniswapSwapAssetManager.json
       eventHandlers:
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
         - event: UniswapSwap(address,uint256,bytes32,bytes32,bytes32)
           handler: handleUniswapSwap
       file: ./src/uniswap-swap-asset-manager.ts
@@ -77,7 +71,6 @@ dataSources:
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - UniswapLiquidityAssetManagerOwnershipTransferred
         - UniswapCollectFees
         - UniswapLiquidityProvision
         - UniswapRemoveLiquidity
@@ -85,8 +78,6 @@ dataSources:
         - name: UniswapLiquidityAssetManager
           file: ./abis/UniswapLiquidityAssetManager.json
       eventHandlers:
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
         - event: UniswapCollectFees(uint256,address[2],uint256[2],bytes32[2],bytes32[2])
           handler: handleUniswapCollectFees
         - event: UniswapLiquidityProvision(uint256,bytes32,bytes32[2],uint256[2],bytes32[2],bytes32[2])
@@ -107,15 +98,12 @@ dataSources:
       language: wasm/assemblyscript
       entities:
         - CurveExchange
-        - CurveSingleExchangeAssetManagerOwnershipTransferred
       abis:
         - name: CurveSingleExchangeAssetManager
           file: ./abis/CurveSingleExchangeAssetManager.json
       eventHandlers:
         - event: CurveExchange(bytes32,address,uint256,bytes32,bytes32)
           handler: handleCurveExchange
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
       file: ./src/curve-single-exchange-asset-manager.ts
   - kind: ethereum
     name: CurveMultiExchangeAssetManager
@@ -130,15 +118,12 @@ dataSources:
       language: wasm/assemblyscript
       entities:
         - CurveMultiExchangeAssetManagerCurveExchange
-        - CurveMultiExchangeAssetManagerOwnershipTransferred
       abis:
         - name: CurveMultiExchangeAssetManager
           file: ./abis/CurveMultiExchangeAssetManager.json
       eventHandlers:
         - event: CurveExchange(bytes32,address,uint256,bytes32,bytes32)
           handler: handleCurveExchange
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
       file: ./src/curve-multi-exchange-asset-manager.ts
   - kind: ethereum
     name: CurveAddLiquidityAssetManager
@@ -153,15 +138,12 @@ dataSources:
       language: wasm/assemblyscript
       entities:
         - CurveAddLiquidity
-        - CurveAddLiquidityAssetManagerOwnershipTransferred
       abis:
         - name: CurveAddLiquidityAssetManager
           file: ./abis/CurveAddLiquidityAssetManager.json
       eventHandlers:
         - event: CurveAddLiquidity(bytes32[4],address,uint256,bytes32,bytes32)
           handler: handleCurveAddLiquidity
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
       file: ./src/curve-add-liquidity-asset-manager.ts
   - kind: ethereum
     name: CurveFSNAddLiquidityAssetManager
@@ -176,17 +158,12 @@ dataSources:
       language: wasm/assemblyscript
       entities:
         - CurveAddLiquidity
-        - CurveFSNAddLiquidityAssetManagerOwnershipTransferred
       abis:
         - name: CurveFSNAddLiquidityAssetManager
           file: ./abis/CurveFSNAddLiquidityAssetManager.json
       eventHandlers:
         - event: CurveAddLiquidity(bytes32[4],address,uint256,bytes32,bytes32)
           handler: handleCurveAddLiquidity
-        - event: CurveRemoveLiquidity(bytes32,address[5],uint256[5],bytes32[5],bytes32[5])
-          handler: handleCurveRemoveLiquidity
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
       file: ./src/curve-fsn-add-liquidity-asset-manager.ts
   - kind: ethereum
     name: CurveFSNRemoveLiquidityAssetManager
@@ -201,15 +178,12 @@ dataSources:
       language: wasm/assemblyscript
       entities:
         - RemoveLiquidity
-        - CurveFSNRemoveLiquidityAssetManagerOwnershipTransferred
       abis:
         - name: CurveFSNRemoveLiquidityAssetManager
           file: ./abis/CurveFSNRemoveLiquidityAssetManager.json
       eventHandlers:
         - event: CurveRemoveLiquidity(bytes32,address[5],uint256[5],bytes32[5],bytes32[5])
           handler: handleCurveRemoveLiquidity
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
       file: ./src/curve-fsn-remove-liquidity-asset-manager.ts
   - kind: ethereum
     name: CurveMPAddLiquidityAssetManager
@@ -224,15 +198,12 @@ dataSources:
       language: wasm/assemblyscript
       entities:
         - CurveAddLiquidity
-        - CurveMPAddLiquidityAssetManagerOwnershipTransferred
       abis:
         - name: CurveMPAddLiquidityAssetManager
           file: ./abis/CurveMPAddLiquidityAssetManager.json
       eventHandlers:
         - event: CurveAddLiquidity(bytes32[4],address,uint256,bytes32,bytes32)
           handler: handleCurveAddLiquidity
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
       file: ./src/curve-mp-add-liquidity-asset-manager.ts
   - kind: ethereum
     name: CurveMPRemoveLiquidityAssetManager
@@ -247,15 +218,12 @@ dataSources:
       language: wasm/assemblyscript
       entities:
         - CurveRemoveLiquidity
-        - CurveMPRemoveLiquidityAssetManagerOwnershipTransferred
       abis:
         - name: CurveMPRemoveLiquidityAssetManager
           file: ./abis/CurveMPRemoveLiquidityAssetManager.json
       eventHandlers:
         - event: CurveRemoveLiquidity(bytes32,address[5],uint256[5],bytes32[5],bytes32[5])
           handler: handleCurveRemoveLiquidity
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
       file: ./src/curve-mp-remove-liquidity-asset-manager.ts
   - kind: ethereum
     name: CurveRemoveLiquidityAssetManager
@@ -270,15 +238,12 @@ dataSources:
       language: wasm/assemblyscript
       entities:
         - CurveRemoveLiquidity
-        - CurveRemoveLiquidityAssetManagerOwnershipTransferred
       abis:
         - name: CurveRemoveLiquidityAssetManager
           file: ./abis/CurveRemoveLiquidityAssetManager.json
       eventHandlers:
         - event: CurveRemoveLiquidity(bytes32,address[5],uint256[5],bytes32[5],bytes32[5])
           handler: handleCurveRemoveLiquidity
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
       file: ./src/curve-remove-liquidity-asset-manager.ts
   - kind: ethereum
     name: StakingAssetManager
@@ -293,7 +258,6 @@ dataSources:
       language: wasm/assemblyscript
       entities:
         - Locked
-        - StakingAssetManagerOwnershipTransferred
         - Unlocked
       abis:
         - name: StakingAssetManager
@@ -301,8 +265,6 @@ dataSources:
       eventHandlers:
         - event: Locked(address,address,address,uint256,bytes32,bytes32,bytes32)
           handler: handleLocked
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
         - event: Unlocked(address,address,uint256,bytes32,bytes32,bytes32)
           handler: handleUnlocked
       file: ./src/staking-asset-manager.ts
@@ -318,15 +280,12 @@ dataSources:
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - RocketPoolStakeAssetManagerOwnershipTransferred
         - RocketDeposit
         - RocketWithdrawal
       abis:
         - name: RocketPoolStakeAssetManager
           file: ./abis/RocketPoolStakeAssetManager.json
       eventHandlers:
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
         - event: RocketDeposit(bytes32,uint256,bytes32,bytes32)
           handler: handleRocketDeposit
         - event: RocketWithdrawal(bytes32,uint256,bytes32,bytes32)
@@ -344,15 +303,12 @@ dataSources:
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - SablierLinearAssetManagerOwnershipTransferred
         - SablierClaimStream
         - SablierCreateStream
       abis:
         - name: SablierLinearAssetManager
           file: ./abis/SablierLinearAssetManager.json
       eventHandlers:
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
         - event: SablierClaimStream(bytes32,address,uint256,bytes32,bytes32)
           handler: handleSablierClaimStream
         - event: SablierCreateStream(address,address,uint256[],bytes32[],bytes32[])
@@ -370,15 +326,12 @@ dataSources:
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - SablierDynamicAssetManagerOwnershipTransferred
         - SablierDynamicAssetManagerSablierClaimStream
         - SablierDynamicAssetManagerSablierCreateStream
       abis:
         - name: SablierDynamicAssetManager
           file: ./abis/SablierDynamicAssetManager.json
       eventHandlers:
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
         - event: SablierClaimStream(bytes32,address,uint256,bytes32,bytes32)
           handler: handleSablierClaimStream
         - event: SablierCreateStream(address,address,uint256[],bytes32[],bytes32[])
@@ -398,7 +351,6 @@ dataSources:
       entities:
         - NftTransfer
         - NftWithdraw
-        - NftAssetManagerOwnershipTransferred
       abis:
         - name: NftAssetManager
           file: ./abis/NftAssetManager.json
@@ -407,8 +359,6 @@ dataSources:
           handler: handleNftTransfer
         - event: NftWithdraw(bytes32,uint256,address,address)
           handler: handleNftWithdraw
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
       file: ./src/nft-asset-manager.ts
   - kind: ethereum
     name: OTCSwapAssetManager
@@ -422,37 +372,31 @@ dataSources:
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - OTCSwapAssetManagerOwnershipTransferred
         - Swap
       abis:
         - name: OTCSwapAssetManager
           file: ./abis/OTCSwapAssetManager.json
       eventHandlers:
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
         - event: Swap(bytes32,bytes32,bytes32,bytes32)
           handler: handleSwap
       file: ./src/otc-swap-asset-manager.ts
   - kind: ethereum
-    name: GeneralDefiIntegrationAssetManager
+    name: TransferAssetManager
     network: mainnet
     source:
-      address: "0x2bddBe60A53569be99896769b9c831ea5d3A587a"
-      abi: GeneralDefiIntegrationAssetManager
-      startBlock: 20453501
+      address: "0x5f26FF896A3303d421bafD5449f039935fa392d0"
+      abi: TransferAssetManager
+      startBlock: 23087741
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - DefiIntegration
-        - GeneralDefiIntegrationAssetManagerOwnershipTransferred
+        - TransferAssetManagerTransfer
       abis:
-        - name: GeneralDefiIntegrationAssetManager
-          file: ./abis/GeneralDefiIntegrationAssetManager.json
+        - name: TransferAssetManager
+          file: ./abis/TransferAssetManager.json
       eventHandlers:
-        - event: DefiIntegration(address,bytes32[],bytes32[],uint256[],bytes32[])
-          handler: handleDefiIntegration
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
-      file: ./src/general-defi-integration-asset-manager.ts
+        - event: Transfer(bytes32,bytes32,bytes32)
+          handler: handleTransfer
+      file: ./src/transfer-asset-manager.ts

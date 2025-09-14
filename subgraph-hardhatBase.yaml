@@ -1,0 +1,308 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: DarkpoolAssetManager
+    network: mainnet
+    source:
+      address: "0x5f77B042e245f87E14b28e949b9EDEe622EAAa78"
+      abi: DarkpoolAssetManager
+      startBlock: 33371000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Deposit
+        - Join
+        - JoinSplit
+        - Split
+        - Transfer
+        - Withdraw
+      abis:
+        - name: DarkpoolAssetManager
+          file: ./abis/DarkpoolAssetManager.json
+      eventHandlers:
+        - event: Deposit(address,bytes32,uint256,address)
+          handler: handleDeposit
+        - event: Join(bytes32,bytes32,bytes32)
+          handler: handleJoin
+        - event: JoinSplit(bytes32,bytes32,bytes32,bytes32)
+          handler: handleJoinSplit
+        - event: Split(bytes32,bytes32,bytes32)
+          handler: handleSplit
+        - event: Transfer(bytes32,uint256,address,bytes32,bytes32)
+          handler: handleTransfer
+        - event: Withdraw(bytes32,uint256,address,address)
+          handler: handleWithdraw
+      file: ./src/darkpool-asset-manager.ts
+  - kind: ethereum
+    name: UniswapSwapAssetManager
+    network: mainnet
+    source:
+      address: "0x22e9d73cCE764c0d444EE5A39795CD2843a89FeA"
+      abi: UniswapSwapAssetManager
+      startBlock: 33371000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - UniswapSwap
+      abis:
+        - name: UniswapSwapAssetManager
+          file: ./abis/UniswapSwapAssetManager.json
+      eventHandlers:
+        - event: UniswapSwap(address,uint256,bytes32,bytes32,bytes32)
+          handler: handleUniswapSwap
+      file: ./src/uniswap-swap-asset-manager.ts
+  - kind: ethereum
+    name: UniswapLiquidityAssetManager
+    network: mainnet
+    source:
+      address: "0x11db3d12B234497eC594c13a23cE6529E9e36733"
+      abi: UniswapLiquidityAssetManager
+      startBlock: 33371000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - UniswapCollectFees
+        - UniswapLiquidityProvision
+        - UniswapRemoveLiquidity
+      abis:
+        - name: UniswapLiquidityAssetManager
+          file: ./abis/UniswapLiquidityAssetManager.json
+      eventHandlers:
+        - event: UniswapCollectFees(uint256,address[2],uint256[2],bytes32[2],bytes32[2])
+          handler: handleUniswapCollectFees
+        - event: UniswapLiquidityProvision(uint256,bytes32,bytes32[2],uint256[2],bytes32[2],bytes32[2])
+          handler: handleUniswapLiquidityProvision
+        - event: UniswapRemoveLiquidity(uint256,bytes32,uint256[2],bytes32[2],bytes32[2])
+          handler: handleUniswapRemoveLiquidity
+      file: ./src/uniswap-liquidity-asset-manager.ts
+  - kind: ethereum
+    name: StakingAssetManager
+    network: mainnet
+    source:
+      address: "0xFaB6ECCbF46964bd6ebB707B7CCcb2e939B037CC"
+      abi: StakingAssetManager
+      startBlock: 33371000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Locked
+        - Unlocked
+      abis:
+        - name: StakingAssetManager
+          file: ./abis/StakingAssetManager.json
+      eventHandlers:
+        - event: Locked(address,address,address,uint256,bytes32,bytes32,bytes32)
+          handler: handleLocked
+        - event: Unlocked(address,address,uint256,bytes32,bytes32,bytes32)
+          handler: handleUnlocked
+      file: ./src/staking-asset-manager.ts
+  - kind: ethereum
+    name: SablierLinearAssetManager
+    network: mainnet
+    source:
+      address: "0x68C4143228E64836d693D4ff3aaEBb8f69a4Dc7B"
+      abi: SablierLinearAssetManager
+      startBlock: 33371000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - SablierClaimStream
+        - SablierCreateStream
+      abis:
+        - name: SablierLinearAssetManager
+          file: ./abis/SablierLinearAssetManager.json
+      eventHandlers:
+        - event: SablierClaimStream(bytes32,address,uint256,bytes32,bytes32)
+          handler: handleSablierClaimStream
+        - event: SablierCreateStream(address,address,uint256[],bytes32[],bytes32[])
+          handler: handleSablierCreateStream
+      file: ./src/sablier-linear-asset-manager.ts
+  - kind: ethereum
+    name: SablierDynamicAssetManager
+    network: mainnet
+    source:
+      address: "0x4013dA2Cae8E0e07289db3ae4AA8C5D3f4280330"
+      abi: SablierDynamicAssetManager
+      startBlock: 33371000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - SablierDynamicAssetManagerSablierClaimStream
+        - SablierDynamicAssetManagerSablierCreateStream
+      abis:
+        - name: SablierDynamicAssetManager
+          file: ./abis/SablierDynamicAssetManager.json
+      eventHandlers:
+        - event: SablierClaimStream(bytes32,address,uint256,bytes32,bytes32)
+          handler: handleSablierClaimStream
+        - event: SablierCreateStream(address,address,uint256[],bytes32[],bytes32[])
+          handler: handleSablierCreateStream
+      file: ./src/sablier-dynamic-asset-manager.ts
+  - kind: ethereum
+    name: NftAssetManager
+    network: mainnet
+    source:
+      address: "0x2b67E4233B41f9cA0624a56346A1312911cAbe2d"
+      abi: NftAssetManager
+      startBlock: 33371000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - NftTransfer
+        - NftWithdraw
+      abis:
+        - name: NftAssetManager
+          file: ./abis/NftAssetManager.json
+      eventHandlers:
+        - event: NftTransfer(bytes32,uint256,address,bytes32,bytes32)
+          handler: handleNftTransfer
+        - event: NftWithdraw(bytes32,uint256,address,address)
+          handler: handleNftWithdraw
+      file: ./src/nft-asset-manager.ts
+  - kind: ethereum
+    name: OTCSwapAssetManager
+    network: mainnet
+    source:
+      address: "0x1aD8DeeD31e82a53A74aD1D49FdB6e225cA42afa"
+      abi: OTCSwapAssetManager
+      startBlock: 33371000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Swap
+      abis:
+        - name: OTCSwapAssetManager
+          file: ./abis/OTCSwapAssetManager.json
+      eventHandlers:
+        - event: Swap(bytes32,bytes32,bytes32,bytes32)
+          handler: handleSwap
+      file: ./src/otc-swap-asset-manager.ts
+  - kind: ethereum
+    name: AerodromeSwapAssetManager
+    network: mainnet
+    source:
+      address: "0x07853e30cdFF5b8343A4fC210752B78B17f2d834"
+      abi: AerodromeSwapAssetManager
+      startBlock: 33371000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AerodromeSwap
+      abis:
+        - name: AerodromeSwapAssetManager
+          file: ./abis/AerodromeSwapAssetManager.json
+      eventHandlers:
+        - event: AerodromeSwap(bytes32,address,uint256,bytes32,bytes32)
+          handler: handleAerodromeSwap
+      file: ./src/aerodrome-swap-asset-manager.ts
+  - kind: ethereum
+    name: AerodromeAddLiquidityAssetManager
+    network: mainnet
+    source:
+      address: "0xCC952b47cFe3cCE6847D98685c5f82Ad49E25A1A"
+      abi: AerodromeAddLiquidityAssetManager
+      startBlock: 33371000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AerodromeAddLiquidity
+        - AerodromeZapIn
+      abis:
+        - name: AerodromeAddLiquidityAssetManager
+          file: ./abis/AerodromeAddLiquidityAssetManager.json
+      eventHandlers:
+        - event: AerodromeAddLiquidity(bytes32[2],address[3],uint256[3],bytes32[3],bytes32[3])
+          handler: handleAerodromeAddLiquidity
+        - event: AerodromeZapIn(bytes32,address,uint256,bytes32,bytes32)
+          handler: handleAerodromeZapIn
+      file: ./src/aerodrome-add-liquidity-asset-manager.ts
+  - kind: ethereum
+    name: AerodromeRemoveLiquidityAssetManager
+    network: mainnet
+    source:
+      address: "0x36B41f2516319c211290e3c4E84a54EdED9Bc4C9"
+      abi: AerodromeRemoveLiquidityAssetManager
+      startBlock: 33371000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AerodromeRemoveLiquidity
+        - AerodromeZapOut
+      abis:
+        - name: AerodromeRemoveLiquidityAssetManager
+          file: ./abis/AerodromeRemoveLiquidityAssetManager.json
+      eventHandlers:
+        - event: AerodromeRemoveLiquidity(bytes32,address[3],uint256[3],bytes32[3],bytes32[3])
+          handler: handleAerodromeRemoveLiquidity
+        - event: AerodromeZapOut(bytes32,address[2],uint256[2],bytes32[2],bytes32[2])
+          handler: handleAerodromeZapOut
+      file: ./src/aerodrome-remove-liquidity-asset-manager.ts
+  - kind: ethereum
+    name: TheDeepVaultAssetManager
+    network: mainnet
+    source:
+      address: "0x3b19cF7e100C1c45993BdA0831DC34ebAd5eC41B"
+      abi: TheDeepVaultAssetManager
+      startBlock: 33371000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - TheDeepDeposit
+        - TheDeepWithdrawal
+      abis:
+        - name: TheDeepVaultAssetManager
+          file: ./abis/TheDeepVaultAssetManager.json
+      eventHandlers:
+        - event: TheDeepDeposit(address,bytes32,bytes32,uint256,address,bytes32)
+          handler: handleTheDeepDeposit
+        - event: TheDeepWithdrawal(bytes32,address,address[2],uint256[2])
+          handler: handleTheDeepWithdrawal
+      file: ./src/the-deep-vault-asset-manager.ts
+  - kind: ethereum
+    name: TransferAssetManager
+    network: mainnet
+    source:
+      address: "0x597002082033Ac30A9DFB7c67918d2Ca70e52819"
+      abi: TransferAssetManager
+      startBlock: 33371000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - TransferAssetManagerTransfer
+      abis:
+        - name: TransferAssetManager
+          file: ./abis/TransferAssetManager.json
+      eventHandlers:
+        - event: Transfer(bytes32,bytes32,bytes32)
+          handler: handleTransfer
+      file: ./src/transfer-asset-manager.ts
