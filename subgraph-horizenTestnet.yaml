@@ -6,7 +6,7 @@ schema:
 dataSources:
   - kind: ethereum
     name: DarkSwapAssetManager
-    network: horizenTestnet
+    network: mainnet
     source:
       address: "0xFB6C93eF0B515d041b0DcDF427657E41DDDB8Da8"
       abi: DarkSwapAssetManager
