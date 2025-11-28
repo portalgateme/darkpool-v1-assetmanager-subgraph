@@ -322,3 +322,111 @@ type TransferAssetManagerTransfer @entity(immutable: true) {
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
+
+type DarkSwapCancelOrder @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  orderNullifier: Bytes! # bytes32
+  remainingNullifier: Bytes! # bytes32
+  accountNote: Bytes! # bytes32
+  accountNoteFooter: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type DarkSwapCancelOrderWithdraw @entity(immutable: true) {
+  id: Bytes!
+  nullifier: Bytes! # bytes32
+  recipient: Bytes! # address
+  asset: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type DarkSwapDeposit @entity(immutable: true) {
+  id: Bytes!
+  depositor: Bytes! # address
+  noteOut: Bytes! # bytes32
+  asset: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type DarkSwapJoin @entity(immutable: true) {
+  id: Bytes!
+  nullifierIn: [Bytes!]! # bytes32[3]
+  noteOut1: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type DarkSwapProCreateOrder @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  outNullifier: Bytes! # bytes32
+  changeNote: Bytes! # bytes32
+  changeNoteFooter: Bytes! # bytes32
+  orderNote: Bytes! # bytes32
+  orderNoteFooter: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type DarkSwapProSwap @entity(immutable: true) {
+  id: Bytes!
+  aliceOutNullifier: Bytes! # bytes32
+  aliceInNote: Bytes! # bytes32
+  aliceInNoteFooter: Bytes! # bytes32
+  aliceChangeNote: Bytes! # bytes32
+  aliceChangeNoteFooter: Bytes! # bytes32
+  bobOutNullifier: Bytes! # bytes32
+  bobInNote: Bytes! # bytes32
+  bobInNoteFooter: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type DarkSwapRetailDepositCreateOrder @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  depositOutNote: Bytes! # bytes32
+  depositOutNoteFooter: Bytes! # bytes32
+  inNote: Bytes! # bytes32
+  inNoteFooter: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type DarkSwapRetailSwap @entity(immutable: true) {
+  id: Bytes!
+  aliceOutNullifier: Bytes! # bytes32
+  aliceInNote: Bytes! # bytes32
+  aliceInNoteFooter: Bytes! # bytes32
+  bobOutNullifier: Bytes! # bytes32
+  bobInNote: Bytes! # bytes32
+  bobInNoteFooter: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type DarkSwapWithdraw @entity(immutable: true) {
+  id: Bytes!
+  nullifierIn: Bytes! # bytes32
+  amount: BigInt! # uint256
+  asset: Bytes! # address
+  noteRemaining: Bytes! # bytes32
+  recipient: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
