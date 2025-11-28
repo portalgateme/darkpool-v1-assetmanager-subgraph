@@ -306,3 +306,47 @@ dataSources:
         - event: Transfer(bytes32,bytes32,bytes32)
           handler: handleTransfer
       file: ./src/transfer-asset-manager.ts
+  - kind: ethereum
+    name: DarkSwapAssetManager
+    network: base
+    source:
+      address: "0x6fbA1F1aAb8449b7ba576E41F4617d918391b7cF"
+      abi: DarkSwapAssetManager
+      startBlock: 38452922
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - DarkSwapCancelOrder
+        - DarkSwapCancelOrderWithdraw
+        - DarkSwapDeposit
+        - DarkSwapJoin
+        - DarkSwapProCreateOrder
+        - DarkSwapProSwap
+        - DarkSwapRetailDepositCreateOrder
+        - DarkSwapRetailSwap
+        - DarkSwapWithdraw
+      abis:
+        - name: DarkSwapAssetManager
+          file: ./abis/DarkSwapAssetManager.json
+      eventHandlers:
+        - event: DarkSwapCancelOrder(address,bytes32,bytes32,bytes32,bytes32)
+          handler: handleDarkSwapCancelOrder
+        - event: DarkSwapCancelOrderWithdraw(bytes32,address,address,uint256)
+          handler: handleDarkSwapCancelOrderWithdraw
+        - event: DarkSwapDeposit(address,bytes32,address,uint256)
+          handler: handleDarkSwapDeposit
+        - event: DarkSwapJoin(bytes32[3],bytes32)
+          handler: handleDarkSwapJoin
+        - event: DarkSwapProCreateOrder(address,bytes32,bytes32,bytes32,bytes32,bytes32)
+          handler: handleDarkSwapProCreateOrder
+        - event: DarkSwapProSwap(bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32)
+          handler: handleDarkSwapProSwap
+        - event: DarkSwapRetailDepositCreateOrder(address,bytes32,bytes32,bytes32,bytes32)
+          handler: handleDarkSwapRetailDepositCreateOrder
+        - event: DarkSwapRetailSwap(bytes32,bytes32,bytes32,bytes32,bytes32,bytes32)
+          handler: handleDarkSwapRetailSwap
+        - event: DarkSwapWithdraw(bytes32,uint256,address,bytes32,address)
+          handler: handleDarkSwapWithdraw
+      file: ./src/dark-swap-asset-manager.ts
