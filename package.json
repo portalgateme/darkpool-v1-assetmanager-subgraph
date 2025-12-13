@@ -4,7 +4,10 @@
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ singularity",
+    "deploy:mainnet": "graph deploy ---node https://api.studio.thegraph.com/deploy/ the-singularity",
+    "deploy:base": "graph deploy ---node https://api.studio.thegraph.com/deploy/ the-singularity-base",
+    "deploy:arb": "graph deploy ---node https://api.studio.thegraph.com/deploy/ the-singularity-arb",
+    "deploy:darkswap:base": "graph deploy ---node https://api.studio.thegraph.com/deploy/ dark-swap-base",
     "create-local": "graph create --node http://localhost:8020/ singularity",
     "remove-local": "graph remove --node http://localhost:8020/ singularity",
     "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 singularity",
