@@ -6,11 +6,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: DarkSwapAssetManager
-    network: mainnet
+    network: base
     source:
-      address: "0x7D17139056ac21BDC1B4489492CED5ce3FE95398"
+      address: "0x6fbA1F1aAb8449b7ba576E41F4617d918391b7cF"
       abi: DarkSwapAssetManager
-      startBlock: 10082348
+      startBlock: 38452922
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
