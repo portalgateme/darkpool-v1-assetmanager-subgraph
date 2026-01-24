@@ -6,11 +6,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: DarkSwapAssetManager
-    network: mainnet
+    network: horizenTestnet
     source:
-      address: "0xFB6C93eF0B515d041b0DcDF427657E41DDDB8Da8"
+      address: "0x25b6A08F81926a918ea0Bb0a0e8Acb4971fAc379"
       abi: DarkSwapAssetManager
-      startBlock: 18364483
+      startBlock: 7585569
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
