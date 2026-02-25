@@ -136,6 +136,9 @@ export function handleDarkSwapRetailDepositCreateOrder(
     event.transaction.hash.concatI32(event.logIndex.toI32()),
   )
   entity.owner = event.params.owner
+  entity.asset = event.params.asset
+  entity.amount = event.params.amount
+
   entity.depositOutNote = event.params.depositOutNote
   entity.depositOutNoteFooter = event.params.depositOutNoteFooter
   entity.inNote = event.params.inNote
