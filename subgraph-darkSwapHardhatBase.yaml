@@ -6,7 +6,7 @@ schema:
 dataSources:
   - kind: ethereum
     name: DarkSwapAssetManager
-    network: hardhatBase
+    network: mainnet
     source:
       address: "0xa132E031D9b725d91C044939b9C84e5928Dfb7b5"
       abi: DarkSwapAssetManager
