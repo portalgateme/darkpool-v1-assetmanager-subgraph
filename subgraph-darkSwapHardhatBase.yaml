@@ -41,7 +41,7 @@ dataSources:
           handler: handleDarkSwapProCreateOrder
         - event: DarkSwapProSwap(bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32,bytes32)
           handler: handleDarkSwapProSwap
-        - event: DarkSwapRetailDepositCreateOrder(address,bytes32,bytes32,bytes32,bytes32)
+        - event: DarkSwapRetailDepositCreateOrder(address,address,uint256,bytes32,bytes32,bytes32,bytes32)
           handler: handleDarkSwapRetailDepositCreateOrder
         - event: DarkSwapRetailSwap(bytes32,bytes32,bytes32,bytes32,bytes32,bytes32)
           handler: handleDarkSwapRetailSwap
