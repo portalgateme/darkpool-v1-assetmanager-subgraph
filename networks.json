@@ -79,5 +79,86 @@
     "TransferAssetManager": {
       "address": "0x597002082033Ac30A9DFB7c67918d2Ca70e52819"
     }
+  },
+  "hardhatBase": {
+    "DarkpoolAssetManager": {
+      "address": "0x4E76FbE44fa5Dae076a7f4f676250e7941421fbA",
+      "startBlock": 20030270
+    },
+    "UniswapSwapAssetManager": {
+      "address": "0xA3b48c7b901fede641B596A4C10a4630052449A6"
+    },
+    "UniswapLiquidityAssetManager": {
+      "address": "0x72F853E9E202600c5017B5A060168603c3ed7368"
+    },
+    "CurveSingleExchangeAssetManager": {
+      "address": "0x2e13f7644014F6E934E314F0371585845de7B986"
+    },
+    "CurveMultiExchangeAssetManager": {
+      "address": "0x725314746e727f586E9FCA65AeD5dBe45aA71B99"
+    },
+    "CurveAddLiquidityAssetManager": {
+      "address": "0x04F75a27cE2FDC591C71a88f1EcaC7e5Ce44f5Fc"
+    },
+    "CurveFSNAddLiquidityAssetManager": {
+      "address": "0x10537D7bD661C9c34F547b38EC662D6FD482Ae95"
+    },
+    "CurveFSNRemoveLiquidityAssetManager": {
+      "address": "0xf42Ec71A4440F5e9871C643696DD6Dc9a38911F8"
+    },
+    "CurveMPAddLiquidityAssetManager": {
+      "address": "0x41219a0a9C0b86ED81933c788a6B63Dfef8f17eE"
+    },
+    "CurveMPRemoveLiquidityAssetManager": {
+      "address": "0x18b7CBdfFA52d1e7BB992fd50f394c5b59E20B72"
+    },
+    "CurveRemoveLiquidityAssetManager": {
+      "address": "0x64079a2Edd1104a2323E2b732A1244BCE011B1F5"
+    },
+    "StakingAssetManager": {
+      "address": "0x4Bd915C3e39cfF4eac842255965E79061c38cACD"
+    },
+    "RocketPoolStakeAssetManager": {
+      "address": "0x4Bd915C3e39cfF4eac842255965E79061c38cACD"
+    },
+    "SablierLinearAssetManager": {
+      "address": "0xd2983525E903Ef198d5dD0777712EB66680463bc"
+    },
+    "SablierDynamicAssetManager": {
+      "address": "0x71d2EBF08bF4FcB82dB5ddE46677263F4c534ef3"
+    },
+    "NftAssetManager": {
+      "address": "0xe519389F8c262d4301Fd2830196FB7D0021daf59"
+    },
+    "OTCSwapAssetManager": {
+      "address": "0x49AeF2C4005Bf572665b09014A563B5b9E46Df21"
+    },
+    "GeneralDefiIntegrationAssetManager": {
+      "address": "0x1c32f8818e38a50d37d1E98c72B9516a50985227"
+    },
+    "AerodromeSwapAssetManager": {
+      "address": "0x95775fD3Afb1F4072794CA4ddA27F2444BCf8Ac3"
+    },
+    "AerodromeAddLiquidityAssetManager": {
+      "address": "0x3C1Cb427D20F15563aDa8C249E71db76d7183B6c"
+    },
+    "AerodromeRemoveLiquidityAssetManager": {
+      "address": "0x0a17FabeA4633ce714F1Fa4a2dcA62C3bAc4758d"
+    },
+    "BatchJoinSplitAssetManager": {
+      "address": "0x17f4B55A352Be71CC03856765Ad04147119Aa09B"
+    },
+    "DarkPoolSwapAssetManager": {
+      "address": "0x8797847c9d63D8Ed9C30B058F408d4257A33B76C"
+    },
+    "DarkSwapAssetManager": {
+      "address": "0x9D8946A8A0c5a583Bf05bE83B981406182ac9d2f"
+    },
+    "TheDeepVaultAssetManager": {
+      "address": "0xA7c59f010700930003b33aB25a7a0679C860f29c"
+    },
+    "TransferAssetManager": {
+      "address": "0x597002082033Ac30A9DFB7c67918d2Ca70e52819"
+    }
   }
 }
